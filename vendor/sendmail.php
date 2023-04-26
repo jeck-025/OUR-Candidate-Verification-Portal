@@ -211,7 +211,7 @@ try {
    $mail->Host       = 'smtp.gmail.com';     //platform
    $mail->SMTPAuth   = true;
    $mail->Username   = 'rdmama@ceu.edu.ph';   //email
-   $mail->Password   = 'zxqsncwnyzjsqhfg';                                //password
+   $mail->Password   = 'mjrmzipzrmidccav';                                //password
    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
    $mail->Port       = 587;
 
@@ -257,7 +257,7 @@ function sendOnHoldEmail($lastname, $fullname, $status, $email, $remarks) {
      $mail->Host       = 'smtp.gmail.com';     //platform
      $mail->SMTPAuth   = true;
      $mail->Username   = 'rdmama@ceu.edu.ph';   //email
-     $mail->Password   = 'zxqsncwnyzjsqhfg';                                //password
+     $mail->Password   = 'mjrmzipzrmidccav';                                //password
      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
      $mail->Port       = 587;
 
@@ -301,7 +301,7 @@ function sendDeniedEmail($lastname, $fullname, $status, $email, $remarks) {
      $mail->Host       = 'smtp.gmail.com';     //platform
      $mail->SMTPAuth   = true;
      $mail->Username   = 'rdmama@ceu.edu.ph';   //email
-     $mail->Password   = 'zxqsncwnyzjsqhfg';                                //password
+     $mail->Password   = 'mjrmzipzrmidccav';                                //password
      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
      $mail->Port       = 587;
 
