@@ -1,0 +1,206 @@
+$(document).ready(function(e) {
+
+    $(document).on('mouseover', 'path', function(e) {
+
+        $(this).tooltip();
+        $('.ui-tooltip').hide();
+        
+        var id = ($(this).data('id'));
+
+        $.ajax({
+            type: 'POST',
+            url: '/caveportal/resource/controllers/mapfunctions.php',
+            data: {
+                id:id
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                $('#AF').text(response);
+                $('#AO').text(response);
+                $('#AL').text(response);
+                $('#AE').text(response);
+                $('#AR').text(response);
+                $('#AM').text(response);
+                $('#TF').text(response);
+                $('#AU').text(response);
+                $('#AT').text(response);
+                $('#AZ').text(response);
+                $('#BI').text(response);
+                $('#BE').text(response);
+                $('#BJ').text(response);
+                $('#BF').text(response);
+                $('#BD').text(response);
+                $('#BG').text(response);
+                $('#BS').text(response);
+                $('#BA').text(response);
+                $('#BY').text(response);
+                $('#BZ').text(response);
+                $('#BO').text(response);
+                $('#BR').text(response);
+                $('#BN').text(response);
+                $('#BT').text(response);
+                $('#BW').text(response);
+                $('#CF').text(response);
+                $('#CA').text(response);
+                $('#CH').text(response);
+                $('#CL').text(response);
+                $('#CN').text(response);
+                $('#CI').text(response);
+                $('#CM').text(response);
+                $('#CD').text(response);
+                $('#CG').text(response);
+                $('#CO').text(response);
+                $('#CR').text(response);
+                $('#CU').text(response);
+                $('#-99').text(response);
+                $('#CY').text(response);
+                $('#CZ').text(response);
+                $('#DE').text(response);
+                $('#DJ').text(response);
+                $('#DK').text(response);
+                $('#DO').text(response);
+                $('#DZ').text(response);
+                $('#EC').text(response);
+                $('#EG').text(response);
+                $('#ER').text(response);
+                $('#ES').text(response);
+                $('#EE').text(response);
+                $('#ET').text(response);
+                $('#FI').text(response);
+                $('#FJ').text(response);
+                $('#FK').text(response);
+                $('#GF').text(response);
+                $('#GA').text(response);
+                $('#GB').text(response);
+                $('#GE').text(response);
+                $('#GH').text(response);
+                $('#GN').text(response);
+                $('#GM').text(response);
+                $('#GW').text(response);
+                $('#GQ').text(response);
+                $('#GR').text(response);
+                $('#GL').text(response);
+                $('#GT').text(response);
+                $('#GY').text(response);
+                $('#HN').text(response);
+                $('#HR').text(response);
+                $('#HT').text(response);
+                $('#HU').text(response);
+                $('#ID').text(response);
+                $('#IN').text(response);
+                $('#IE').text(response);
+                $('#IR').text(response);
+                $('#IQ').text(response);
+                $('#IS').text(response);
+                $('#IL').text(response);
+                $('#IT').text(response);
+                $('#JM').text(response);
+                $('#JO').text(response);
+                $('#JP').text(response);
+                $('#KZ').text(response);
+                $('#KE').text(response);
+                $('#KG').text(response);
+                $('#KH').text(response);
+                $('#KR').text(response);
+                $('#-99').text(response);
+                $('#KW').text(response);
+                $('#LA').text(response);
+                $('#LB').text(response);
+                $('#LR').text(response);
+                $('#LY').text(response);
+                $('#LK').text(response);
+                $('#LS').text(response);
+                $('#LT').text(response);
+                $('#LU').text(response);
+                $('#LV').text(response);
+                $('#MA').text(response);
+                $('#MD').text(response);
+                $('#MG').text(response);
+                $('#MX').text(response);
+                $('#MK').text(response);
+                $('#ML').text(response);
+                $('#MM').text(response);
+                $('#ME').text(response);
+                $('#MN').text(response);
+                $('#MZ').text(response);
+                $('#MR').text(response);
+                $('#MW').text(response);
+                $('#MY').text(response);
+                $('#NA').text(response);
+                $('#NC').text(response);
+                $('#NE').text(response);
+                $('#NG').text(response);
+                $('#NI').text(response);
+                $('#NL').text(response);
+                $('#NO').text(response);
+                $('#NP').text(response);
+                $('#NZ').text(response);
+                $('#OM').text(response);
+                $('#PK').text(response);
+                $('#PA').text(response);
+                $('#PE').text(response);
+                $('#PH').text(response);
+                $('#PG').text(response);
+                $('#PL').text(response);
+                $('#PR').text(response);
+                $('#KP').text(response);
+                $('#PT').text(response);
+                $('#PY').text(response);
+                $('#PS').text(response);
+                $('#QA').text(response);
+                $('#RO').text(response);
+                $('#RU').text(response);
+                $('#RW').text(response);
+                $('#EH').text(response);
+                $('#SA').text(response);
+                $('#SD').text(response);
+                $('#SS').text(response);
+                $('#SN').text(response);
+                $('#SB').text(response);
+                $('#SL').text(response);
+                $('#SV').text(response);
+                $('#-99').text(response);
+                $('#SO').text(response);
+                $('#RS').text(response);
+                $('#SR').text(response);
+                $('#SK').text(response);
+                $('#SI').text(response);
+                $('#SE').text(response);
+                $('#SZ').text(response);
+                $('#SY').text(response);
+                $('#TD').text(response);
+                $('#TG').text(response);
+                $('#TH').text(response);
+                $('#TJ').text(response);
+                $('#TM').text(response);
+                $('#TL').text(response);
+                $('#TT').text(response);
+                $('#TN').text(response);
+                $('#TR').text(response);
+                $('#TW').text(response);
+                $('#TZ').text(response);
+                $('#UG').text(response);
+                $('#UA').text(response);
+                $('#UY').text(response);
+                $('#US').text(response);
+                $('#UZ').text(response);
+                $('#VE').text(response);
+                $('#VN').text(response);
+                $('#VU').text(response);
+                $('#YE').text(response);
+                $('#ZA').text(response);
+                $('#ZM').text(response);
+                $('#ZW').text(response);
+                $('#FR').text(response);
+               
+            },
+            
+            error: function(textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+        
+    });
+   
+});
