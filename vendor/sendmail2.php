@@ -37,7 +37,7 @@ try {
   $mail->Host       = 'smtp.gmail.com';     //platform
   $mail->SMTPAuth   = true;
   $mail->Username   = 'rdmama@ceu.edu.ph';   //email
-  $mail->Password   = 'zxqsncwnyzjsqhfg';                                //password
+  $mail->Password   = 'mjrmzipzrmidccav';                                //password
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port       = 587;
 
