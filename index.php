@@ -54,8 +54,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/caveportal/resource/php/class/core/in
                     <div class="col-lg-12 col-xl-10 col-xxl-6">
                         <div class="my-5 text-center text-xl-start">
                             <h1 class="display-5 fw-bolder text-white mb-2">The CEU Candidate Verification Portal</h1>
-                            <p class="lead fw-normal text-white-50 mb-4">Managed by the Centro Escolar Univeristy office
-                                of the Registrar.</p>
+                            <p class="lead fw-normal text-white-50 mb-4">Managed by the Centro Escolar University - Office
+                                of the University Registrar.</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="regform" style="background-color: #f04e98; border-color: #f04e98; ">Get Started</a>
                                 <a class="btn btn-outline-light btn-lg px-4" href="scrstatus">Check my Verification Status</a>
