@@ -21,7 +21,7 @@ if($data['campus'] === "MLS") {
     $file = "CAVE_ECertificate_MLS.pdf";
 }else if($data['campus'] === "MKT") {
     $file = "CAVE_ECertificate_MKT.pdf";
-}else if($data['campus'] === "MNL") {
+}else{
     $file = "CAVE_ECertificate_MNL.pdf";
 }
 
