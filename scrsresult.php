@@ -72,13 +72,13 @@ if (isset($_POST["tn"])) {
                    if($status =="PENDING"){
                      echo "<p class='text-left'>
                      Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently being reviewed by our verification officer.<br>
-                     Normally this would take 3-5 working days to complete.
+                     Normally this would take 5-10 working days to complete.
                      <br />For follow-up you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
                    }elseif($status =="ON-HOLD"){
                      echo "<p class='text-left'>
                      Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently put on-hold by our verification officer.<br>
                      For the reason:<b> ".$infos[0]['remarks']."</b><br>
-                     Normally this would take 3-5 working days to verify.
+                     Normally this would take 5-10 working days to verify.
                      <br />For follow-up you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
                    }elseif($status =="VERIFIED"){
                      echo "<p class='text-left'>
