@@ -6,6 +6,14 @@ thead th {
     font-size: 12px;
 }
 
+.bi-check-circle{
+  font-size: 30px;
+}
+
+.bi-person-check-fill{
+  font-size: 30px;
+}
+
 .bi-x-circle-fill {
     color: #f04e98;
     font-size: 25px;
@@ -105,6 +113,27 @@ thead th {
   background-color: #f2f2f2 !important;
   box-shadow: #000 !important;
 } */
+/* .mailerconfig-modal{
+    box-shadow: 3px 3px 10px 1px gray;
+    height: auto;
+    width: auto;
+} */
+
+.mailer-config-header{
+  background-color: #251f70;
+  border-radius: 3px;
+  color: white;
+}
+
+.close-btn{
+  color:white;
+}
+
+.mailer-fields{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .infosub{
   width:100%;
@@ -122,6 +151,61 @@ thead th {
 .filecaption{
   text-align:inherit;
 }
+
+.actions-mailer-config .btn-sm {
+  background: #251f70;
+  color: white;
+  width: 8rem;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0.5em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.5em;
+}
+
+.actions-mailer-config .btn-sm .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.8em;
+  width: 2.0em;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.actions-mailer-config .btn-sm:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.actions-mailer-config .btn-sm .icon svg {
+  width: 1.3em;
+  transition: transform 0.3s;
+  color: #251f70;
+  font-weight: bold !important;
+}
+
+.actions-mailer-config .btn-sm:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.actions-mailer-config .btn-sm:active .icon {
+  transform: scale(0.95);
+}
+
+/* -------------------------------------------------------------- */
 
 .actions .btn-sm {
     background: #251f70;

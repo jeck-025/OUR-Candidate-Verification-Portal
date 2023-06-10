@@ -4,9 +4,9 @@ session_start();
 $GLOBALS['config'] = array(
     'mysql'=>array(
         //local connection
-        //'host' => '127.0.0.1:3306',
-        //'username' =>'root',
-        //'password' =>'',
+        'host' => '127.0.0.1:3306',
+        'username' =>'root',
+        'password' =>'',
         // 'db'=>'cave'
 
         // hostinger connection
@@ -15,9 +15,9 @@ $GLOBALS['config'] = array(
         // 'password' =>'p@ssw0rdBSIT4A',
         // 'db'=>'port7396_caveportal'
 
-          'host' => '109.106.254.187',
-          'username' =>'ceumnlre_root',
-          'password' =>'Eg5c272klko5',
+        //   'host' => '109.106.254.187',
+        //   'username' =>'ceumnlre_root',
+        //   'password' =>'Eg5c272klko5',
          'db'=>'ceumnlre_cave'
     ),
 

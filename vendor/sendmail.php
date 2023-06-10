@@ -378,8 +378,8 @@ function sendClientAcc($username, $password, $email) {
      $mail->isSMTP();
      $mail->Host       = 'smtp.gmail.com';     //platform
      $mail->SMTPAuth   = true;
-     $mail->Username   = 'ceumlscave@gmail.com';   //email
-     $mail->Password   = 'gmvfujumrdqpsjgx';                                //password
+     $mail->Username   = 'rdmama@ceu.edu.ph';   //email
+     $mail->Password   = 'mjrmzipzrmidccav';                                //password
      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
      $mail->Port       = 587;
 
