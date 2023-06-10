@@ -1,11 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/caveportal/resource/php/class/core/init.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/caveportal/vendor/sendmail.php';
 isLogin();
 $user = new user();
 isAdmin($user->data()->groups);
 $view = new view();
 $viewtable = new viewtable();
-
+$mailer = new mailer();
+$adduser = new addAccount();
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +19,7 @@ $viewtable = new viewtable();
     <meta name="description" content="CEU Candidate Verification Portal" />
     <meta name="author" content="Mariano R.J., Gita J.N., Tuazon M., Valencia E.C." />
     <meta http-equiv="refresh" content="300; url=login">
+
     <title>CEU CAVEPortal</title>
 
     <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-select.min.css">
@@ -36,8 +39,6 @@ $viewtable = new viewtable();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -59,12 +60,156 @@ $viewtable = new viewtable();
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
-            
+            <?php
+                if($user->data()->username == 'jeck'){
+                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
+                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-person-circle'></i><span> Account Management</span> </a></li>";
+                }
+            ?>
+
+            <div class="modal fade" id="mailerconfig" tabindex="-1" aria-labelledby="mailerconfigLabel" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-md mailerconfig-modal">
+                    <div class="modal-content shadow p-3 mb-5 bg-white rounded">
+                        <div class="modal-header mailer-config-header">
+                            <h5 class="modal-title" id="mailerconfigLabel"><i class='bi bi-envelope'></i> Mailer Configuration</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="close-btn">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method='post'>
+                                <div class='form-group'>
+                                    <?php
+                                        $mailerData = $mailer->viewConfigMailer();
+                                        $mailerUsername = $mailerData[0];
+                                        $mailerPassword = $mailerData[1];
+                                        $mailerPlatform = $mailerData[2];
+                                        $mailerPort = $mailerData[3];
+                                    ?>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-9">
+                                            <label for="mailer-username" class="form-label mt-2 mb-0">Username</label>
+                                            <input type="text" id="mailer-username" name="mailer-username" class="form-control" autocomplete="off" value="<?php echo "$mailerUsername"; ?>" required>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="mailer-password" class="form-label mt-2 mb-0">Password</label>
+                                            <input type="password" id="mailer-password" name="mailer-password" class="form-control" autocomplete="off" value="<?php echo "$mailerPassword"; ?>" required>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="mailer-platform" class="form-label mt-2 mb-0">Platform</label>
+                                            <input type="text" name="mailer-platform" id="mailer-platform" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatform"; ?>" required>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="mailer-port" class="form-label mt-2 mb-0">Port</label>
+                                            <input type="text" name="mailer-port" id="mailer-port" class="form-control" autocomplete="off" value="<?php echo "$mailerPort"; ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <li class='actions-mailer-config'>    
+                            <button type="button" id="mailer_info_close" class="btn btn-sm" data-dismiss="modal">Close
+                                <div class='icon'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.001 12H4z"></path><path d="m15.707 10.707-1.414-1.414L12 11.586 9.707 9.293l-1.414 1.414L10.586 13l-2.293 2.293 1.414 1.414L12 14.414l2.293 2.293 1.414-1.414L13.414 13z"></path></svg>
+                                </div>
+                            </button>
+                            </li>
+                            <li class='actions-mailer-config'>     
+                                <button type="submit" id="mailer_info_update" class="btn btn-sm">Save
+                                    <div class='icon'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 21h14a2 2 0 0 0 2-2V8a1 1 0 0 0-.29-.71l-4-4A1 1 0 0 0 16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zm10-2H9v-5h6zM13 7h-2V5h2zM5 5h2v4h8V5h.59L19 8.41V19h-2v-5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5H5z"></path></svg>
+                                    </div>
+                                </button>
+                            </li>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="acctconfig" tabindex="-1" aria-labelledby="acctconfigLabel" aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-md mailerconfig-modal">
+                    <div class="modal-content shadow p-3 mb-5 bg-white rounded">
+                        <div class="modal-header mailer-config-header">
+                            <h5 class="modal-title" id="mailerconfigLabel"><i class="bi bi-people-fill"></i> Create a new User Account </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="close-btn">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" id="r_form">
+                                <div class='form-group'>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-9">
+                                            <label for="userName" class="form-label mt-2 mb-0">Account Username</label>
+                                            <input type="text" id="userName" name="userName" class="form-control" autocomplete="off" required>
+                                            <p><i><small>Auto-generated password will be received via email.</small></i></p>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="fullName" class="form-label mt-2 mb-0">Full Name</label>
+                                            <input type="text" id="fullName" name="fullName" class="form-control" autocomplete="off" required>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="email" class="form-label mt-2 mb-0">Email Address</label>
+                                            <input type="email" id="email" name="email" class="form-control" autocomplete="off" required>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="company" class="form-label mt-2 mb-0">Company</label>
+                                            <input type="text" name="company" id="company" class="form-control" autocomplete="off" required>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="job_position" class="form-label mt-2 mb-0">Department</label>
+                                            <input type="text" name="job_position" id="job_position" class="form-control" autocomplete="off" required>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <li class='actions-mailer-config'>    
+                            <button type="button" class="btn btn-sm" data-dismiss="modal">Close
+                                <div class='icon'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.001 12H4z"></path><path d="m15.707 10.707-1.414-1.414L12 11.586 9.707 9.293l-1.414 1.414L10.586 13l-2.293 2.293 1.414 1.414L12 14.414l2.293 2.293 1.414-1.414L13.414 13z"></path></svg>
+                                </div>
+                            </button>
+                            </li>
+                            <li class='actions-mailer-config'>     
+                                <button type="submit" class="btn btn-sm">Create
+                                    <div class='icon'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 21h14a2 2 0 0 0 2-2V8a1 1 0 0 0-.29-.71l-4-4A1 1 0 0 0 16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zm10-2H9v-5h6zM13 7h-2V5h2zM5 5h2v4h8V5h.59L19 8.41V19h-2v-5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5H5z"></path></svg>
+                                    </div>
+                                </button>
+                            </li>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i>
                     <span>Log out</span> </a></li>
         </ul>
     </aside>
     <main id="main" class="main">
+        <?php
+            if(!empty($_POST['mailer-username']) && !empty($_POST['mailer-password'])){
+                $mailer = new mailer($_POST['mailer-username'], $_POST['mailer-password'], $_POST['mailer-port'], $_POST['mailer-platform']);
+                $mailer->updateMailerConfig(); ?>
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><i class="bi bi-check-circle"></i> Mailer Configuration Updated</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        <?php }
+            if(!empty($_POST['email'])){
+                $adduser = new addAccount($_POST['userName'], $_POST['fullName'], $_POST['email'], $_POST['company'], $_POST['job_position']);
+                $adduser->createUser(); ?>
+                
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><i class="bi bi-person-check-fill"></i> User Account Created. Password will be received via email.</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+        <?php } ?>
+
         <div class="pagtitle pt-3" data-aos="fade-in" data-aos-duration="1000">
             <h1>Dashboard</h1>
             <nav>
@@ -343,7 +488,7 @@ $viewtable = new viewtable();
         <div class="credits"><a href="https://port-seventeen.com/rjmariano/portfolio/"><small>Mariano R.J.</small></a> |
             <a href="https://port-seventeen.com/jngita/portfolio/"><small>Gita J.N.</small></a> | <a href="https://port-seventeen.com/mtuazon/portfolio_tuazon/
 "><small>Tuazon M.</small></a> | <a href="https://port-seventeen.com/evalencia/portfolio/"><small>Valencia
-                    E.C.</small></a> | <small>Bolasoc R.C.</small>
+                    E.C.</small></a> | <small>Bolasoc R.C.</small> | <small>Anatalio J.</small>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -85,11 +85,11 @@ function vald()
 {
     if (Input::exists()) {
         if (Token::check(Input::get('Token'))) {
-            if (!empty($_POST['checkbox'])) {
-                $_POST['checkbox'] = Input::get('checkbox');
-            } else {
-                $_POST['checkbox'] = "";
-            }
+            // if (!empty($_POST['checkbox'])) {
+            //     $_POST['checkbox'] = Input::get('checkbox');
+            // } else {
+            //     $_POST['checkbox'] = "";
+            // }
             $validate = new Validate;
             $validate = $validate->check($_POST, array(
                 'fullName' => array(
@@ -101,7 +101,6 @@ function vald()
                 'email' => array(
                     'required' => 'true',
                     'type' => 'email'
-
                 ),
                 'company' => array(
                     'required' => 'true',
@@ -113,9 +112,9 @@ function vald()
                     'min' => 2,
                     'type2' => 'text'
                 ),
-                'checkbox' => array(
-                    'required' => 'true'
-                )
+                // 'checkbox' => array(
+                //     'required' => 'true'
+                // )
 
             ));
 
@@ -132,26 +131,26 @@ function vald()
                         'salt' => $salt,
                         'fullName' => Input::get('fullName'),
                         'joined' => date('Y-m-d H:i:s'),
-                        'groups' => 2,
+                        'groups' => 1,
                         'email' => Input::get('email'),
                         'company' => Input::get('company'),
-                        'job_position' => Input::get('job_position'),
-                        'agreement' => Input::get('checkbox')
+                        'job_position' => Input::get('job_position')
+                        // 'agreement' => Input::get('checkbox')
 
                     ));
 
-                    $user->createC(array(
-                        'checker' => Input::get('fullName'),
+                    // $user->createC(array(
+                    //     'checker' => Input::get('fullName'),
 
-                    ));
-                    $user->createV(array(
-                        'verifier' => Input::get('fullName'),
-                    ));
+                    // ));
+                    // $user->createV(array(
+                    //     'verifier' => Input::get('fullName'),
+                    // ));
 
-                    $user->createR(array(
-                        'releasedby' => Input::get('fullName'),
+                    // $user->createR(array(
+                    //     'releasedby' => Input::get('fullName'),
 
-                    ));
+                    // ));
                 } catch (Exception $e) {
                     die($e->getMessage());
                 }
