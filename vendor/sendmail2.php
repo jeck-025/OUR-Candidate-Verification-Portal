@@ -32,14 +32,21 @@ $body ="<p>Dear Verification Officer ,</p>
 
 
 try {
-  $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-  $mail->isSMTP();
-  $mail->Host       = 'smtp.gmail.com';     //platform
-  $mail->SMTPAuth   = true;
-  $mail->Username   = 'rdmama@ceu.edu.ph';   //email
-  $mail->Password   = 'mjrmzipzrmidccav';                                //password
-  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-  $mail->Port       = 587;
+    $view = new mailer();
+    $mailerData = $view->viewConfigMailer();
+    $mailerUsername = $mailerData[0];
+    $mailerPassword = $mailerData[1];
+    $mailerPlatform = $mailerData[2];
+    $mailerPort = $mailerData[3];
+
+     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+     $mail->isSMTP();
+     $mail->Host       = $mailerPlatform;     //platform
+     $mail->SMTPAuth   = true;
+     $mail->Username   = $mailerUsername;   //email
+     $mail->Password   = $mailerPassword;                                //password
+     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+     $mail->Port       = $mailerPort;
 
   //Recipients
   $mail->setFrom('rdmama@ceu.edu.ph');       //sender

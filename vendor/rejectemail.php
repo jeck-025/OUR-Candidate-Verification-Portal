@@ -28,17 +28,24 @@ $body ="<p>Dear $fullname ,</p>
 try {
     //Server settings
     //Server settings
+    $view = new mailer();
+    $mailerData = $view->viewConfigMailer();
+    $mailerUsername = $mailerData[0];
+    $mailerPassword = $mailerData[1];
+    $mailerPlatform = $mailerData[2];
+    $mailerPort = $mailerData[3];
+
      $mail->SMTPDebug = SMTP::DEBUG_SERVER;
      $mail->isSMTP();
-     $mail->Host       = 'smtp.gmail.com';     //platform
+     $mail->Host       = $mailerPlatform;     //platform
      $mail->SMTPAuth   = true;
-     $mail->Username   = 'ceuscholarships@gmail.com';   //email
-     $mail->Password   = 'jgjlnpbvworttwgn';                    //password
+     $mail->Username   = $mailerUsername;   //email
+     $mail->Password   = $mailerPassword;                    //password
      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-     $mail->Port       = 587;
+     $mail->Port       = $mailerPort;
 
      //Recipients
-     $mail->setFrom('rcbolasoc@ceu.edu.ph');       //sender
+     $mail->setFrom($mailerUsername);       //sender
      $mail->addAddress($email);
 
      //Content
