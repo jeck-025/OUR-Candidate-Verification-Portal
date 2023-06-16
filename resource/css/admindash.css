@@ -478,7 +478,7 @@ ul .badge.active {
     font-size: 15px;
     padding: 5px;
     margin-left: 5px;
-    width: 25px;
+    width: 45px;
     border-radius: 10px !important;
 }
 
@@ -488,7 +488,7 @@ ul .badge {
     font-size: 15px;
     padding: 4px;
     margin-left: 5px;
-    width: 25px;
+    width: 45px;
     padding: 5px;
     border-radius: 10px !important;
 }
@@ -693,6 +693,11 @@ svg path:hover {
 .container .card .report {
     border-radius: 10px !important;
   }
+
+.card{
+  height: 100%;
+}
+
 h5 {
   padding: 5px;
 }
