@@ -116,9 +116,11 @@ class view extends config
 
   public function allPendingCount()
   {
+    $curMonth = date('Y-m');
     $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING'";
+    // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -202,9 +204,23 @@ class view extends config
 
   public function totalMonth()
   {
+    $curMonth = date('Y-m');
     $config = new config;
     $con = $this->con();
-    $sql = "SELECT IFNULL(SUM(LAST_DAY(date_added) = LAST_DAY(CURDATE())),0) this_month FROM `tbl_client_user`";
+    // $sql = "SELECT IFNULL(SUM(LAST_DAY(date_added) = LAST_DAY(CURDATE())),0) this_month FROM `tbl_client_user`";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+  public function totalMonthDone()
+  {
+    $curMonth = date('Y-m');
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` != 'PENDING'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -221,6 +237,18 @@ class view extends config
     $rows = $data->fetchColumn();
     return $rows;
   }
+
+  public function totalMonthByMDone($year, $month)
+  {
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `status` != 'PENDING'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
   public function getAverageCycle()
   {
     $config = new config;
@@ -249,7 +277,7 @@ class view extends config
   {
     $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_completed`) = '$year' AND MONTH(`date_completed`) = '$month'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_completed`) = '$year' AND MONTH(`date_completed`) = '$month' AND `status` != 'PENDING'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();

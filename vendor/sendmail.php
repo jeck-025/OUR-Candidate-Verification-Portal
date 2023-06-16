@@ -343,43 +343,6 @@ function sendDeniedEmail($lastname, $fullname, $status, $email, $remarks) {
 }
 }
 
-function sendInquiry($email) {
-  $mail = new PHPMailer(true);
-
-  $body ="<p>Greetings of peace!</p>
-<p>You have successfully inquired for candidate verification</p>
-<p>Please register a account on the link below to start the process. <a href='port-seventeen.com/caveportal/register.php'>Inquire An Account</a></p>
-<p><b>This is an auto generated email please do not reply.</b></p>
-<p>Thank you and stay safe.</p>";
-  try {
-    //Server settings
-    //Server settings
-     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-     $mail->isSMTP();
-     $mail->Host       = 'smtp.gmail.com';     //platform
-     $mail->SMTPAuth   = true;
-     $mail->Username   = 'ceumlscave@gmail.com';   //email
-     $mail->Password   = 'gmvfujumrdqpsjgx';                                //password
-     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-     $mail->Port       = 587;
-
-     //Recipients
-     $mail->setFrom($mail->Username);       //sender
-     $mail->addAddress($email);
-
-     //Content
-     $mail->isHTML(true);
-     $mail->Subject = '(No reply) Candidate Verification Inquiry Account';
-     $mail->Body    = $body;             //content
-
-
-     $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-     $mail->send();
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
-}
-
 function sendClientAcc($username, $password, $email) {
   $mail = new PHPMailer(true);
 

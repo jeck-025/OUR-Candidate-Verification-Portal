@@ -8,6 +8,9 @@ $view = new view();
 $viewtable = new viewtable();
 $mailer = new mailer();
 $adduser = new addAccount();
+// $curMonth = date('Y-m');
+// echo $curMonth;
+// die();
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +41,7 @@ $adduser = new addAccount();
     <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -226,82 +229,96 @@ $adduser = new addAccount();
                         <div class="card">
                             <div class="card-body report">
                                 <h3 class="report-title main-part mb-4">Office Verification Report</h3>
+                                <?php 
+                                        
+                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
+                                        $strArray = explode("-", $_GET['date']);
+                                        $year = $strArray[0];
+                                        $month = $strArray[1];
+                                        $convDate = strtotime($_GET['date']);
+                                        $display = date('F Y', $convDate);
+                                        echo"<h5><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications for the month of ".$display.": ";
+                                        echo"<br><span class='count mt-3'>".$view->pendingCount($year, $month)." pending verification/s</span></h5>";
+                                    }else{
+                                        echo"<h5><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications: ";
+                                        echo"<br><span class='count mt-3'>".$view->allPendingCount()." pending verification/s</span></h5>";
+                                    }
 
-                                <h5><i class="bi bi-menu-button-wide-fill"></i>&nbsp Total Pending Verification
-                                    Applications:<span class="count mt-3">
-                                        <?php
-                                        if (isset($_GET['date'])  && ($_GET['date'] != "")) {
-                                            $strArray = explode("-", $_GET['date']);
-                                            $year = $strArray[0];
-                                            $month = $strArray[1];
-                                            echo $view->pendingCount($year, $month);
-                                        } else {
-                                            echo $view->allPendingCount();
-                                        }
-                                        ?>
-                                        pending application/s</span></h5>
-                                <h5><i class="bi bi-calendar-fill"></i>&nbsp Total Applications for this Month:<span class="count mt-3">
-                                        <?php
-                                        if (isset($_GET['date']) && ($_GET['date'] != "")) {
-                                            $strArray = explode("-", $_GET['date']);
-                                            $year = $strArray[0];
-                                            $month = $strArray[1];
-                                            echo $view->totalMonthByM($year, $month);
-                                        }else {
-                                            echo $view->totalMonth();
-                                        } ?> application/s</span>
-                                </h5>
-                                <h5><i class="bi bi-patch-check-fill"></i>&nbsp Total Verification Completed:<span class="count mt-3">&nbsp
-                                        <?php
-                                        if (isset($_GET['date']) && ($_GET['date'] != "")) {
-                                            $strArray = explode("-", $_GET['date']);
-                                            $year = $strArray[0];
-                                            $month = $strArray[1];
-                                            echo $view->totalMonthCompletedByM($year, $month);
-                                        } else {
-                                            echo $view->totalMonthCompleted();
-                                        } ?> application/s</span></h5>
+                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
+                                        $strArray = explode("-", $_GET['date']);
+                                        $year = $strArray[0];
+                                        $month = $strArray[1];
+                                        $convDate = strtotime($_GET['date']);
+                                        $display = date('F Y', $convDate);
+                                        echo"<h5><i class='bi bi-calendar-fill'></i>&nbsp Total Verifications received for the month of ".$display.": ";
+                                        echo"<br><span class='count mt-3'>".$view->totalMonthByM($year, $month)." verification/s";
+                                        echo"<small> (".$view->totalMonthByMDone($year, $month)." processed)</small></span></h5>";
+                                    }else{
+                                        echo"<h5><i class='bi bi-calendar-fill'></i>&nbsp Total Verification/s received for this month: ";
+                                        echo"<br><span class='count mt-3'>".$view->totalMonth()." application/s";
+                                        echo"<small> (".$view->totalMonthDone()." processed)</small></span></h5>";
+                                    }
+
+                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
+                                        $strArray = explode("-", $_GET['date']);
+                                        $year = $strArray[0];
+                                        $month = $strArray[1];
+                                        $convDate = strtotime($_GET['date']);
+                                        $display = date('F Y', $convDate);
+                                        echo"<h5><i class='bi bi-patch-check-fill'></i>&nbsp Total Verifications Processed for the month of ".$display.": ";
+                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompletedByM($year, $month)." verification/s</span></h5>";
+                                    }else{
+                                        echo"<h5><i class='bi bi-patch-check-fill'></i>&nbsp Total Verification/s Processed for this month: ";
+                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompleted()." verification/s</span></h5>";
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card">
                             <div class="card-body report">
-                                <h3 class="report-title mb-4">Breakdown of Verification Remarks</h3>
-                                <h5><i class="bi bi-exclamation-octagon-fill icon"></i>&nbsp Application On Hold: <span class="count">
-                                        <?php
-                                        if (isset($_GET['date']) && ($_GET['date'] != "")) {
-                                            $strArray = explode("-", $_GET['date']);
-                                            $year = $strArray[0];
-                                            $month = $strArray[1];
-                                            echo $view->onHoldCount($year, $month);
-                                        } else {
-                                            echo $view->allOnHoldCount();
-                                        }
-                                        ?>&nbspapplication/s</span></h5>
-                                <h5><i class="bi bi-person-x-fill icon"></i>&nbsp Application Denied: <span class="count">
-                                        <?php
-                                        if (isset($_GET['date'])  && ($_GET['date'] != "")) {
-                                            $strArray = explode("-", $_GET['date']);
-                                            $year = $strArray[0];
-                                            $month = $strArray[1];
-                                            echo $view->DeniedCount($year, $month);
-                                        } else {
-                                            echo $view->allDeniedCount();
-                                        }
-                                        ?>&nbspapplication/s</span></h5>
-                                <h5><i class="bi bi-person-check-fill"></i>&nbsp Application Verified: <span class="count">
-                                        <?php
-                                        if (isset($_GET['date'])  && ($_GET['date'] != "")) {
-                                            $strArray = explode("-", $_GET['date']);
-                                            $year = $strArray[0];
-                                            $month = $strArray[1];
-                                            echo $view->approvedCount($year, $month);
-                                        } else {
-                                            echo $view->allApprovedCount();
-                                        }
-                                        ?>&nbspapplication/s</span></h5>
+                                <h3 class="report-title main-part mb-4">Breakdown of Verification Remarks</h3>
+                                <?php
+                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
+                                        $strArray = explode("-", $_GET['date']);
+                                        $year = $strArray[0];
+                                        $month = $strArray[1];
+                                        $convDate = strtotime($_GET['date']);
+                                        $display = date('F Y', $convDate);
+                                        echo "<h5><i class='bi bi-exclamation-octagon-fill icon'></i> On-Hold Verifications for the month of ".$display.": ";
+                                        echo "<br><span class='count'> ".$view->onHoldCount($year, $month)." verification/s</span></h5>";
+                                    }else{
+                                        echo "<h5><i class='bi bi-exclamation-octagon-fill icon'></i> Total On-Hold Verifications: ";
+                                        echo "<br><span class='count'> ".$view->allOnHoldCount()." verification/s</span></h5>";
+                                    }
 
+                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
+                                        $strArray = explode("-", $_GET['date']);
+                                        $year = $strArray[0];
+                                        $month = $strArray[1];
+                                        $convDate = strtotime($_GET['date']);
+                                        $display = date('F Y', $convDate);
+                                        echo "<h5><i class='bi bi-person-x-fill icon'></i> Denied Verifications for the month of ".$display.": ";
+                                        echo "<br><span class='count'> ".$view->DeniedCount($year, $month)." verification/s</span></h5>";
+                                    }else{
+                                        echo "<h5><i class='bi bi-person-x-fill'></i> Total Denied Verifications: ";
+                                        echo "<br><span class='count'> ".$view->allDeniedCount()." verification/s</span></h5>";
+                                    }
+
+                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
+                                        $strArray = explode("-", $_GET['date']);
+                                        $year = $strArray[0];
+                                        $month = $strArray[1];
+                                        $convDate = strtotime($_GET['date']);
+                                        $display = date('F Y', $convDate);
+                                        echo "<h5><i class='bi bi-person-check-fill icon'></i> Verified for the month of ".$display.": ";
+                                        echo "<br><span class='count'> ".$view->approvedCount($year, $month)." verification/s</span></h5>";
+                                    }else{
+                                        echo "<h5><i class='bi bi-person-check-fill icon'></i> Total Verified Requests: ";
+                                        echo "<br><span class='count'> ".$view->allApprovedCount()." verification/s</span></h5>";
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -309,9 +326,12 @@ $adduser = new addAccount();
                         <div class="card">
                             <div class="card-body report">
                                 <form action="" method="GET">
-                                    <h3 class="report-title mb-4">View Other Monthly Report</h3>
+                                    <h3 class="report-title main-part mb-4">View Other Monthly Report</h3>
+                                    <div class="text-center">
                                     <input type="month" class="search datepicker mb-3" name="date" id="search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>"></br>
-                                    <input type="submit" class="date_btn" name="month_btn" id="month_btn">
+                                    <input type="submit" class="date_btn" name="month_btn" id="month_btn" value="Filter">
+                                    <br><a class="btn btn-info date_btn mt-2" href="admindash">Clear</a>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -328,63 +348,87 @@ $adduser = new addAccount();
 
                                 <ul class="nav nav-pills  nav-justified" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="admindash" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Pending Application <span class="badge active">
-                                                <?php
-                                                if (isset($_GET['date'])  && ($_GET['date'] != "")) {
-                                                    $strArray = explode("-", $_GET['date']);
-                                                    $year = $strArray[0];
-                                                    $month = $strArray[1];
-                                                    echo $view->pendingCount($year, $month);
-                                                } else {
-                                                    echo $view->allPendingCount();
-                                                }
-                                                ?>
-                                            </span></a>
+                                        <?php
+                                            if(isset($_GET['date'])){
+                                                echo "<a class='nav-link active' href='admindash?date=".$_GET['date']."&month_btn=Submit' type='button' role='tab' aria-controls='pills-home' aria-selected='true'>Pending Verifications <span class='badge active'>";
+                                            }else{
+                                                echo "<a class='nav-link active' href='admindash' type='button' role='tab' aria-controls='pills-home' aria-selected='true'>Pending Verifications <span class='badge active'>";
+                                            }
+
+                                            if(isset($_GET['date'])  && ($_GET['date'] != "")) {
+                                                $strArray = explode("-", $_GET['date']);
+                                                $year = $strArray[0];
+                                                $month = $strArray[1];
+                                                echo $view->pendingCount($year, $month);
+                                            }else{
+                                                echo $view->allPendingCount();
+                                            }
+                                            echo "</span></a>";
+                                        ?>
                                     </li>
+
                                     <li class="nav-item">
-                                        <a class="nav-link" href="approveddash" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Approved Application
-                                            <span class="badge ">
-                                                <?php
-                                                if (isset($_GET['date'])  && ($_GET['date'] != "")) {
-                                                    $strArray = explode("-", $_GET['date']);
-                                                    $year = $strArray[0];
-                                                    $month = $strArray[1];
-                                                    echo $view->approvedCount($year, $month);
-                                                } else {
-                                                    echo $view->allApprovedCount();
-                                                }
-                                                ?> </span></a>
+                                        <?php
+                                            if(isset($_GET['date'])){
+                                                echo "<a class='nav-link' href='approveddash?date=".$_GET['date']."' type='button' role='tab' aria-controls='pills-home' aria-selected='true'>Approved Verifications <span class='badge'>";
+                                            }else{
+                                                echo "<a class='nav-link' href='approveddash' type='button' role='tab' aria-controls='pills-home' aria-selected='true'>Approved Verifications <span class='badge'>";
+                                            }
+
+                                            if(isset($_GET['date'])  && ($_GET['date'] != "")) {
+                                                $strArray = explode("-", $_GET['date']);
+                                                $year = $strArray[0];
+                                                $month = $strArray[1];
+                                                echo $view->approvedCount($year, $month);
+                                            }else{
+                                                echo $view->allApprovedCount();
+                                            }
+                                            echo "</span></a>";
+                                            ?> 
                                     </li>
+
                                     <li class="nav-item">
-                                        <a class="nav-link " href="onholddash" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">On Hold Application <span class="badge ">
-                                                <?php
-                                                if (isset($_GET['date']) && ($_GET['date'] != "")) {
-                                                    $strArray = explode("-", $_GET['date']);
-                                                    $year = $strArray[0];
-                                                    $month = $strArray[1];
-                                                    echo $view->onHoldCount($year, $month);
-                                                } else {
-                                                    echo $view->allOnHoldCount();
-                                                }
-                                                ?></span></a>
+                                        <?php
+                                            if(isset($_GET['date'])){
+                                                echo "<a class='nav-link' href='onholddash?date=".$_GET['date']."' type='button' role='tab' aria-controls='pills-profile' aria-selected='true'>On-Hold Verifications <span class='badge'>";
+                                            }else{
+                                                echo "<a class='nav-link' href='onholddash' type='button' role='tab' aria-controls='pills-profile' aria-selected='true'>On-Hold Verifications <span class='badge'>";
+                                            }
+
+                                            if (isset($_GET['date']) && ($_GET['date'] != "")) {
+                                                $strArray = explode("-", $_GET['date']);
+                                                $year = $strArray[0];
+                                                $month = $strArray[1];
+                                                echo $view->onHoldCount($year, $month);
+                                            } else {
+                                                echo $view->allOnHoldCount();
+                                            }
+                                            echo "</span></a>";
+                                            ?>
                                     </li>
+
                                     <li class="nav-item">
-                                        <a class="nav-link" href="denieddash" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Denied Application <span class="badge ">
-                                                <?php
-                                                if (isset($_GET['date'])  && ($_GET['date'] != "")) {
-                                                    $strArray = explode("-", $_GET['date']);
-                                                    $year = $strArray[0];
-                                                    $month = $strArray[1];
-                                                    echo $view->DeniedCount($year, $month);
-                                                } else {
-                                                    echo $view->allDeniedCount();
-                                                }
-                                                ?></span></a>
+                                        <?php
+                                            if(isset($_GET['date'])){
+                                                echo "<a class='nav-link' href='denieddash?date=".$_GET['date']."' type='button' role='tab' aria-controls='pills-profile' aria-selected='true'>Denied Verifications <span class='badge'>";
+                                            }else{
+                                                echo "<a class='nav-link' href='denieddash' type='button' role='tab' aria-controls='pills-profile' aria-selected='true'>Denied Verifications <span class='badge'>";
+                                            }
+
+                                            if (isset($_GET['date'])  && ($_GET['date'] != "")) {
+                                                $strArray = explode("-", $_GET['date']);
+                                                $year = $strArray[0];
+                                                $month = $strArray[1];
+                                                echo $view->DeniedCount($year, $month);
+                                            } else {
+                                                echo $view->allDeniedCount();
+                                            }
+                                            echo "</span></a>";
+                                        ?>
                                     </li>
+
                                 </ul>
                                 <div class="card-body">
-                                    <form class="verify" id="verify" method="POST">
-                                        <h5 class="card-title">Recent Applications <span>| Today</span></h5>
                                         <?php
                                         if (isset($_GET['date']) && ($_GET['date'] != "")) {
                                             $strArray = explode("-", $_GET['date']);
@@ -395,23 +439,13 @@ $adduser = new addAccount();
                                             $viewtable->viewAllPendingData();
                                         }
                                         ?>
-
-
-                                    </form>
-
                                     <div></div>
-
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
                 </div>
-
             </div>
-
         </section>
 
     </main>
@@ -436,7 +470,6 @@ $adduser = new addAccount();
                             <input type=hidden id="id" value="">
                             <input type="hidden" name="Token" value="<?php echo Token::generate(); ?>" />
                             <button type="submit" id="update-btn" class="btn btn-info">Save</button>
-
                         </div>
                     </form>
                 </div>
