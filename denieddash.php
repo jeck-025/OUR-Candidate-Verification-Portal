@@ -21,36 +21,25 @@ $view = new view();
    <link rel="icon" type="image/x-icon" href="assets/logo_icon.ico" />
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
    <link href="resource/css/admindash.css" rel="stylesheet" />
-
-   <link href="vendor/css/all.css" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="resource/img/favcave.ico" rel="icon">
-   <link href="resource/img/tab-icon.png" rel="icon">
    <link href="vendor/img/apple-touch-icon.png" rel="apple-touch-icon">
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
    <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
-   <link href="vendor/css/bootstrap-icons.css" rel="stylesheet">
    <link href="vendor/css/boxicons.min.css" rel="stylesheet">
    <link href="vendor/css/quill.snow.css" rel="stylesheet">
    <link href="vendor/css/quill.bubble.css" rel="stylesheet">
    <link href="vendor/css/style.css" rel="stylesheet">
    <link href="vendor/css/remixicon.css" rel="stylesheet">
-   <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <link rel="stylesheet" href="sweetalert2.min.css">
-   <script src="sweetalert2.min.js"></script>
-   <script src="sweetalert2.all.min.js"></script> -->
    <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
-   <link href="vendor/css/style.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-   <script src="vendor/js/jquery.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
-
 </head>
 
 <body class="d-flex flex-column h-100">
+   <!-- <div class="loader_bg">
+      <div class="loader"></div>
+    </div> -->
    <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
          <i class="bi bi-list toggle-sidebar-btn mx-3"></i>
@@ -68,14 +57,8 @@ $view = new view();
       </ul>
    </aside>
    <main id="main" class="main">
-      <div class="pagtitle pt-3" data-aos="fade-in" data-aos-duration="1000">
+      <div class="pagtitle pt-3 pb-3" data-aos="fade-in" data-aos-duration="1000">
          <h1>Dashboard</h1>
-         <nav>
-            <ol class="breadcrumb">
-               <li class="breadcrumb-item"><a href="admindash">Home</a></li>
-               <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-         </nav>
       </div>
       <section class="reports mb-3">
          <div class="container">
@@ -83,7 +66,7 @@ $view = new view();
                <div class="col-md-4">
                   <div class="card">
                      <div class="card-body report">
-                        <h3 class="report-title main-part pt-4 mb-4">Office Verification Report</h3>
+                        <h3 class="report-title main-part mb-4">Office Verification Report</h3>
                            <?php 
                               if(isset($_GET['date']) && ($_GET['date'] != "")){
                                     $strArray = explode("-", $_GET['date']);
@@ -132,7 +115,8 @@ $view = new view();
                   <div class="col-md-4">
                      <div class="card">
                            <div class="card-body report">
-                              <h3 class="report-title main-part pt-4 mb-4">Breakdown of Verification Remarks</h3>
+                              <h3 class="report-title main-part
+                               mb-4">Breakdown of Verification Remarks</h3>
                               <?php
                                  if(isset($_GET['date']) && ($_GET['date'] != "")) {
                                        $strArray = explode("-", $_GET['date']);
@@ -180,7 +164,7 @@ $view = new view();
                         <div class="card">
                             <div class="card-body report">
                                 <form action="" method="GET">
-                                    <h3 class="report-title main-part pt-4 mb-4">View Other Monthly Report</h3>
+                                    <h3 class="report-title main-part mb-4">View Other Monthly Report</h3>
                                     <div class="text-center">
                                     <input type="month" class="search datepicker mb-3" name="date" id="search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>"></br>
                                     <input type="submit" class="date_btn" name="month_btn" id="month_btn" value="Filter">
@@ -312,26 +296,39 @@ $view = new view();
       <div class="credits">Manila | Malolos| Makati</div>
       <div class="credits"><small>Mariano R.J. | Gita J.N. | Tuazon M. | Valencia E.C. | Bolasoc R.C. | Anatalio J.</small></div>
    </footer>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="vendor/js/jquery.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="resource/js/scripts.js"></script>
    <script src="vendor/js/bootstrap.min.js"></script>
-   <script src="vendor/js/apexcharts.min.js"></script>
    <script src="vendor/js/bootstrap.bundle.min.js"></script>
-   <script src="vendor/js/chart.min.js"></script>
-   <script src="vendor/js/echarts.min.js"></script>
    <script src="vendor/js/quill.min.js"></script>
-   <script src="vendor/js/simple-datatables.js"></script>
    <script src="vendor/js/tinymce.min.js"></script>
    <script src="vendor/js/validate.js"></script>
+   <script src="vendor/js/apexcharts.min.js"></script>
    <script src="vendor/js/main.js"></script>
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script>
-      AOS.init();
+   <script src="vendor/js/echarts.min.js"></script>
+   <script src="vendor/js/chart.min.js"></script>
+   <script src="vendor/js/bootstrap-select.min.js"></script>
+   <script src="resource/js/modal.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+   
+    <script>
+      setTimeout(function() {
+         $('.loader_bg').fadeToggle();
+      }, 850);
    </script>
 
-</body>
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 
+</body>
 </html>

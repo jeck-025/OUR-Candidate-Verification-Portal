@@ -168,7 +168,10 @@ public function viewApprovedData($year, $month){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>APPROVED APPLICATIONS</h3>";
+  $convDate = strtotime($year."-".$month);
+  $display = date('F Y', $convDate);
+
+  echo "<h3 class='my-4'>APPROVED VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='candtable' class='table table-borderless shadow' width='100%'>";
   echo "<thead>
@@ -184,7 +187,6 @@ public function viewApprovedData($year, $month){
           <th scope='col'>Valid ID</th>
           <th scope='col'>Status</th>
           <th scope='col'>Admin Actions</th>
-
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
@@ -236,6 +238,7 @@ public function viewApprovedData($year, $month){
       echo "</tr>";
   }
   echo "</table>";
+
 }
 public function viewAllApprovedData(){
   $con = $this->con();
@@ -243,7 +246,7 @@ public function viewAllApprovedData(){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>APPROVED APPLICATIONS</h3>";
+  echo "<h3 class='my-3'>APPROVED VERIFICATIONS</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='candtable' class='table table-borderless shadow' width='100%'>";
   echo "<thead>
@@ -318,7 +321,10 @@ public function viewOnHoldData($year, $month){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>ON-HOLD APPLICATIONS</h3>";
+  $convDate = strtotime($year."-".$month);
+  $display = date('F Y', $convDate);
+
+  echo "<h3 class='my-4'>ON-HOLD VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='onHoldtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>
@@ -418,10 +424,10 @@ public function viewAllOnHoldData(){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>ON-HOLD APPLICATIONS</h3>";
+  echo "<h3 class='my-3'>ON-HOLD VERIFICATIONS</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='onHoldtable' class='table table-borderless  table-hover shadow' width='100%'>";
- echo "<thead>
+  echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
@@ -518,10 +524,10 @@ public function viewPendingData($year, $month){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+  $convDate = strtotime($year."-".$month);
+  $display = date('F Y', $convDate);
 
-
-
-  echo "<h3 class='mb-4 mt-5'>PENDING APPLICATIONS</h3>";
+  echo "<h3 class='my-3'>PENDING VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='pendingtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>
@@ -537,7 +543,6 @@ public function viewPendingData($year, $month){
           <th scope='col'>Valid ID</th>
           <th scope='col'>Status</th>
           <th scope='col'>Admin Actions</th>
-
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
@@ -622,9 +627,7 @@ public function viewAllPendingData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
-
-
-  echo "<h3 class='mb-4 mt-5'>PENDING APPLICATIONS</h3>";
+  echo "<h3 class='my-3'>PENDING VERIFICATIONS</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='pendingtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>
@@ -640,7 +643,6 @@ public function viewAllPendingData(){
           <th scope='col'>Valid ID</th>
           <th scope='col'>Status</th>
           <th scope='col'>Admin Actions</th>
-
           </tr>
   </thead><tbody>";
   foreach ($result as $data) {
@@ -717,13 +719,14 @@ public function viewAllPendingData(){
   }
   echo "</tbody></table>";
 }
+
 public function viewAllDeniedData(){
   $con = $this->con();
   $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DECLINED'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>DECLINED APPLICATIONS</h3>";
+  echo "<h3 class='my-3'>DENIED VERIFICATIONS</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='deniedtable' class='table table-borderless table-hover shadow' width='100%'>";
 
@@ -754,7 +757,7 @@ public function viewAllDeniedData(){
       echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
       echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
       echo "<td><a href='$data[validID]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[validID]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
-      echo "<td><span class='badge badge-primary'>$data[status]</span><br>"; 
+      echo "<td><span class='badge badge-danger'>$data[status]</span><br>"; 
       
             if(!empty($data['checker'])){
                 echo "<span class='badge badge-success'> CHECKED </span>";
@@ -789,7 +792,10 @@ public function viewDeniedData($year, $month){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='mb-4 mt-5'>DECLINED APPLICATIONS</h3>";
+  $convDate = strtotime($year."-".$month);
+  $display = date('F Y', $convDate);
+
+  echo "<h3 class='my-3'>DENIED VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
   echo "<table id='deniedtable' class='table table-borderless table-hover shadow' width='100%'>";
 
@@ -820,7 +826,7 @@ public function viewDeniedData($year, $month){
       echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
       echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
       echo "<td><a href='$data[validID]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[validID]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
-      echo "<td><span class='badge badge-primary'>$data[status]</span><br>"; 
+      echo "<td><span class='badge badge-danger'>$data[status]</span><br>"; 
       
             if(!empty($data['checker'])){
                 echo "<span class='badge badge-success'> CHECKED </span>";
@@ -896,7 +902,7 @@ public function viewLogData(){
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
-  echo "<h3 class='mb-4 mt-5'>Application Reports</h3>";
+  echo "<h3 class='my-4'>Verification Reports</h3>";
   echo "<table id='viewlogtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>";
   echo "<tr>";
@@ -1042,8 +1048,10 @@ public function sortViewLogData($month, $year){
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+  $convDate = strtotime($year."-".$month);
+  $display = date('F Y', $convDate);
 
-   echo "<h3 class='mb-4 mt-5'>Application Reports</h3>";
+  echo "<h3 class='my-4'>Verification Reports (".$display.")</h3>";
   echo "<table id='viewlogtable' class='table table-borderless  table-hover shadow' width='100%'>";
   echo "<thead>";
   echo "<tr>";

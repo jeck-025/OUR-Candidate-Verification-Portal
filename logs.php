@@ -74,22 +74,19 @@ $agentID = $user->data()->id;
    <main id="main" class="main">
       <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
          <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12 my-4">
                <h1>Reports Dashboard</h1>
-               <nav>
-                  <ol class="breadcrumb">
-                     <li class="breadcrumb-item"><a href="admindash">Home</a></li>
-                     <li class="breadcrumb-item active">Dashboard</li>
-                  </ol>
-               </nav>
             </div>
-            <div class="col-md-4 justify-content-center">
+         </div>
+         <div class="row">
+            <div class="col-md-12 pb-3 justify-content-center">
                <div class="card">
                   <div class="card-body report">
                      <form action="" method="GET">
-                        <h3 class="report-title pt-4 mb-4">View Other Monthly Report</h3>
-                        <input type="month" class="search datepicker mb-3" name="date" id="date_search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>">
+                        <h3 class="my-4">View Other Monthly Report</h3>
+                        <input type="month" class="search datepicker" name="date" id="date_search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>">
                         <input type="submit" class="date_btn" name="month_btn" id="month_btn">
+                        <a class="btn btn-info date_btn" href="logs">Clear</a>
                      </form>
                   </div>
                </div>
@@ -103,12 +100,7 @@ $agentID = $user->data()->id;
                   <div class="row">
                      <div class="col-12">
                         <div class="card recent-sales overflow-auto">
-                           <div class="filter">
-
-                           </div>
-
                            <div class="card-body">
-                              <h5 class="card-title">Recent Reports<span>| Today</span></h5>
                               <?php
                               if(isset($_GET['date'])  && ($_GET['date'] != "")){
                                  $strArray = explode("-", $_GET['date']);

@@ -8,9 +8,6 @@ $view = new view();
 $viewtable = new viewtable();
 $mailer = new mailer();
 $adduser = new addAccount();
-// $curMonth = date('Y-m');
-// echo $curMonth;
-// die();
 
 ?>
 <!DOCTYPE html>
@@ -22,9 +19,7 @@ $adduser = new addAccount();
     <meta name="description" content="CEU Candidate Verification Portal" />
     <meta name="author" content="Mariano R.J., Gita J.N., Tuazon M., Valencia E.C." />
     <meta http-equiv="refresh" content="300; url=login">
-
     <title>CEU CAVEPortal</title>
-
     <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-select.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="resource/css/admindash.css" rel="stylesheet" />
@@ -41,7 +36,6 @@ $adduser = new addAccount();
     <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -213,14 +207,8 @@ $adduser = new addAccount();
                 </div>
         <?php } ?>
 
-        <div class="pagtitle pt-3" data-aos="fade-in" data-aos-duration="1000">
+        <div class="pagtitle pt-3 pb-3" data-aos="fade-in" data-aos-duration="1000">
             <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="admindash">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
         </div>
         <section class="reports mb-3">
             <div class="container">
@@ -526,8 +514,7 @@ $adduser = new addAccount();
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="resource/js/scripts.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
     <script src="vendor/js/bootstrap.bundle.min.js"></script>
@@ -544,6 +531,7 @@ $adduser = new addAccount();
     <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
     <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
     <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+    
     <script>
         setTimeout(function() {
             $('.loader_bg').fadeToggle();
@@ -558,10 +546,8 @@ $adduser = new addAccount();
         }
     </script>
     <script src="resource/js/actions.js"></script>
-    <!-- update campus JS File -->
     <script src="resource/js/update.js"></script>
     <script src="resource/js/verifydegree.js"></script>
 
 </body>
-
 </html>
