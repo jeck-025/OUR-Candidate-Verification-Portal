@@ -55,21 +55,12 @@ $date = date('m/d/Y h:i:s a', time());
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="register"> <i class="bi bi-person"></i>
-                    <span>Client Registration</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i> <span>Log out</span> </a></li>
         </ul>
     </aside>
     <main id="main" class="main">
         <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
-            <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="admindash">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-
+            <h1 class="pb-3">Detailed Information</h1>
             <section class="section dashboard" data-aos="fade-right" data-aos-duration="1000">
                 <div class="row">
                     <div class="col-lg-8">
