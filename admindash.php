@@ -65,7 +65,7 @@ $adduser = new addAccount();
             ?>
 
             <div class="modal fade" id="mailerconfig" tabindex="-1" aria-labelledby="mailerconfigLabel" aria-hidden="true" data-backdrop="false">
-                <div class="modal-dialog modal-md mailerconfig-modal">
+                <div class="modal-dialog modal-xl mailerconfig-modal">
                     <div class="modal-content shadow p-3 mb-5 bg-white rounded">
                         <div class="modal-header mailer-config-header">
                             <h5 class="modal-title" id="mailerconfigLabel"><i class='bi bi-envelope'></i> Mailer Configuration</h5>
@@ -82,24 +82,92 @@ $adduser = new addAccount();
                                         $mailerPassword = $mailerData[1];
                                         $mailerPlatform = $mailerData[2];
                                         $mailerPort = $mailerData[3];
+
+                                        $mailerDataMKT = $mailer->viewConfigMailerMKT();
+                                        $mailerUsernameMKT = $mailerDataMKT[0];
+                                        $mailerPasswordMKT = $mailerDataMKT[1];
+                                        $mailerPlatformMKT = $mailerDataMKT[2];
+                                        $mailerPortMKT = $mailerDataMKT[3];
+
+                                        $mailerDataMLS = $mailer->viewConfigMailerMLS();
+                                        $mailerUsernameMLS = $mailerDataMLS[0];
+                                        $mailerPasswordMLS = $mailerDataMLS[1];
+                                        $mailerPlatformMLS = $mailerDataMLS[2];
+                                        $mailerPortMLS = $mailerDataMLS[3];
                                     ?>
                                     <div class="row d-flex justify-content-center">
-                                        <div class="col-md-9">
-                                            <label for="mailer-username" class="form-label mt-2 mb-0">Username</label>
-                                            <input type="text" id="mailer-username" name="mailer-username" class="form-control" autocomplete="off" value="<?php echo "$mailerUsername"; ?>" required>
+                                        <div class="card col-md-3 m-3 pb-4">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="mailer-config-header py-2">
+                                                    Manila
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-username" class="form-label mt-2 mb-0">Username</label>
+                                                    <input type="text" id="mailer-username" name="mailer-username" class="form-control" autocomplete="off" value="<?php echo "$mailerUsername"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-password" class="form-label mt-2 mb-0">App Password</label>
+                                                    <input type="password" id="mailer-password" name="mailer-password" class="form-control" autocomplete="off" value="<?php echo "$mailerPassword"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-platform" class="form-label mt-2 mb-0">Platform</label>
+                                                    <input type="text" name="mailer-platform" id="mailer-platform" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatform"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-port" class="form-label mt-2 mb-0">Port</label>
+                                                    <input type="text" name="mailer-port" id="mailer-port" class="form-control" autocomplete="off" value="<?php echo "$mailerPort"; ?>" required>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9">
-                                            <label for="mailer-password" class="form-label mt-2 mb-0">Password</label>
-                                            <input type="password" id="mailer-password" name="mailer-password" class="form-control" autocomplete="off" value="<?php echo "$mailerPassword"; ?>" required>
+
+                                        <div class="card col-md-3 m-3 pb-4">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="mailer-config-header py-2">
+                                                    Makati
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-username" class="form-label mt-2 mb-0">Username</label>
+                                                    <input type="text" id="mailer-usernameMKT" name="mailer-usernameMKT" class="form-control" autocomplete="off" value="<?php echo "$mailerUsernameMKT"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-password" class="form-label mt-2 mb-0">App Password</label>
+                                                    <input type="password" id="mailer-passwordMKT" name="mailer-passwordMKT" class="form-control" autocomplete="off" value="<?php echo "$mailerPasswordMKT"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-platform" class="form-label mt-2 mb-0">Platform</label>
+                                                    <input type="text" name="mailer-platformMKT" id="mailer-platformMKT" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatformMKT"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-port" class="form-label mt-2 mb-0">Port</label>
+                                                    <input type="text" name="mailer-portMKT" id="mailer-portMKT" class="form-control" autocomplete="off" value="<?php echo "$mailerPortMKT"; ?>" required>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9">
-                                            <label for="mailer-platform" class="form-label mt-2 mb-0">Platform</label>
-                                            <input type="text" name="mailer-platform" id="mailer-platform" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatform"; ?>" required>
+
+                                        <div class="card col-md-3 m-3 pb-4">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="mailer-config-header py-2">
+                                                    Malolos
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-username" class="form-label mt-2 mb-0">Username</label>
+                                                    <input type="text" id="mailer-usernameMLS" name="mailer-usernameMLS" class="form-control" autocomplete="off" value="<?php echo "$mailerUsernameMLS"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-password" class="form-label mt-2 mb-0">App Password</label>
+                                                    <input type="password" id="mailer-passwordMLS" name="mailer-passwordMLS" class="form-control" autocomplete="off" value="<?php echo "$mailerPasswordMLS"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-platform" class="form-label mt-2 mb-0">Platform</label>
+                                                    <input type="text" name="mailer-platformMLS" id="mailer-platformMLS" class="form-control" autocomplete="off" value="<?php echo "$mailerPlatformMLS"; ?>" required>
+                                                </div>
+                                                <div class="row">
+                                                    <label for="mailer-port" class="form-label mt-2 mb-0">Port</label>
+                                                    <input type="text" name="mailer-portMLS" id="mailer-portMLS" class="form-control" autocomplete="off" value="<?php echo "$mailerPortMLS"; ?>" required>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-9">
-                                            <label for="mailer-port" class="form-label mt-2 mb-0">Port</label>
-                                            <input type="text" name="mailer-port" id="mailer-port" class="form-control" autocomplete="off" value="<?php echo "$mailerPort"; ?>" required>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                         </div>
@@ -189,13 +257,22 @@ $adduser = new addAccount();
     <main id="main" class="main">
         <?php
             if(!empty($_POST['mailer-username']) && !empty($_POST['mailer-password'])){
-                $mailer = new mailer($_POST['mailer-username'], $_POST['mailer-password'], $_POST['mailer-port'], $_POST['mailer-platform']);
-                $mailer->updateMailerConfig(); ?>
+                $mailer = new mailer($_POST['mailer-username'], $_POST['mailer-password'], $_POST['mailer-port'], $_POST['mailer-platform'],
+                                        $_POST['mailer-usernameMKT'], $_POST['mailer-passwordMKT'], $_POST['mailer-portMKT'], $_POST['mailer-platformMKT'],
+                                        $_POST['mailer-usernameMLS'], $_POST['mailer-passwordMLS'], $_POST['mailer-portMLS'], $_POST['mailer-platformMLS']);
+                $mailer->updateMailerConfig(); 
+                ?>
 
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong><i class="bi bi-check-circle"></i> Mailer Configuration Updated</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                </div> -->
+
+                <script> 
+                    alert('Mailer Configuration Updated');
+                    location.replace('admindash.php'); 
+                </script>
+
         <?php }
             if(!empty($_POST['email'])){
                 $adduser = new addAccount($_POST['userName'], $_POST['fullName'], $_POST['email'], $_POST['company'], $_POST['job_position']);
