@@ -92,7 +92,7 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="updatecampus" action="" method="POST">
 
-                        <div class="input-group col-md-12">
+                        <div class="input-group py-4">
                             <select id="campus" name="campus" class="selectpicker form-control" data-live-search="true" title="Select Campus">
                                 <?php $view->campuses(); ?>
                             </select>
@@ -124,12 +124,12 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifydegree" action="" method="POST">
 
-                        <div class="input-group col-md-12">
+                        <div class="input-group py-4">
                             <!--<select id="vfdegree" name="vfdegree" class="selectpicker form-control" data-live-search="true" title="Select Course">-->
                             <!--    <?php $view->courses(); ?>-->
                             <!--</select>-->
-                            <p>Please Enter Verified Course:</p>
-                            <input type="text" class="ml-2 vfdegree mb-3 col-12" id="vfdegree" name="vfdegree" autocomplete="yes">
+                            <p class="mt-2">Please Enter Verified Course:</p>
+                            <input type="text" class="form-control ml-2 vfdegree col-12" id="vfdegree" name="vfdegree" autocomplete="yes">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -157,9 +157,9 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifydategrad" action="" method="POST">
 
-                        <div class="input-group col-md-3">
-                            <p>Select Date:</p>
-                            <input type="date" class="vfdategrad datepicker mb-3" id="vfdategrad" name="vfdategrad">
+                        <div class="input-group py-4">
+                            <p class="mt-2">Select Date:</p>
+                            <input type="date" class="form-control vfdategrad datepicker ml-2" id="vfdategrad" name="vfdategrad">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -187,9 +187,9 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifydateatt" action="" method="POST">
 
-                        <div class="input-group col-md-3">
-                            <p>Select Date:</p>
-                            <input type="date" class="vfdateatt datepicker mb-3" id="vfdateatt" name="vfdateatt">
+                        <div class="input-group py-4">
+                            <p class="mt-2">Select Date:</p>
+                            <input type="date" class="form-control vfdateatt datepicker ml-2" id="vfdateatt" name="vfdateatt">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -217,9 +217,9 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifydateent" action="" method="POST">
 
-                        <div class="input-group col-md-3">
-                            <p>Select Date:</p>
-                            <input type="date" class="vfdateent datepicker mb-3" id="vfdateent" name="vfdateent">
+                        <div class="input-group py-4">
+                            <p class="mt-2">Select Date:</p>
+                            <input type="date" class="form-control vfdateent datepicker ml-2" id="vfdateent" name="vfdateent">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -237,7 +237,7 @@ $date = date('m/d/Y h:i:s a', time());
     </div>
 
     <div class="modal fade" id="verify-name" aria-labelledby="exampleModalLabel5" aria-hidden="true">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel5">Name Verification</h5>
@@ -247,9 +247,9 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifyname" action="" method="POST">
 
-                        <div class="input-group col-md-12">
-                            <p>Please Enter Verified Name:</p>
-                            <input type="text" class="ml-2 vfname mb-3" id="vfname" name="vfname" autocomplete="no">
+                        <div class="input-group py-4">
+                            <p class="mt-2">Please Enter Verified Name:</p>
+                            <input type="text" class="form-control ml-2 vfname" id="vfname" name="vfname" autocomplete="no">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -276,7 +276,7 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifystatus" action="" method="POST">
 
-                        <div class="input-group col-md-12">
+                        <div class="input-group py-4">
                             <select id="vfeducstatus" name="vfeducstatus" class="selectpicker form-control" data-live-search="true" title="Set Status">
                                 <option value="UG">Undergraduate</option>
                                 <option value="G">Graduate</option>
@@ -315,7 +315,7 @@ $date = date('m/d/Y h:i:s a', time());
                                 <option value="2">Second</option>
                                 <option value="3">Summer</option>
                             </select>
-                        <input type="text" class="ml-2 vfEsy mb-3" id="vfEsy" name="vfEsy" autocomplete="no" placeholder="School Year (xxxx-xxxx)">
+                        <input type="text" class="form-control ml-2 vfEsy mb-3" id="vfEsy" name="vfEsy" autocomplete="no" placeholder="School Year (xxxx-xxxx)">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -343,13 +343,13 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifyendsem" action="" method="POST">
 
-                        <div class="input-group col-md-12" style="line-height: 32px;">
+                        <div class="input-group py-4" style="line-height: 32px;">
                             <select id="vfLsem" name="vfLsem" class="selectpicker form-control" title="Select Semester">
                                 <option value="1">First</option>
                                 <option value="2">Second</option>
                                 <option value="3">Summer</option>
                             </select>
-                        <input type="text" class="ml-2 vfLsy mb-3" id="vfLsy" name="vfLsy" autocomplete="no" placeholder="School Year (xxxx-xxxx)">
+                        <input type="text" class="form-control ml-2 vfLsy" id="vfLsy" name="vfLsy" autocomplete="no" placeholder="School Year (xxxx-xxxx)">
                         </div>
                         <div class="modal-footer mt-3">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

@@ -127,6 +127,82 @@ class view extends config
     return $rows;
   }
 
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public function allPendingCountMNL()
+  {
+    $curMonth = date('Y-m');
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND `campus` = 'MNL'";
+    // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function allPendingCountMKT()
+  {
+    $curMonth = date('Y-m');
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND `campus` = 'MKT'";
+    // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function allPendingCountMLS()
+  {
+    $curMonth = date('Y-m');
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND `campus` = 'MLS'";
+    // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function pendingCountMNL($year, $month)
+  {
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = 'MNL'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function pendingCountMKT($year, $month)
+  {
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = 'MKT'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function pendingCountMLS($year, $month)
+  {
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = 'MLS'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+  //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   public function approvedCount($year, $month)
   {
     $config = new config;

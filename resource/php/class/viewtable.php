@@ -16,7 +16,7 @@ public function viewFirstTable(){
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
   echo "<thead class='thead-dark'>";
   echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
-  echo "<th>Fullname</th>";
+  echo "<th>Full Name</th>";
   echo "<th class='d-none d-sm-table-cell'>Application Type</th>";
   echo "<th class='d-none d-sm-table-cell'>Email Address</th>";
   echo "<th class='d-none d-sm-table-cell'>Status</th>";
@@ -51,7 +51,7 @@ public function viewApproveTable(){
   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
   echo "<thead class='thead-dark'>";
   echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
-  echo "<th>Fullname</th>";
+  echo "<th>Full Name</th>";
   echo "<th class='d-none d-sm-table-cell'>Application Type</th>";
   echo "<th class='d-none d-sm-table-cell'>Email Address</th>";
   echo "<th class='d-none d-sm-table-cell'>Status</th>";
@@ -178,7 +178,7 @@ public function viewApprovedData($year, $month){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -253,7 +253,7 @@ public function viewAllApprovedData(){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -331,7 +331,7 @@ public function viewOnHoldData($year, $month){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -431,7 +431,7 @@ public function viewAllOnHoldData(){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -534,7 +534,7 @@ public function viewPendingData($year, $month){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -634,7 +634,7 @@ public function viewAllPendingData(){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -734,7 +734,7 @@ public function viewAllDeniedData(){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>
@@ -803,7 +803,7 @@ public function viewDeniedData($year, $month){
           <tr>
           <th scope='col'>Verifier</th>
           <th scope='col'>Transaction Number</th>
-          <th scope='col'>Student Fullname</th>
+          <th scope='col'>Student Full Name</th>
           <th scope='col'>Submitted Degree</th>
           <th scope='col'>Submitted Campus</th>
           <th scope='col'>Date Added</th>

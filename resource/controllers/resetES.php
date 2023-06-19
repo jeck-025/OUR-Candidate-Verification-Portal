@@ -5,7 +5,7 @@ if(isset($_GET['id'])){
     $update = new reset();
     $update->resetD($_GET['id']);
         
-    header('location: ../../info.php?id='.$_GET[id]);
+    header('location: ../../info.php?id='.$_GET['id']);
     
  }
 

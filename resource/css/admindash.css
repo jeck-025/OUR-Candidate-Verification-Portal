@@ -690,6 +690,10 @@ svg path:hover {
     color: #f04e98;
     font-weight: bold;
   }
+  .count1{
+    color: #f04e98;
+    font-size: small;
+  }
 .container .card .report {
     border-radius: 10px !important;
   }
