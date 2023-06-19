@@ -377,7 +377,7 @@ $date = date('m/d/Y h:i:s a', time());
                 <div class="modal-body">
                     <form id="verifychecker" action="" method="POST">
 
-                        <div class="input-group col-md-12" style="line-height: 32px;">
+                        <div class="input-group py-4" style="line-height: 32px;">
                             <select id="cname" name="cname" class="selectpicker form-control" title="Select Checker">
                                 <?php $view->checker(); ?>
                             </select>
