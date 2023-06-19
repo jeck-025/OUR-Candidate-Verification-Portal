@@ -395,7 +395,7 @@ public function viewOnHoldData($year, $month){
         </div>
       </a>
     </li>
-      <li class='actions'><a class='btn btn-sm btn-sm-1 disabled'href='remarks1.php?hold=$data[id]'></a>On Hold
+      <li class='actions'><a class='btn btn-sm btn-sm-1 disabled'href='remarks1.php?hold=$data[id]'></a>Hold
         <div class='icon'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
         <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/>
@@ -404,7 +404,7 @@ public function viewOnHoldData($year, $month){
         </div>
       </a></li>
 
-      <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Denied
+      <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Deny
       <div class='icon'>
       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
       <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/>
@@ -495,7 +495,7 @@ public function viewAllOnHoldData(){
         </div>
       </a>
     </li>
-      <li class='actions'><a class='btn btn-sm btn-sm-1 disabled'href='remarks1.php?hold=$data[id]'>On Hold
+      <li class='actions'><a class='btn btn-sm btn-sm-1 disabled'href='remarks1.php?hold=$data[id]'>Hold
         <div class='icon'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
         <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/>
@@ -504,7 +504,7 @@ public function viewAllOnHoldData(){
         </div>
       </a></li>
 
-      <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Denied
+      <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Deny
       <div class='icon'>
       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
       <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/>
@@ -597,7 +597,7 @@ public function viewPendingData($year, $month){
         </div>
       </a>
     </li>
-      <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>On Hold
+      <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>Hold
         <div class='icon'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
         <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/>
@@ -606,7 +606,7 @@ public function viewPendingData($year, $month){
         </div>
       </a></li>
 
-      <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Denied
+      <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Deny
       <div class='icon'>
       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
       <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/>
@@ -697,7 +697,7 @@ public function viewAllPendingData(){
         </div>
       </a>
     </li>
-      <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>On Hold
+      <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>Hold
         <div class='icon'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
         <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/>
@@ -706,7 +706,7 @@ public function viewAllPendingData(){
         </div>
       </a></li>
 
-      <li class='actions'><a class='btn btn-sm' href='remarks.php?denied=$data[id]'> Denied
+      <li class='actions'><a class='btn btn-sm' href='remarks.php?denied=$data[id]'> Deny
       <div class='icon'>
       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
       <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/>
