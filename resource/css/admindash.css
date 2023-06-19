@@ -226,7 +226,7 @@ thead th {
     position: relative;
     height: 2.8em;
     padding-right: 3.3em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 
@@ -689,6 +689,10 @@ svg path:hover {
   .count {
     color: #f04e98;
     font-weight: bold;
+  }
+  .count1{
+    color: #f04e98;
+    font-size: small;
   }
 .container .card .report {
     border-radius: 10px !important;

@@ -225,11 +225,13 @@ $adduser = new addAccount();
                                         $month = $strArray[1];
                                         $convDate = strtotime($_GET['date']);
                                         $display = date('F Y', $convDate);
-                                        echo"<h5><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications for the month of ".$display.": ";
-                                        echo"<br><span class='count mt-3'>".$view->pendingCount($year, $month)." pending verification/s</span></h5>";
+                                        echo"<h6><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications for the month of ".$display.": ";
+                                        echo"<br><span class='count mt-3'>".$view->pendingCount($year, $month)." pending verification/s<br>";
+                                        echo"<small>( MNL - <b>".$view->pendingCountMNL($year, $month)."</b> | MKT - <b>".$view->pendingCountMKT($year, $month)."</b> | MLS - <b>".$view->pendingCountMLS($year, $month)."</b> )</small></span></h6><br>";
                                     }else{
-                                        echo"<h5><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications: ";
-                                        echo"<br><span class='count mt-3'>".$view->allPendingCount()." pending verification/s</span></h5>";
+                                        echo"<h6><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications: ";
+                                        echo"<br><span class='count mt-3'>".$view->allPendingCount()." pending verification/s <br>";
+                                        echo"<small>( MNL - <b>".$view->allPendingCountMNL()."</b> | MKT - <b>".$view->allPendingCountMKT()."</b> | MLS - <b>".$view->allPendingCountMLS()."</b> )</small></span></h6><br>";
                                     }
 
                                     if(isset($_GET['date']) && ($_GET['date'] != "")){
@@ -238,13 +240,13 @@ $adduser = new addAccount();
                                         $month = $strArray[1];
                                         $convDate = strtotime($_GET['date']);
                                         $display = date('F Y', $convDate);
-                                        echo"<h5><i class='bi bi-calendar-fill'></i>&nbsp Total Verifications received for the month of ".$display.": ";
+                                        echo"<h6><i class='bi bi-calendar-fill'></i>&nbsp Total Verifications received for the month of ".$display.": ";
                                         echo"<br><span class='count mt-3'>".$view->totalMonthByM($year, $month)." verification/s";
-                                        echo"<small> (".$view->totalMonthByMDone($year, $month)." processed)</small></span></h5>";
+                                        echo"<small> ( ".$view->totalMonthByMDone($year, $month)." processed )</small></span></h6><br>";
                                     }else{
-                                        echo"<h5><i class='bi bi-calendar-fill'></i>&nbsp Total Verification/s received for this month: ";
+                                        echo"<h6><i class='bi bi-calendar-fill'></i>&nbsp Total Verification/s received for this month: ";
                                         echo"<br><span class='count mt-3'>".$view->totalMonth()." application/s";
-                                        echo"<small> (".$view->totalMonthDone()." processed)</small></span></h5>";
+                                        echo"<small> ( ".$view->totalMonthDone()." processed )</small></span></h6><br>";
                                     }
 
                                     if(isset($_GET['date']) && ($_GET['date'] != "")){
@@ -253,11 +255,11 @@ $adduser = new addAccount();
                                         $month = $strArray[1];
                                         $convDate = strtotime($_GET['date']);
                                         $display = date('F Y', $convDate);
-                                        echo"<h5><i class='bi bi-patch-check-fill'></i>&nbsp Total Verifications Processed for the month of ".$display.": ";
-                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompletedByM($year, $month)." verification/s</span></h5>";
+                                        echo"<h6><i class='bi bi-patch-check-fill'></i>&nbsp Total Verifications Processed for the month of ".$display.": ";
+                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompletedByM($year, $month)." verification/s</span></h6><br>";
                                     }else{
-                                        echo"<h5><i class='bi bi-patch-check-fill'></i>&nbsp Total Verification/s Processed for this month: ";
-                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompleted()." verification/s</span></h5>";
+                                        echo"<h6><i class='bi bi-patch-check-fill'></i>&nbsp Total Verification/s Processed for this month: ";
+                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompleted()." verification/s</span></h6>";
                                     }
                                     ?>
                             </div>
@@ -274,11 +276,11 @@ $adduser = new addAccount();
                                         $month = $strArray[1];
                                         $convDate = strtotime($_GET['date']);
                                         $display = date('F Y', $convDate);
-                                        echo "<h5><i class='bi bi-exclamation-octagon-fill icon'></i> On-Hold Verifications for the month of ".$display.": ";
-                                        echo "<br><span class='count'> ".$view->onHoldCount($year, $month)." verification/s</span></h5>";
+                                        echo "<h6><i class='bi bi-exclamation-octagon-fill icon'></i> On-Hold Verifications for the month of ".$display.": ";
+                                        echo "<br><span class='count'> ".$view->onHoldCount($year, $month)." verification/s</span></h6><br>";
                                     }else{
-                                        echo "<h5><i class='bi bi-exclamation-octagon-fill icon'></i> Total On-Hold Verifications: ";
-                                        echo "<br><span class='count'> ".$view->allOnHoldCount()." verification/s</span></h5>";
+                                        echo "<h6><i class='bi bi-exclamation-octagon-fill icon'></i> Total On-Hold Verifications: ";
+                                        echo "<br><span class='count'> ".$view->allOnHoldCount()." verification/s</span></h6><br>";
                                     }
 
                                     if(isset($_GET['date']) && ($_GET['date'] != "")) {
@@ -287,11 +289,11 @@ $adduser = new addAccount();
                                         $month = $strArray[1];
                                         $convDate = strtotime($_GET['date']);
                                         $display = date('F Y', $convDate);
-                                        echo "<h5><i class='bi bi-person-x-fill icon'></i> Denied Verifications for the month of ".$display.": ";
-                                        echo "<br><span class='count'> ".$view->DeniedCount($year, $month)." verification/s</span></h5>";
+                                        echo "<h6><i class='bi bi-person-x-fill icon'></i> Denied Verifications for the month of ".$display.": ";
+                                        echo "<br><span class='count'> ".$view->DeniedCount($year, $month)." verification/s</span></h6><br>";
                                     }else{
-                                        echo "<h5><i class='bi bi-person-x-fill'></i> Total Denied Verifications: ";
-                                        echo "<br><span class='count'> ".$view->allDeniedCount()." verification/s</span></h5>";
+                                        echo "<h6><i class='bi bi-person-x-fill'></i> Total Denied Verifications: ";
+                                        echo "<br><span class='count'> ".$view->allDeniedCount()." verification/s</span></h6><br>";
                                     }
 
                                     if(isset($_GET['date']) && ($_GET['date'] != "")) {
@@ -300,11 +302,11 @@ $adduser = new addAccount();
                                         $month = $strArray[1];
                                         $convDate = strtotime($_GET['date']);
                                         $display = date('F Y', $convDate);
-                                        echo "<h5><i class='bi bi-person-check-fill icon'></i> Verified for the month of ".$display.": ";
-                                        echo "<br><span class='count'> ".$view->approvedCount($year, $month)." verification/s</span></h5>";
+                                        echo "<h6><i class='bi bi-person-check-fill icon'></i> Verified for the month of ".$display.": ";
+                                        echo "<br><span class='count'> ".$view->approvedCount($year, $month)." verification/s</span></h6>";
                                     }else{
-                                        echo "<h5><i class='bi bi-person-check-fill icon'></i> Total Verified Requests: ";
-                                        echo "<br><span class='count'> ".$view->allApprovedCount()." verification/s</span></h5>";
+                                        echo "<h6><i class='bi bi-person-check-fill icon'></i> Total Verified Requests: ";
+                                        echo "<br><span class='count'> ".$view->allApprovedCount()." verification/s</span></h6>";
                                     }
                                 ?>
                             </div>
