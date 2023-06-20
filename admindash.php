@@ -263,15 +263,15 @@ $adduser = new addAccount();
                 $mailer->updateMailerConfig(); 
                 ?>
 
-                <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong><i class="bi bi-check-circle"></i> Mailer Configuration Updated</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div> -->
+                </div>
 
-                <script> 
+                <!-- <script> 
                     alert('Mailer Configuration Updated');
                     location.replace('admindash.php'); 
-                </script>
+                </script> -->
 
         <?php }
             if(!empty($_POST['email'])){

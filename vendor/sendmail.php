@@ -205,7 +205,6 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
 
 try {
   //Server settings
-  //Server settings
     $view = new mailer();
     $mailerData = $view->viewConfigMailer();
     $mailerUsername = $mailerData[0];
@@ -258,7 +257,6 @@ function sendOnHoldEmail($lastname, $fullname, $status, $email, $remarks) {
   <p>Thank you and stay safe.</p>";
   try {
     //Server settings
-    //Server settings
     $view = new mailer();
     $mailerData = $view->viewConfigMailer();
     $mailerUsername = $mailerData[0];
@@ -309,7 +307,6 @@ function sendDeniedEmail($lastname, $fullname, $status, $email, $remarks) {
 <p>Thank you and stay safe.</p>";
   try {
     //Server settings
-    //Server settings
     $view = new mailer();
     $mailerData = $view->viewConfigMailer();
     $mailerUsername = $mailerData[0];
@@ -357,7 +354,6 @@ function sendClientAcc($username, $password, $email) {
 <p>Thank you and stay safe.</p>";
   try {
     //Server settings
-    //Server settings
     $view = new mailer();
     $mailerData = $view->viewConfigMailer();
     $mailerUsername = $mailerData[0];
@@ -390,47 +386,3 @@ function sendClientAcc($username, $password, $email) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 }
-    //header
-
-  // Convert Graduation Date
-  // if(!empty($yearsGrad)){                             
-  //   $dig0 = strtr($yearsGrad, '-', '-');              // Translate certain characters to string?? 
-  //   $conv_dig = strtotime($dig0);                     // string to time
-  //   $dig = date('M d, Y', $conv_dig);                 // convert date format ( DIG - Date initial - Graduation ... hahaha )
-
-  //   if(!empty($vfdategrad)){                             // Check if there's no Verified Entrance Date
-  //     $dvg0 = strtr($vfdategrad, '-', '-');              // Translate certain characters to string?? 
-  //     $conv_dvg = strtotime($dvg0);                      // string to time
-  //     $dvg = date('M d, Y', $conv_dvg);}                 // convert date format ( DVA - Date verified graduation )
-  //   else{
-  //     $dvg = "";}                                        // Set variable empty if there's no Verified Entrance Date ( DVA - Date verified graduation )
-  // }
-  // else{
-  //   $dig = "";                                           // Set variable empty if there's no Verified Entrance Date ( DIG - Date initial - Graduation ... hahaha )
-  // }
-
-  // // Convert Entrance Date
-  // if(!empty($yearsLastAtt)){                          // Check if Year or Date Last Attended is NOT empty
-  //   $dia0 = strtr($yearsLastAtt, '-', '-');           // Translate certain characters to string?? 
-  //   $conv_dia = strtotime($dia0);                     // string to time
-  //   $dia = date('M d, Y', $conv_dia);                 // convert date format ( DIA - Date inital attendance )                                  
-  // }
-  // else{
-  //   $dia = "";                                         // Set variable empty if there's no Verified Entrance Date ( DIA - Date initial attendance 
-  // }
-
-  // if(!empty($vfdateent)){                              // Check if there's no Verified Entrance Date
-  //   $dve0 = strtr($vfdateent, '-', '-');               // Translate certain characters to string?? 
-  //   $conv_dve = strtotime($dve0);                      // string to time
-  //   $dve = date('M d, Y', $conv_dve);}                 // convert date format ( DVE - Date verified entrance )
-  // else{
-  //   $dve = "";
-  // }      
-                                        
-  // if(!empty($vfdateatt)){                              
-  //   $dva0 = strtr($vfdateatt, '-', '-');              
-  //   $conv_dva = strtotime($dva0);                      
-  //   $dva = date('M d, Y', $conv_dva);}                 
-  // else{
-  //   $dva = "";
-  // }
