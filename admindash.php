@@ -8,6 +8,7 @@ $view = new view();
 $viewtable = new viewtable();
 $mailer = new mailer();
 $adduser = new addAccount();
+$ovr = new ovReport();
 
 ?>
 <!DOCTYPE html>
@@ -58,6 +59,8 @@ $adduser = new addAccount();
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
+            
+        <!-- ADVANCED OPTIONS ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <?php
                 if($user->data()->username == 'jeck'){
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
@@ -250,6 +253,7 @@ $adduser = new addAccount();
                     </div>
                 </div>
             </div>
+        <!-- ADVANCED OPTIONS END ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i>
                     <span>Log out</span> </a></li>
@@ -308,66 +312,10 @@ $adduser = new addAccount();
                             <div class="card-body report">
                                 <h3 class="report-title main-part mb-4">Office Verification Report</h3>
                                 <?php 
-                                        
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo"<h6><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications for the month of ".$display.": <br>";
-                                        echo"<span class='count mt-3'>".$view->pendingCount($year, $month)." pending verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->pendingCountMNL($year, $month)." )</b> &mdash;
-                                                     Makati <b>( ".$view->pendingCountMKT($year, $month)." )</b> &mdash;
-                                                     Malolos <b>( ".$view->pendingCountMLS($year, $month)." )</b></small></span></h6><br>";
-                                    }else{
-                                        echo"<h6><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications: ";
-                                        echo"<span class='count mt-3'>".$view->allPendingCount()." pending verification/s <br>";
-                                        echo"<small> Manila <b>( ".$view->allPendingCountMNL()." )</b> &mdash;
-                                                     Makati <b>( ".$view->allPendingCountMKT()." )</b> &mdash;
-                                                     Malolos <b>( ".$view->allPendingCountMLS()." )</b></small></span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo"<h6><i class='bi bi-calendar-fill'></i>&nbsp Total Verifications received for the month of ".$display.":<br> ";
-                                        echo"<span class='count mt-3'>".$view->totalMonthByM($year, $month)." verification/s";
-                                        echo"<small> ( ".$view->totalMonthByMDone($year, $month)." processed )</small><br>";
-                                        echo"<small> Manila <b>( ".$view->totalMonthByMMNL($year, $month)."</b> / ".$view->totalMonthByMDoneMNL($year, $month)." ) &mdash;
-                                                     Makati <b>( ".$view->totalMonthByMMKT($year, $month)."</b> / ".$view->totalMonthByMDoneMKT($year, $month)." ) &mdash;
-                                                     Malolos <b>( ".$view->totalMonthByMMLS($year, $month)."</b> / ".$view->totalMonthByMDoneMLS($year, $month)." )</small></span></h6><br>";
-                                    }else{
-                                        echo"<h6><i class='bi bi-calendar-fill'></i>&nbsp Total Verification/s received for this month: ";
-                                        echo"<span class='count mt-3'>".$view->totalMonth()." verification/s<br>";
-                                        echo"<small> ( ".$view->totalMonthDone()." processed )</small><br>";
-                                        echo"<small> Manila <b>( ".$view->totalMonthMNL()."</b> / ".$view->totalMonthDoneMNL()." ) &mdash;
-                                                     Makati <b>( ".$view->totalMonthMKT()."</b> / ".$view->totalMonthDoneMKT()." ) &mdash;
-                                                     Malolos <b>( ".$view->totalMonthMLS()."</b> / ".$view->totalMonthDoneMLS()." )</small></span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo"<h6><i class='bi bi-patch-check-fill'></i>&nbsp Total Verifications Processed for the month of ".$display.":<br> ";
-                                        echo"<span class='count mt-3'>".$view->totalMonthCompletedByM($year, $month)." verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->totalMonthCompletedbyMNL($year, $month)." )</b> &mdash;
-                                                     Makati <b>( ".$view->totalMonthCompletedbyMKT($year, $month)." )</b> &mdash;
-                                                     Malolos <b>( ".$view->totalMonthCompletedbyMLS($year, $month)." )</b></small></span></h6>";
-                                    }else{
-                                        echo"<h6><i class='bi bi-patch-check-fill'></i>&nbsp Total Verification/s Processed for this month: ";
-                                        echo"<span class='count mt-3'>".$view->totalMonthCompleted()." verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->totalMonthCompletedMNL()." )</b> &mdash;
-                                                     Makati <b>( ".$view->totalMonthCompletedMKT()." )</b> &mdash;
-                                                     Malolos <b>( ".$view->totalMonthCompletedMLS()." )</b></small></span></h6>";
-                                    }
-                                    ?>
+                                    $ovr->totalPendingVF();
+                                    $ovr->totalReceivedVF();
+                                    $ovr->totalProcessedVF();
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -376,62 +324,9 @@ $adduser = new addAccount();
                             <div class="card-body report">
                                 <h3 class="report-title main-part mb-4">Breakdown of Verification Remarks</h3>
                                 <?php
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo "<h6><i class='bi bi-exclamation-octagon-fill icon'></i> On-Hold Verifications for the month of ".$display.": <br> ";
-                                        echo "<span class='count'> ".$view->onHoldCount($year, $month)." verification/s <br>";
-                                        echo"<small> Manila <b>( ".$view->onHoldCountMNL($year, $month)." )</b> &mdash;
-                                                      Makati <b>( ".$view->onHoldCountMKT($year, $month)." )</b> &mdash;
-                                                      Malolos <b>( ".$view->onHoldCountMLS($year, $month)." )</b></small></span></h6><br>";
-                                    }else{
-                                        echo "<h6><i class='bi bi-exclamation-octagon-fill icon'></i> Total On-Hold Verifications: ";
-                                        echo "<span class='count'> ".$view->allOnHoldCount()." verification/s <br>";
-                                        echo"<small> Manila <b>( ".$view->allOnHoldCountMNL()." )</b> &mdash;
-                                                      Makati <b>( ".$view->allOnHoldCountMKT()." )</b> &mdash;
-                                                      Malolos <b>( ".$view->allOnHoldCountMLS()." )</b></small></span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo "<h6><i class='bi bi-person-x-fill icon'></i> Denied Verifications for the month of ".$display.": <br> ";
-                                        echo "<span class='count'> ".$view->deniedCount($year, $month)." verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->deniedCountMNL($year, $month)." )</b> &mdash;
-                                                     Makati <b>( ".$view->deniedCountMKT($year, $month)." )</b> &mdash;
-                                                     Malolos <b>( ".$view->deniedCountMLS($year, $month)." )</b></small></span></h6><br>";
-                                    }else{
-                                        echo "<h6><i class='bi bi-person-x-fill'></i> Total Denied Verifications: ";
-                                        echo "<span class='count'> ".$view->allDeniedCount()." verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->allDeniedCountMNL()." )</b> &mdash;
-                                                     Makati <b>( ".$view->allDeniedCountMKT()." )</b> &mdash;
-                                                     Malolos <b>( ".$view->allDeniedCountMLS()." )</b></small></span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo "<h6><i class='bi bi-check2-all'></i> Verified for the month of ".$display.": <br>";
-                                        echo "<span class='count'> ".$view->approvedCount($year, $month)." verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->approvedCountMNL($year, $month)." )</b> &mdash;
-                                                     Makati <b>( ".$view->approvedCountMKT($year, $month)." )</b> &mdash;
-                                                     Malolos <b>( ".$view->approvedCountMLS($year, $month)." )</b></small></span></h6>";
-                                    }else{
-                                        echo "<h6><i class='bi bi-check2-all'></i> Total Verified Requests: ";
-                                        echo "<span class='count'> ".$view->allApprovedCount()." verification/s<br>";
-                                        echo"<small> Manila <b>( ".$view->allApprovedCountMNL()." )</b> &mdash;
-                                                     Makati <b>( ".$view->allApprovedCountMKT()." )</b> &mdash;
-                                                     Malolos <b>( ".$view->allApprovedCountMLS()." )</b></small></span></h6>";
-                                    }
+                                    $ovr->totalHoldVF();
+                                    $ovr->totalDeniedVF();
+                                    $ovr->totalVerifiedVF();
                                 ?>
                             </div>
                         </div>
@@ -601,41 +496,7 @@ $adduser = new addAccount();
             </div>
         </div>
     </div>
-
-
-    <!-- <div class="modal fade" id="verify-degree" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel1">Verified Degree</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <form id="verifydegree" action="" method="POST">
-
-                        <div class="input-group col-md-12">
-                            <select id="vfdegree" name="vfdegree" class="selectpicker form-control" title="Select Course">
-                                <?php $view->courses(); ?>
-                            </select>
-                        </div>
-                        <div class="modal-footer mt-3">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <input type=hidden id="id" value="">
-                            <input type="hidden" name="Token" value="<?php echo Token::generate(); ?>" />
-                            <button type="submit" id="update-btn" class="btn btn-info">Save</button>
-
-                        </div>
-                    </form>
-                </div>
-
-
-            </div>
-        </div>
-    </div> -->
-
-
-    
+   
     <!-- Footer-->
     <footer id="footer" class="footer">
         <div class="copyright"><strong>Centro Escolar University</span></strong> Office of the University Registrar
