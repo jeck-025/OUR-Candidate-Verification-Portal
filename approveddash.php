@@ -63,7 +63,7 @@ $ovr = new ovReport();
       </div>
       
         <!-- COLLAPSE BUTTON---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <p>
+        <p data-aos="fade-in" data-aos-duration="1000">
             <button class="btn btn-sm btn-dark" type="button" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                 <i class="bi bi-chevron-double-down"></i> Show / Hide Verification Summary
             </button>
