@@ -8,6 +8,7 @@ $view = new view();
 $viewtable = new viewtable();
 $mailer = new mailer();
 $adduser = new addAccount();
+$ovr = new ovReport();
 
 ?>
 <!DOCTYPE html>
@@ -36,6 +37,7 @@ $adduser = new addAccount();
     <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -57,6 +59,8 @@ $adduser = new addAccount();
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
+            
+        <!-- ADVANCED OPTIONS ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <?php
                 if($user->data()->username == 'jeck'){
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
@@ -249,6 +253,7 @@ $adduser = new addAccount();
                     </div>
                 </div>
             </div>
+        <!-- ADVANCED OPTIONS END ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i>
                     <span>Log out</span> </a></li>
@@ -263,15 +268,15 @@ $adduser = new addAccount();
                 $mailer->updateMailerConfig(); 
                 ?>
 
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong><i class="bi bi-check-circle"></i> Mailer Configuration Updated</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                </div> -->
 
-                <!-- <script> 
+                <script> 
                     alert('Mailer Configuration Updated');
                     location.replace('admindash.php'); 
-                </script> -->
+                </script>
 
         <?php }
             if(!empty($_POST['email'])){
@@ -287,125 +292,71 @@ $adduser = new addAccount();
         <div class="pagtitle pt-3 pb-3" data-aos="fade-in" data-aos-duration="1000">
             <h1>Dashboard</h1>
         </div>
+
+        <!-- COLLAPSE BUTTON---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <p data-aos="fade-in" data-aos-duration="1000">
+            <button class="btn btn-sm btn-dark" type="button" data-toggle="collapse" data-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                <i class="bi bi-chevron-double-down"></i> Show / Hide Verification Summary
+            </button>
+        </p>
+
+        <!-- COLLAPSE START---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+        <div class="collapse <?php if(isset($_GET['date'])){echo "show";} ?>" id="collapseWidthExample">
+
+
         <section class="reports mb-3">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6 mb-3">
                         <div class="card">
                             <div class="card-body report">
                                 <h3 class="report-title main-part mb-4">Office Verification Report</h3>
                                 <?php 
-                                        
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo"<h6><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications for the month of ".$display.": ";
-                                        echo"<br><span class='count mt-3'>".$view->pendingCount($year, $month)." pending verification/s<br>";
-                                        echo"<small>( MNL - <b>".$view->pendingCountMNL($year, $month)."</b> | MKT - <b>".$view->pendingCountMKT($year, $month)."</b> | MLS - <b>".$view->pendingCountMLS($year, $month)."</b> )</small></span></h6><br>";
-                                    }else{
-                                        echo"<h6><i class='bi bi-menu-button-wide-fill'></i>&nbsp Total Pending Verifications: ";
-                                        echo"<br><span class='count mt-3'>".$view->allPendingCount()." pending verification/s <br>";
-                                        echo"<small>( MNL - <b>".$view->allPendingCountMNL()."</b> | MKT - <b>".$view->allPendingCountMKT()."</b> | MLS - <b>".$view->allPendingCountMLS()."</b> )</small></span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo"<h6><i class='bi bi-calendar-fill'></i>&nbsp Total Verifications received for the month of ".$display.": ";
-                                        echo"<br><span class='count mt-3'>".$view->totalMonthByM($year, $month)." verification/s";
-                                        echo"<small> ( ".$view->totalMonthByMDone($year, $month)." processed )</small></span></h6><br>";
-                                    }else{
-                                        echo"<h6><i class='bi bi-calendar-fill'></i>&nbsp Total Verification/s received for this month: ";
-                                        echo"<br><span class='count mt-3'>".$view->totalMonth()." application/s";
-                                        echo"<small> ( ".$view->totalMonthDone()." processed )</small></span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")){
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo"<h6><i class='bi bi-patch-check-fill'></i>&nbsp Total Verifications Processed for the month of ".$display.": ";
-                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompletedByM($year, $month)." verification/s</span></h6><br>";
-                                    }else{
-                                        echo"<h6><i class='bi bi-patch-check-fill'></i>&nbsp Total Verification/s Processed for this month: ";
-                                        echo"<br><span class='count mt-3'>".$view->totalMonthCompleted()." verification/s</span></h6>";
-                                    }
-                                    ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body report">
-                                <h3 class="report-title main-part mb-4">Breakdown of Verification Remarks</h3>
-                                <?php
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo "<h6><i class='bi bi-exclamation-octagon-fill icon'></i> On-Hold Verifications for the month of ".$display.": ";
-                                        echo "<br><span class='count'> ".$view->onHoldCount($year, $month)." verification/s</span></h6><br>";
-                                    }else{
-                                        echo "<h6><i class='bi bi-exclamation-octagon-fill icon'></i> Total On-Hold Verifications: ";
-                                        echo "<br><span class='count'> ".$view->allOnHoldCount()." verification/s</span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo "<h6><i class='bi bi-person-x-fill icon'></i> Denied Verifications for the month of ".$display.": ";
-                                        echo "<br><span class='count'> ".$view->DeniedCount($year, $month)." verification/s</span></h6><br>";
-                                    }else{
-                                        echo "<h6><i class='bi bi-person-x-fill'></i> Total Denied Verifications: ";
-                                        echo "<br><span class='count'> ".$view->allDeniedCount()." verification/s</span></h6><br>";
-                                    }
-
-                                    if(isset($_GET['date']) && ($_GET['date'] != "")) {
-                                        $strArray = explode("-", $_GET['date']);
-                                        $year = $strArray[0];
-                                        $month = $strArray[1];
-                                        $convDate = strtotime($_GET['date']);
-                                        $display = date('F Y', $convDate);
-                                        echo "<h6><i class='bi bi-person-check-fill icon'></i> Verified for the month of ".$display.": ";
-                                        echo "<br><span class='count'> ".$view->approvedCount($year, $month)." verification/s</span></h6>";
-                                    }else{
-                                        echo "<h6><i class='bi bi-person-check-fill icon'></i> Total Verified Requests: ";
-                                        echo "<br><span class='count'> ".$view->allApprovedCount()." verification/s</span></h6>";
-                                    }
+                                    $ovr->totalPendingVF();
+                                    $ovr->totalReceivedVF();
+                                    $ovr->totalProcessedVF();
                                 ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6 mb-3">
                         <div class="card">
                             <div class="card-body report">
-                                <form action="" method="GET">
-                                    <h3 class="report-title main-part mb-4">View Other Monthly Report</h3>
-                                    <div class="text-center">
-                                    <input type="month" class="search datepicker mb-3" name="date" id="search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>"></br>
-                                    <input type="submit" class="date_btn" name="month_btn" id="month_btn" value="Filter">
-                                    <br><a class="btn btn-info date_btn mt-2" href="admindash">Clear</a>
-                                    </div>
-                                </form>
+                                <h3 class="report-title main-part mb-4">Breakdown of Verification Remarks</h3>
+                                <?php
+                                    $ovr->totalHoldVF();
+                                    $ovr->totalDeniedVF();
+                                    $ovr->totalVerifiedVF();
+                                ?>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body report">
+                                    <form action="" method="GET">
+                                        <div class="text-center">
+                                        <h5 class="report-title main-part">View Other Monthly Report</h5>
+                                        <input type="month" class="search datepicker mb-3" name="date" id="search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>">
+                                        <input type="submit" class="date_btn btn" name="month_btn" id="month_btn" value="Filter">
+                                        <a class="btn btn-info date_btn" href="admindash">Clear</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
             </div>
         </section>
+        </div>
+        <!-- COLLAPSE END---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+       
+        
         <section class="section dashboard" data-aos="fade-in" data-aos-duration="1000">
             <div class="row">
                 <div class="col-lg-12">
@@ -545,41 +496,7 @@ $adduser = new addAccount();
             </div>
         </div>
     </div>
-
-
-    <!-- <div class="modal fade" id="verify-degree" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel1">Verified Degree</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <form id="verifydegree" action="" method="POST">
-
-                        <div class="input-group col-md-12">
-                            <select id="vfdegree" name="vfdegree" class="selectpicker form-control" title="Select Course">
-                                <?php $view->courses(); ?>
-                            </select>
-                        </div>
-                        <div class="modal-footer mt-3">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <input type=hidden id="id" value="">
-                            <input type="hidden" name="Token" value="<?php echo Token::generate(); ?>" />
-                            <button type="submit" id="update-btn" class="btn btn-info">Save</button>
-
-                        </div>
-                    </form>
-                </div>
-
-
-            </div>
-        </div>
-    </div> -->
-
-
-    
+   
     <!-- Footer-->
     <footer id="footer" class="footer">
         <div class="copyright"><strong>Centro Escolar University</span></strong> Office of the University Registrar
