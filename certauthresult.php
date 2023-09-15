@@ -48,6 +48,7 @@ if (isset($_POST["tn"])) {
       <div class="container px-5 justify-content-center">
         <a class="navbar-brand" href="index">
           <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top" /></a>
+          <a class="btn btn-sm btn-outline btn-outline-light appbutton" href="regform.php">CAVE Application Form</a>
       </div>
     </nav>
 
@@ -61,26 +62,32 @@ if (isset($_POST["tn"])) {
 
 
                  $infos = findTransactionInfo($_POST['tn']);
-                 $tn = $_POST['tn'];
-                 $name = $infos[0]['lastName'].", ".$infos[0]['firstName']." ".$infos[0]['middleName'];
+                 
 
                  if($infos == NULL){
-                   echo "<p class='text-left'>
-                   Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
+                   echo "<p class='text-center'>
+                   Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                   <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                  }else{
                    $status = $infos[0]['status'];
                    if($status =="PENDING"){
                     echo "<p class='text-center'>
-                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="ON-HOLD"){
                     echo "<p class='text-center'>
-                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="VERIFIED"){
+                    $tn = $_POST['tn'];
+                    $name = $infos[0]['lastName'].", ".$infos[0]['firstName']." ".$infos[0]['middleName'];
                     echo "<p class='text-center'>
-                    Certificate Serial Number <b>$tn</b> verified under the name of <b>$name</b></p>";
+                    Certificate Serial Number <b>$tn</b> verified under the name of <b>$name</b></p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="DECLINED"){
                     echo "<p class='text-center'>
-                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }
                  }
                 ?>
@@ -89,7 +96,7 @@ if (isset($_POST["tn"])) {
           </div>
     </section>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto sd">
+    <footer class="bg-dark mb-0 mt-auto sd">
       <div class="container px-5">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">
           <div class="col-auto">

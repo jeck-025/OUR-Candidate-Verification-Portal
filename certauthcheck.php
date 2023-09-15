@@ -31,6 +31,8 @@ $view = new view;
   <script src="sweetalert2.all.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
 
 </head>
 
@@ -42,6 +44,7 @@ $view = new view;
       <div class="container px-5 justify-content-center">
         <a class="navbar-brand" href="index">
           <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top" /></a>
+          <a class="btn btn-sm btn-outline btn-outline-light appbutton" href="regform.php">CAVE Application Form</a>
       </div>
     </nav>
 
@@ -58,7 +61,7 @@ $view = new view;
         </form>
     </section>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto sd">
+    <footer class="bg-dark mb-0 mt-auto sd">
       <div class="container px-5">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">
           <div class="col-auto">

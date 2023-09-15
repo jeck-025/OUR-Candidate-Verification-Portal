@@ -107,6 +107,11 @@ h6 .converterlink {
     box-shadow: none;
 }
 
+.btn-outline-light{
+  width: 160px !important;
+  margin: 0 !important;
+}
+
 .wrapper .submit_btn{
     padding:15px;
     font-weight: 500;
@@ -3198,7 +3203,8 @@ textarea.form-control-lg {
 
 
 .btn {
-  width: 500px;
+  width: 35%;
+  /* width: 500px; */
   margin: 0 auto;
   font-weight: 700;
   line-height: 1.5;
