@@ -73,23 +73,47 @@ if (isset($_POST["tn"])) {
                      echo "<p class='text-left'>
                      Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently being reviewed by our verification officer.<br>
                      Normally this would take 5-10 working days to complete.
-                     <br />For follow-up you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
+                     <br />For follow-up and other inquiries you may send an email to: <br>
+                      <ul>
+                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
+                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
+                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
+                      </ul>
+                      <br /> Thank you and stay safe!</p>";
                    }elseif($status =="ON-HOLD"){
                      echo "<p class='text-left'>
                      Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently put on-hold by our verification officer.<br>
                      For the reason:<b> ".$infos[0]['remarks']."</b><br>
                      Normally this would take 5-10 working days to verify.
-                     <br />For follow-up you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
+                     <br />For follow-up and other inquiries you may send an email to: <br>
+                      <ul>
+                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
+                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
+                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
+                      </ul>
+                      <br /> Thank you and stay safe!</p>";
                    }elseif($status =="VERIFIED"){
                      echo "<p class='text-left'>
                      Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is now verified<br>
                      Please see the <b><a href='https://ceumnlregistrar.com/caveportal/pdfcertificates.php?tn=$_POST[tn]'>LINK</a> </b>for the verification certificate. Thank you!
-                     <br />For follow-up you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
+                     <br />For other inquiries you may send an email to: <br>
+                      <ul>
+                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
+                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
+                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
+                      </ul>
+                      <br /> Thank you and stay safe!</p>";
                    }elseif($status =="DECLINED"){
                      echo "<p class='text-left'>
                      Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request was DENIED by our verification officer.<br>
                      For the reason:<b> ".$infos[0]['remarks']."</b><br>
-                     <br />For concerns or question you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
+                     <br />For concerns and other inquiries you may send an email to: <br>
+                      <ul>
+                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
+                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
+                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
+                      </ul>
+                      <br /> Thank you and stay safe!</p>";
                    }
                  }
                 ?>
