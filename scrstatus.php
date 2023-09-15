@@ -48,7 +48,8 @@ $view = new view;
     <section class="wrapper">
       <div class="container-fluid mt-2 slide-in-left rounded shadow-sm " data-aos="fade-down" data-aos-duration="1500">
         <form class="text-center p-5 slide-in-left shadow" action="scrsresult" method="POST" >
-          <h3 class="mb-4"><b>Office of the Registrar</b> Candidate Verification Status Checker</h3>
+          <h3 class="mb-4"><b>Office of the University Registrar</b> <br>
+          Candidate Verification Status Checker</h3>
         <p>Please enter the transaction/reference number</p>
         <input type="text" id="tn" class="form-control my-2" name="tn" placeholder="Reference Number" style="text-align:center;font-size:80%;border: 1px solid blue;" required>
         <div class="d-flex justify-content-around">

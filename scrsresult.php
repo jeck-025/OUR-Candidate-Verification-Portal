@@ -55,7 +55,7 @@ if (isset($_POST["tn"])) {
       <div class="container mt-2 slide-in-left rounded shadow-sm" data-aos="fade-down" data-aos-duration="1500">
         <div class="row justify-content-center mt-lg-5">
             <div class="col-12  mt-lg-5">
-              <h3 class="headermain2 mb-4 text-center"><b class="ceupink">Office of the Registrar</b> Scholarship and Grants Status Checker</h3>
+              <h3 class="headermain2 mb-4 text-center"><b class="ceupink">Office of the University Registrar</b><br> Candidate Verification Status Checker</h3>
               <div class="text-left p-5 slide-in-left shadow bgc">
                 <?php
 
