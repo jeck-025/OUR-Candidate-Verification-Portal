@@ -3203,7 +3203,7 @@ textarea.form-control-lg {
 
 
 .btn {
-  width: 35%;
+  width: 35% !important;
   /* width: 500px; */
   margin: 0 auto;
   font-weight: 700;
