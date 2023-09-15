@@ -54,66 +54,33 @@ if (isset($_POST["tn"])) {
     <section class="wrapper">
       <div class="container mt-2 slide-in-left rounded shadow-sm" data-aos="fade-down" data-aos-duration="1500">
         <div class="row justify-content-center mt-lg-5">
-            <div class="col-12  mt-lg-5">
-              <h3 class="headermain2 mb-4 text-center"><b class="ceupink">Office of the Registrar</b> Scholarship and Grants Status Checker</h3>
+            <div class="col-12  mt-lg-2">
+              <h3 class="headermain2 mb-4 text-center"><b class="ceupink">CAVE Certificate Checker</b></h3>
               <div class="text-left p-5 slide-in-left shadow bgc">
                 <?php
 
 
                  $infos = findTransactionInfo($_POST['tn']);
-
+                 $tn = $_POST['tn'];
+                 $name = $infos[0]['lastName'].", ".$infos[0]['firstName']." ".$infos[0]['middleName'];
 
                  if($infos == NULL){
                    echo "<p class='text-left'>
-                   Invalid Transaction Number. Please input the correct number to proceed.
-                   <br />For concerns or question you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
+                   Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
                  }else{
                    $status = $infos[0]['status'];
                    if($status =="PENDING"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently being reviewed by our verification officer.<br>
-                     Normally this would take 5-10 working days to complete.
-                     <br />For follow-up and other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
                    }elseif($status =="ON-HOLD"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently put on-hold by our verification officer.<br>
-                     For the reason:<b> ".$infos[0]['remarks']."</b><br>
-                     Normally this would take 5-10 working days to verify.
-                     <br />For follow-up and other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
                    }elseif($status =="VERIFIED"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is now verified.<br>
-                     Please see the <b><a href='https://ceumnlregistrar.com/caveportal/pdfcertificates.php?tn=$_POST[tn]'>LINK</a> </b>for the verification certificate. Thank you!
-                     <br />For other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class='text-center'>
+                    Certificate Serial Number <b>$tn</b> verified under the name of <b>$name</b></p>";
                    }elseif($status =="DECLINED"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request was DENIED by our verification officer.<br>
-                     For the reason:<b> ".$infos[0]['remarks']."</b><br>
-                     <br />For concerns and other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>";
                    }
                  }
                 ?>

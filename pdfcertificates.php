@@ -116,5 +116,15 @@ if($data['campus'] === "MLS") {
     $pdf->Write(0, $fullname);
     $pdf->SetXY(35, 153);
     $pdf->Write(0, utf8_decode($data['vfname']));
+
+    $tn = "Certificate S/N: ".$data['tn'];
+    $pdf->SetXY(227, 6);
+    $pdf->Write(0, $tn);
+
+    $pdf->SetXY(232, 9);
+    $pdf->Write(0, "Scan QR Below and enter the S/N");
+
+    $pdf->Image('resource/img/caveqr.png', "257","12", "18","18");
+
     $pdf->output("I", "CAVE_VerifiedECert_$data[lastName].pdf");
 ?>
