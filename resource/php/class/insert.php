@@ -175,7 +175,11 @@ class insert extends config{
             })
             </script>";
         }else{
-            $fullname = $this->firstName."-".$this->lastName."-".$this->middleName;
+
+            $curdate = date("mdy");
+
+            $fullname = $this->lastName."-".$this->firstName."-".$this->middleName."-".$curdate;
+
             $ext = strtolower(pathinfo($this->diploma['name'], PATHINFO_EXTENSION));
             $this->diploma['name'] = $fullname.".".$ext;
             $storage = "resource/files/diploma_files/";
