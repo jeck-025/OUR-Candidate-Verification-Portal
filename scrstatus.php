@@ -59,7 +59,7 @@ $view = new view;
         </form>
     </section>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto sd">
+    <footer class="bg-dark mb-0 mt-auto sd">
       <div class="container px-5">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">
           <div class="col-auto">
