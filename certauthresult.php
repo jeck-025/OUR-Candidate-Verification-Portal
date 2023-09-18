@@ -82,6 +82,7 @@ if (isset($_POST["tn"])) {
                    }elseif($status =="VERIFIED"){
                     $tn = $_POST['tn'];
                     $name = $infos[0]['lastName'].", ".$infos[0]['firstName']." ".$infos[0]['middleName'];
+                    echo "<p class ='text-center'><i class='fa-solid fa-shield-check fa-xl' style='color: #039e00;'></i></p>";
                     echo "<p class='text-center'>
                     Certificate Serial Number <b>$tn</b> verified under the name of <b>$name</b></p>
                     <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
