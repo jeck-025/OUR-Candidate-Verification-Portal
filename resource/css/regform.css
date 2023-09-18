@@ -76,6 +76,10 @@ body{
     font-size: 14px;
 }
 
+.fa-lg{
+  font-size: 5.25em !important;
+}
+
 .datepickerForm{
   width: 70%;
 }

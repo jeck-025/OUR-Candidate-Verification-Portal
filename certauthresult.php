@@ -65,35 +65,36 @@ if (isset($_POST["tn"])) {
                  
 
                  if($infos == NULL){
+                   echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
                    echo "<p class='text-center'>
                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                  }else{
                    $status = $infos[0]['status'];
                    if($status =="PENDING"){
-                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg' style='color: #b30000;'></i></p>";
+                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
                     echo "<p class='text-center'>
                     Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
                     <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="ON-HOLD"){
-                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg' style='color: #b30000;'></i></p>";
+                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
                     echo "<p class='text-center'>
                     Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
                     <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="VERIFIED"){
                     $tn = $_POST['tn'];
                     $name = $infos[0]['lastName'].", ".$infos[0]['firstName']." ".$infos[0]['middleName'];
-                    echo "<p class ='text-center'><i class='fa-solid fa-circle-check fa-lg' style='color: #01a72a;'></i></p>";
+                    echo "<p class ='text-center'><i class='fa-solid fa-circle-check fa-lg mt-3 pb-5' style='color: #01a72a;'></i></p>";
                     echo "<p class='text-center'>
                     Certificate Serial Number <b>$tn</b> verified under the name of <b>$name</b></p>
                     <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="DECLINED"){
-                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg' style='color: #b30000;'></i></p>";
+                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
                     echo "<p class='text-center'>
                     Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
                     <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }else{
-                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg' style='color: #b30000;'></i></p>";
+                    echo "<p class ='text-center'><i class='fa-regular fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
                     echo "<p class='text-center'>
                     Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
                     <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
