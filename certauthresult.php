@@ -28,7 +28,7 @@ if (isset($_POST["tn"])) {
   <link rel="icon" type="image/x-icon" href="resource/img/tab-icon.png">
   <link href="resource/css/regform.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-select.min.css">
-  <script src="https://kit.fontawesome.com/b04d2a2a76.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
