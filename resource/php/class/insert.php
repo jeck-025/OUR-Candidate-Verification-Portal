@@ -176,7 +176,7 @@ class insert extends config{
             </script>";
         }else{
 
-            $curdate = date("mdy");
+            $curdate = date("mdyHis");
 
             $fullname = $this->lastName."-".$this->firstName."-".$this->middleName."-".$curdate;
 
