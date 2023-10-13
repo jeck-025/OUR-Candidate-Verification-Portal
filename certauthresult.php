@@ -28,7 +28,7 @@ if (isset($_POST["tn"])) {
   <link rel="icon" type="image/x-icon" href="resource/img/tab-icon.png">
   <link href="resource/css/regform.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-select.min.css">
-  <script src="https://kit.fontawesome.com/b04d2a2a76.js" crossorigin="anonymous"></script>
+ <script src="https://kit.fontawesome.com/03ca298d2d.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -48,72 +48,56 @@ if (isset($_POST["tn"])) {
       <div class="container px-5 justify-content-center">
         <a class="navbar-brand" href="index">
           <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top" /></a>
+          <a class="btn btn-sm btn-outline btn-outline-light appbutton" href="regform.php">CAVE Application Form</a>
       </div>
     </nav>
 
     <section class="wrapper">
       <div class="container mt-2 slide-in-left rounded shadow-sm" data-aos="fade-down" data-aos-duration="1500">
         <div class="row justify-content-center mt-lg-5">
-            <div class="col-12  mt-lg-3">
-              <h3 class="headermain2 mb-4 text-center"><b class="ceupink">Office of the University Registrar</b><br> Candidate Verification Status Checker</h3>
+            <div class="col-12  mt-lg-2">
+              <h3 class="headermain2 mb-4 text-center"><b class="ceupink">CAVE Certificate Checker</b></h3>
               <div class="text-left p-5 slide-in-left shadow bgc">
                 <?php
 
 
                  $infos = findTransactionInfo($_POST['tn']);
-
+                 
 
                  if($infos == NULL){
-                   echo "<p class='text-left'>
-                   Invalid Transaction Number. Please input the correct number to proceed.
-                   <br />For concerns or question you may send an email to <b class='ceupink'>rdmama@ceu.edu.ph</b>.<br /> Thank you and stay safe!</p>";
+                   echo "<p class ='text-center'><i class='fa-solid fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
+                   echo "<p class='text-center'>
+                   Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                   <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                  }else{
                    $status = $infos[0]['status'];
                    if($status =="PENDING"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently being reviewed by our verification officer.<br>
-                     Normally this would take 5-10 working days to complete.
-                     <br />For follow-up and other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class ='text-center'><i class='fa-solid fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="ON-HOLD"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is currently put on-hold by our verification officer.<br>
-                     For the reason:<b> ".$infos[0]['remarks']."</b><br>
-                     Normally this would take 5-10 working days to verify.
-                     <br />For follow-up and other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class ='text-center'><i class='fa-solid fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="VERIFIED"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request is now verified.<br>
-                     Please see the <b><a href='https://ceumnlregistrar.com/caveportal/pdfcertificates.php?tn=$_POST[tn]'>LINK</a> </b>for the verification certificate. Thank you!
-                     <br />For other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    $tn = $_POST['tn'];
+                    $name = $infos[0]['lastName'].", ".$infos[0]['firstName']." ".$infos[0]['middleName'];
+                    echo "<p class ='text-center'><i class='fa-solid fa-circle-check fa-lg mt-3 pb-5' style='color: #01a72a;'></i></p>";
+                    echo "<p class='text-center'>
+                    Certificate Serial Number <b>$tn</b> verified under the name of <b>$name</b></p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }elseif($status =="DECLINED"){
-                     echo "<p class='text-left'>
-                     Dear <b>".$infos[0]["employee"]."</b>, <br />Your Verification request was DENIED by our verification officer.<br>
-                     For the reason:<b> ".$infos[0]['remarks']."</b><br>
-                     <br />For concerns and other inquiries you may send an email to: <br>
-                      <ul>
-                        <li><b class='ceupink'>rdmama@ceu.edu.ph for CEU MANILA</b></li>
-                        <li><b class='ceupink'>raparada@ceu.edu.ph for CEU MAKATI</b></li>
-                        <li><b class='ceupink'>kdeleon@ceu.edu.ph for CEU MALOLOS</b></li>
-                      </ul>
-                      <br /> Thank you and stay safe!</p>";
+                    echo "<p class ='text-center'><i class='fa-solid fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
+                   }else{
+                    echo "<p class ='text-center'><i class='fa-solid fa-circle-xmark fa-lg mt-3 pb-5' style='color: #b30000;'></i></p>";
+                    echo "<p class='text-center'>
+                    Invalid Certificate Serial Number. Please input the correct number to proceed.</p>
+                    <p class='text-center'><a class='btn btn-primary' href='certauthcheck.php'>Back</a></p>";
                    }
                  }
                 ?>

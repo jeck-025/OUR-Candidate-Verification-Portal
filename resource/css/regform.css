@@ -76,6 +76,10 @@ body{
     font-size: 14px;
 }
 
+.fa-lg{
+  font-size: 5.25em !important;
+}
+
 .datepickerForm{
   width: 70%;
 }
@@ -105,6 +109,11 @@ h6 .converterlink {
 } */
 .wrapper input:focus{
     box-shadow: none;
+}
+
+.btn-outline-light{
+  width: 160px !important;
+  margin: 0 !important;
 }
 
 .wrapper .submit_btn{
@@ -3198,7 +3207,8 @@ textarea.form-control-lg {
 
 
 .btn {
-  width: 500px;
+  width: 35% !important;
+  /* width: 500px; */
   margin: 0 auto;
   font-weight: 700;
   line-height: 1.5;
@@ -3473,6 +3483,10 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #212529;
   border-color: #212529;
+}
+
+.btn-outline-light{
+  width: auto !important;
 }
 
 .btn-outline-primary {

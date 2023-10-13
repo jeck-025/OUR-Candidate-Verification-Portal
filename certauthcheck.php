@@ -31,6 +31,8 @@ $view = new view;
   <script src="sweetalert2.all.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
 
 </head>
 
@@ -42,15 +44,15 @@ $view = new view;
       <div class="container px-5 justify-content-center">
         <a class="navbar-brand" href="index">
           <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top" /></a>
+          <a class="btn btn-sm btn-outline btn-outline-light appbutton" href="regform.php">CAVE Application Form</a>
       </div>
     </nav>
 
     <section class="wrapper">
       <div class="container-fluid mt-2 slide-in-left rounded shadow-sm " data-aos="fade-down" data-aos-duration="1500">
-        <form class="text-center p-5 slide-in-left shadow" action="scrsresult" method="POST" >
-          <h3 class="mb-4"><b>Office of the University Registrar</b> <br>
-          Candidate Verification Status Checker</h3>
-        <p>Please enter the transaction/reference number</p>
+        <form class="text-center p-5 slide-in-left shadow" action="certauthresult" method="POST" >
+          <h3 class="headermain2 mb-4 text-center"><b class="ceupink">CAVE Certificate Checker</b></h3>
+        <p>Please enter the Certificate Serial Number</p>
         <input type="text" id="tn" class="form-control my-2" name="tn" placeholder="Reference Number" style="text-align:center;font-size:80%;border: 1px solid blue;" required>
         <div class="d-flex justify-content-around">
         </div>

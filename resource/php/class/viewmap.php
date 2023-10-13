@@ -7,7 +7,7 @@ class viewmap extends config2 {
     public function getCountryName($id) {
       $config2 = new config2();
       $conn = $config2->conn();
-      $sql = "SELECT COUNT(*) FROM `tbl_students` WHERE `country` = :id";
+      $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND `country` = :id";
       $query = $conn->prepare($sql);
       $query->bindParam("id", $id, PDO::PARAM_STR);
       $query->execute();

@@ -42,6 +42,7 @@ $view = new view;
       <div class="container px-5 justify-content-center">
         <a class="navbar-brand" href="index">
           <img src="resource/img/CAVElogo-white.png" alt="" width="150" height="65" class="d-inline-block align-top" /></a>
+          <a class="btn btn-sm btn-outline btn-outline-light appbutton" href="certauthcheck.php">CAVE Certificate Checker</a>
       </div>
     </nav>
 

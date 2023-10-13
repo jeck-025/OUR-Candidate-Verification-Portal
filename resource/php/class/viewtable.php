@@ -223,6 +223,12 @@ public function viewApprovedData($year, $month){
       </svg>
           </div>
       </a></li>
+      
+      <li class='actions'><a class='btn btn-sm'href='pdfcertificates.php?tn=$data[tn]' target='_blank'>Certificate
+      <div class='icon'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'><path d='M2.06 14.68a1 1 0 0 0 .46.6l1.91 1.11v2.2a1 1 0 0 0 1 1h2.2l1.11 1.91a1 1 0 0 0 .86.5 1 1 0 0 0 .51-.14l1.9-1.1 1.91 1.1a1 1 0 0 0 1.37-.36l1.1-1.91h2.2a1 1 0 0 0 1-1v-2.2l1.91-1.11a1 1 0 0 0 .37-1.36L20.76 12l1.11-1.91a1 1 0 0 0-.37-1.36l-1.91-1.1v-2.2a1 1 0 0 0-1-1h-2.2l-1.1-1.91a1 1 0 0 0-.61-.46 1 1 0 0 0-.76.1L12 3.26l-1.9-1.1a1 1 0 0 0-1.36.36L7.63 4.43h-2.2a1 1 0 0 0-1 1v2.2l-1.9 1.1a1 1 0 0 0-.37 1.37l1.1 1.9-1.1 1.91a1 1 0 0 0-.1.77zm3.22-3.17L4.39 10l1.55-.9a1 1 0 0 0 .49-.86V6.43h1.78a1 1 0 0 0 .87-.5L10 4.39l1.54.89a1 1 0 0 0 1 0l1.55-.89.91 1.54a1 1 0 0 0 .87.5h1.77v1.78a1 1 0 0 0 .5.86l1.54.9-.89 1.54a1 1 0 0 0 0 1l.89 1.54-1.54.9a1 1 0 0 0-.5.86v1.78h-1.83a1 1 0 0 0-.86.5l-.89 1.54-1.55-.89a1 1 0 0 0-1 0l-1.51.89-.89-1.54a1 1 0 0 0-.87-.5H6.43v-1.78a1 1 0 0 0-.49-.81l-1.55-.9.89-1.54a1 1 0 0 0 0-1.05z'></path></svg>
+          </div>
+      </a></li>
 
       <li class='actions'>     
       <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'>Resend Email
@@ -297,6 +303,12 @@ public function viewAllApprovedData(){
         <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z'/>
         <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/>
       </svg>
+          </div>
+      </a></li>
+      
+      <li class='actions'><a class='btn btn-sm'href='pdfcertificates.php?tn=$data[tn]' target='_blank'>Certificate
+      <div class='icon'>
+      <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' style='fill: rgba(0, 0, 0, 1);transform: ;msFilter:;'><path d='M2.06 14.68a1 1 0 0 0 .46.6l1.91 1.11v2.2a1 1 0 0 0 1 1h2.2l1.11 1.91a1 1 0 0 0 .86.5 1 1 0 0 0 .51-.14l1.9-1.1 1.91 1.1a1 1 0 0 0 1.37-.36l1.1-1.91h2.2a1 1 0 0 0 1-1v-2.2l1.91-1.11a1 1 0 0 0 .37-1.36L20.76 12l1.11-1.91a1 1 0 0 0-.37-1.36l-1.91-1.1v-2.2a1 1 0 0 0-1-1h-2.2l-1.1-1.91a1 1 0 0 0-.61-.46 1 1 0 0 0-.76.1L12 3.26l-1.9-1.1a1 1 0 0 0-1.36.36L7.63 4.43h-2.2a1 1 0 0 0-1 1v2.2l-1.9 1.1a1 1 0 0 0-.37 1.37l1.1 1.9-1.1 1.91a1 1 0 0 0-.1.77zm3.22-3.17L4.39 10l1.55-.9a1 1 0 0 0 .49-.86V6.43h1.78a1 1 0 0 0 .87-.5L10 4.39l1.54.89a1 1 0 0 0 1 0l1.55-.89.91 1.54a1 1 0 0 0 .87.5h1.77v1.78a1 1 0 0 0 .5.86l1.54.9-.89 1.54a1 1 0 0 0 0 1l.89 1.54-1.54.9a1 1 0 0 0-.5.86v1.78h-1.83a1 1 0 0 0-.86.5l-.89 1.54-1.55-.89a1 1 0 0 0-1 0l-1.51.89-.89-1.54a1 1 0 0 0-.87-.5H6.43v-1.78a1 1 0 0 0-.49-.81l-1.55-.9.89-1.54a1 1 0 0 0 0-1.05z'></path></svg>
           </div>
       </a></li>
 
@@ -854,46 +866,6 @@ public function viewDeniedData($year, $month){
   }
   echo "</tbody></table>";
 }
-public function viewMapResultTable($id){
-  $config2 = new config2();
-  $view = new view();
-  $conn = $config2->conn();
-  $sql = "SELECT * FROM `tbl_students` WHERE `country` = :id";
-  $data = $conn->prepare($sql);
-  $data->bindParam("id", $id, PDO::PARAM_STR);
-  $data->execute();
-  $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "";
-  echo "<div class='table-responsive'>";
-
-  echo "<thead>";
-  echo "<tr>
-          <th scope='col'>Student FullName</th>
-          <th scope='col'>Degree</th>
-          <th scope='col'>yearsGrad</th>
-          <th scope='col'>Campus</th>
-          <th scope='col'>Country</th>
-          <th scope='col'>Employee Name</th>
-          <th scope='col'>Verifier</th>
-
-
-  </tr>";
-
-  echo "</thead>";
-  foreach ($result as $data) {
-  echo "<tr>";
-  echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
-  echo "<td>$data[degree]</td>";
-  echo "<td>$data[yearsGrad]</td>";
-  echo "<td>$data[campus]</td>";
-  echo "<td>$data[country]</td>";
-  echo "<td>$data[employee_name]</td>";
-  echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
-  echo "</tr>";
-  }
-
-
-}
 
 public function viewLogData(){
   $con = $this->con();
@@ -1194,9 +1166,9 @@ public function viewMapResultSummary(){
   $config2 = new config2();
   $view = new view();
   $conn = $config2->conn();
-  $sql = "SELECT * FROM `tbl_students`";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED'";
   $data = $conn->prepare($sql);
-  $data->bindParam("id", $id, PDO::PARAM_STR);
+  // $data->bindParam("id", $id, PDO::PARAM_STR);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "";
@@ -1207,29 +1179,90 @@ public function viewMapResultSummary(){
   echo "<tr>
           <th scope='col'>Student FullName</th>
           <th scope='col'>Degree</th>
-          <th scope='col'>yearsGrad</th>
+          <th scope='col'>Year Graduated / Last Enrolled</th>
           <th scope='col'>Campus</th>
           <th scope='col'>Country</th>
-          <th scope='col'>Employee Name</th>
           <th scope='col'>Verifier</th>
+          
+          
+          </tr>";
+          // <th scope='col'>Employee Name</th>
+          
+  echo "</thead>";
+  foreach ($result as $data) {
+  echo "<tr>";
+  echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
+  echo "<td>$data[degree]</td>";
 
+  if(($data['educ_status']) == 'G'){
+    if(empty($data['vfDateGrad'])){
+      echo "<td>G</td>";
+    }else{
+      echo "<td>G - ".date('Y',strtotime($data['vfDateGrad']))."</td>";
+    }
+  }elseif(($data['educ_status']) == 'UG'){
+    echo "<td>UG - $data[la_sy]</td>";
+  }else{
+    echo "<td>UG</td>";
+  }
 
-  </tr>";
+  echo "<td>$data[campus]</td>";
+  echo "<td>$data[country]</td>";
+  // echo "<td>$data[employee]</td>";
+  echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
+  echo "</tr>";
+  }
+}
+
+public function viewMapResultTable($id){
+  $config2 = new config2();
+  $view = new view();
+  $conn = $config2->conn();
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND `country` = :id";
+  $data = $conn->prepare($sql);
+  $data->bindParam("id", $id, PDO::PARAM_STR);
+  $data->execute();
+  $result = $data->fetchAll(PDO::FETCH_ASSOC);
+  echo "";
+  echo "<div class='table-responsive'>";
+
+  echo "<thead>";
+  echo "<tr>
+          <th scope='col'>Student FullName</th>
+          <th scope='col'>Degree</th>
+          <th scope='col'>Year Graduated</th>
+          <th scope='col'>Campus</th>
+          <th scope='col'>Country</th>
+          <th scope='col'>Verifier</th>
+          
+          
+          </tr>";
+          // <th scope='col'>Employee Name</th>
 
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr>";
   echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
   echo "<td>$data[degree]</td>";
-  echo "<td>$data[yearsGrad]</td>";
+
+  if(($data['educ_status']) == 'G'){
+    if(empty($data['vfDateGrad'])){
+      echo "<td>G</td>";
+    }else{
+      echo "<td>G - ".date('Y',strtotime($data['vfDateGrad']))."</td>";
+    }
+  }elseif(($data['educ_status']) == 'UG'){
+    echo "<td>UG - $data[la_sy]</td>";
+  }else{
+    echo "<td> </td>";
+  }
+
   echo "<td>$data[campus]</td>";
   echo "<td>$data[country]</td>";
-  echo "<td>$data[employee_name]</td>";
+  // echo "<td>$data[employee]</td>";
   echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
   echo "</tr>";
   }
-
-
 }
 
 }

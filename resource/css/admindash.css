@@ -696,10 +696,15 @@ svg path:hover {
   }
 .container .card .report {
     border-radius: 10px !important;
+    padding-bottom: 0px !important;
   }
 
 .card{
   height: 100%;
+}
+
+.ulist li{
+  display:inline;
 }
 
 h5 {
