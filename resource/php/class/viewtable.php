@@ -866,46 +866,6 @@ public function viewDeniedData($year, $month){
   }
   echo "</tbody></table>";
 }
-public function viewMapResultTable($id){
-  $config2 = new config2();
-  $view = new view();
-  $conn = $config2->conn();
-  $sql = "SELECT * FROM `tbl_students` WHERE `country` = :id";
-  $data = $conn->prepare($sql);
-  $data->bindParam("id", $id, PDO::PARAM_STR);
-  $data->execute();
-  $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "";
-  echo "<div class='table-responsive'>";
-
-  echo "<thead>";
-  echo "<tr>
-          <th scope='col'>Student FullName</th>
-          <th scope='col'>Degree</th>
-          <th scope='col'>yearsGrad</th>
-          <th scope='col'>Campus</th>
-          <th scope='col'>Country</th>
-          <th scope='col'>Employee Name</th>
-          <th scope='col'>Verifier</th>
-
-
-  </tr>";
-
-  echo "</thead>";
-  foreach ($result as $data) {
-  echo "<tr>";
-  echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
-  echo "<td>$data[degree]</td>";
-  echo "<td>$data[yearsGrad]</td>";
-  echo "<td>$data[campus]</td>";
-  echo "<td>$data[country]</td>";
-  echo "<td>$data[employee_name]</td>";
-  echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
-  echo "</tr>";
-  }
-
-
-}
 
 public function viewLogData(){
   $con = $this->con();
@@ -1206,9 +1166,9 @@ public function viewMapResultSummary(){
   $config2 = new config2();
   $view = new view();
   $conn = $config2->conn();
-  $sql = "SELECT * FROM `tbl_students`";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED'";
   $data = $conn->prepare($sql);
-  $data->bindParam("id", $id, PDO::PARAM_STR);
+  // $data->bindParam("id", $id, PDO::PARAM_STR);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "";
@@ -1219,29 +1179,90 @@ public function viewMapResultSummary(){
   echo "<tr>
           <th scope='col'>Student FullName</th>
           <th scope='col'>Degree</th>
-          <th scope='col'>yearsGrad</th>
+          <th scope='col'>Year Graduated / Last Enrolled</th>
           <th scope='col'>Campus</th>
           <th scope='col'>Country</th>
-          <th scope='col'>Employee Name</th>
           <th scope='col'>Verifier</th>
+          
+          
+          </tr>";
+          // <th scope='col'>Employee Name</th>
+          
+  echo "</thead>";
+  foreach ($result as $data) {
+  echo "<tr>";
+  echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
+  echo "<td>$data[degree]</td>";
 
+  if(($data['educ_status']) == 'G'){
+    if(empty($data['vfDateGrad'])){
+      echo "<td>G</td>";
+    }else{
+      echo "<td>G - ".date('Y',strtotime($data['vfDateGrad']))."</td>";
+    }
+  }elseif(($data['educ_status']) == 'UG'){
+    echo "<td>UG - $data[la_sy]</td>";
+  }else{
+    echo "<td>UG</td>";
+  }
 
-  </tr>";
+  echo "<td>$data[campus]</td>";
+  echo "<td>$data[country]</td>";
+  // echo "<td>$data[employee]</td>";
+  echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
+  echo "</tr>";
+  }
+}
+
+public function viewMapResultTable($id){
+  $config2 = new config2();
+  $view = new view();
+  $conn = $config2->conn();
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND `country` = :id";
+  $data = $conn->prepare($sql);
+  $data->bindParam("id", $id, PDO::PARAM_STR);
+  $data->execute();
+  $result = $data->fetchAll(PDO::FETCH_ASSOC);
+  echo "";
+  echo "<div class='table-responsive'>";
+
+  echo "<thead>";
+  echo "<tr>
+          <th scope='col'>Student FullName</th>
+          <th scope='col'>Degree</th>
+          <th scope='col'>Year Graduated</th>
+          <th scope='col'>Campus</th>
+          <th scope='col'>Country</th>
+          <th scope='col'>Verifier</th>
+          
+          
+          </tr>";
+          // <th scope='col'>Employee Name</th>
 
   echo "</thead>";
   foreach ($result as $data) {
   echo "<tr>";
   echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
   echo "<td>$data[degree]</td>";
-  echo "<td>$data[yearsGrad]</td>";
+
+  if(($data['educ_status']) == 'G'){
+    if(empty($data['vfDateGrad'])){
+      echo "<td>G</td>";
+    }else{
+      echo "<td>G - ".date('Y',strtotime($data['vfDateGrad']))."</td>";
+    }
+  }elseif(($data['educ_status']) == 'UG'){
+    echo "<td>UG - $data[la_sy]</td>";
+  }else{
+    echo "<td> </td>";
+  }
+
   echo "<td>$data[campus]</td>";
   echo "<td>$data[country]</td>";
-  echo "<td>$data[employee_name]</td>";
+  // echo "<td>$data[employee]</td>";
   echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
   echo "</tr>";
   }
-
-
 }
 
 }
