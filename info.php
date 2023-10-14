@@ -60,11 +60,11 @@ $date = date('m/d/Y h:i:s a', time());
     </aside>
     <main id="main" class="main">
         <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
-            <h1 class="pb-3">Detailed Information</h1>
+            <h1 class="p-3 mt-3">Detailed Information</h1>
             <section class="section dashboard" data-aos="fade-right" data-aos-duration="1000">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="row">
+                <div class="row px-5">
+                    <div class="col-md-12">
+                        <div class="row d-flex justify-content-center">
                             <div class="col-12">
                                 <div class="card recent-sales overflow-auto">                                    
                                     <div class="card-body">

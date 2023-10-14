@@ -72,7 +72,8 @@ $viewtable = new viewtable;
          <div class="container">
             <div class="row">
                <div class="col-lg-12 map">
-               <p class="pb-5">Use the <code>+</code>/ <code>-</code> keys to zoom and the arrow keys to move. Click the country you want to view to open</p>
+               <p class="pb-5">Use the mouse scroll wheel to zoom and click <code>+</code> drag the map to move. Click the country you want to view to open</p>
+               <!-- <p class="pb-5">Use the <code>+</code>/ <code>-</code> keys to zoom and the arrow keys to move. Click the country you want to view to open</p> -->
 
                   <?php require_once 'maps.php';
 

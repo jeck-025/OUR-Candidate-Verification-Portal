@@ -76,6 +76,26 @@ body{
     font-size: 14px;
 }
 
+.g-recaptcha {
+  display: inline-block;
+}
+
+.bootstrap-select.form-control.countrypicker{
+  height: 70%;
+}
+
+.bootstrap-select>.dropdown-toggle.bs-placeholder{
+  width: 98% !important;
+}
+
+.bootstrap-select>.dropdown-toggle{
+  width: 98% !important;
+}
+
+.bootstrap-select .dropdown-toggle:focus{
+  width: 98% !important;
+}
+
 .fa-lg{
   font-size: 5.25em !important;
 }
