@@ -61,7 +61,7 @@ class view extends config
   {
     $config = new config;
     $con = $config->con();
-    $sql = "SELECT * FROM `tbl_countries`";
+    $sql = "SELECT DISTINCT `countryname`, `ccode` FROM `tbl_countries`";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchAll(PDO::FETCH_OBJ);

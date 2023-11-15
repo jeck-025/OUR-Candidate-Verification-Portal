@@ -198,10 +198,52 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
             </tbody>
           </table>
 
-          <p>For other inquiries, you may send an email to $replyto</p>
-          <p>Please click this <a href='www.ceumnlregistrar.com/caveportal/pdfcertificates.php?tn=$tn'>LINK</a> for the certificate. Thank you!</p>
-          <p><b>This is an auto generated email please do not reply.</b></p>
-          <p>Thank you and stay safe.</p>";
+          <p>Please click this <a href='www.ceumnlregistrar.com/caveportal/pdfcertificates.php?tn=$tn'>LINK</a> for the certificate.</p>
+
+          <p>For additional assistance / inquiries, please email:</p>
+          <ul>
+            <li>For CEU Manila</li>
+              <ul>
+                <li><b>rdmama@ceu.edu.ph</b> - Ms. Rashida Mae Mama</li>
+                  <ul>
+                    <li>All Courses</li>
+                  </ul>
+              </ul> <br>
+          
+            <li>For CEU Malolos</li>
+              <ul>
+                <li><b>kdeleon@ceu.edu.ph</b> - Mr. Kenneth De Leon</li>
+                <ul>
+                  <li>All Courses</li>
+                </ul>
+            </ul> <br>
+
+            <li>For CEU Makati</li>
+              <ul>
+                <li><b>raparada@ceu.edu.ph</b> - Ms. Ruby Parada</li>
+                  <ul>
+                    <li>Doctor of Dental Medicine, BS Medical Technology, BS Pharmacy, Clinical Pharmacy, Doctor of Pharmacy, BS Psychology, Juris Doctor</li>      
+                  </ul> <br>
+
+                <li><b>rdmalate@ceu.edu.ph</b> - Mrs. Rizza Mae Malate-Arce</li>
+                  <ul>
+                    <li>BS Accountancy, BSBA Management / Marketing Management, BSBA International Marketing, BS Legal Management</li>      
+                  </ul> <br>
+
+                <li><b>mnantonio@ceu.edu.ph</b> - Mrs. Ma. Florencia Antonio</li>
+                  <ul>
+                    <li>BS Computer Science, BS Information Technology, BS Int'l Hosp. Mgt. - HRCO / CIRO</li>      
+                  </ul> <br>
+
+                <li><b>nlliwanag@ceu.edu.ph</b> - Mr. Nerwin Liwanag</li>
+                  <ul>
+                    <li>BS Int'l Tourism & Travel Mgt, Graduate School</li>      
+                  </ul> <br>
+              </ul>
+          </ul>
+
+          <p><b>This is an auto generated email please do not reply to this email message.</b></p>
+          <p>Thank you.</p>";
 
 try {
   //Server settings
@@ -246,15 +288,49 @@ function sendOnHoldEmail($lastname, $fullname, $status, $email, $remarks) {
   $body ="<p>Dear $fullname,</p>
   <p>Greetings of peace!</p>
   <p>Your submitted application for Mr/Ms. $lastname has been placed ON-HOLD due to the following reason/s: <br><b>$remarks</b></p>
-  <p>For clarifications, please email:</p>
-  <ul>
-    <li><b>rdmama@ceu.edu.ph</b> for CEU Manila</li>
-    <li><b>raparada@ceu.edu.ph</b> for CEU Makati</li>
-    <li><b>kdeleon@ceu.edu.ph</b> for CEU Malolos</li>
-  </ul>
-  <p>For more information, you may check your verification application through the Centro Escolar University - Office of the Registrar Candidate Verification Portal.</p>
-  <p><b>This is an auto generated email please do not reply.</b></p>
-  <p>Thank you and stay safe.</p>";
+  <p>For additional assistance / inquiries, please email:</p>
+          <ul>
+            <li>For CEU Manila</li>
+              <ul>
+                <li><b>rdmama@ceu.edu.ph</b> - Ms. Rashida Mae Mama</li>
+                  <ul>
+                    <li>All Courses</li>
+                  </ul>
+              </ul> <br>
+          
+            <li>For CEU Malolos</li>
+              <ul>
+                <li><b>kdeleon@ceu.edu.ph</b> - Mr. Kenneth De Leon</li>
+                <ul>
+                  <li>All Courses</li>
+                </ul>
+            </ul> <br>
+
+            <li>For CEU Makati</li>
+              <ul>
+                <li><b>raparada@ceu.edu.ph</b> - Ms. Ruby Parada</li>
+                  <ul>
+                    <li>Doctor of Dental Medicine, BS Medical Technology, BS Pharmacy, Clinical Pharmacy, Doctor of Pharmacy, BS Psychology, Juris Doctor</li>      
+                  </ul> <br>
+
+                <li><b>rdmalate@ceu.edu.ph</b> - Mrs. Rizza Mae Malate-Arce</li>
+                  <ul>
+                    <li>BS Accountancy, BSBA Management / Marketing Management, BSBA International Marketing, BS Legal Management</li>      
+                  </ul> <br>
+
+                <li><b>mnantonio@ceu.edu.ph</b> - Mrs. Ma. Florencia Antonio</li>
+                  <ul>
+                    <li>BS Computer Science, BS Information Technology, BS Int'l Hosp. Mgt. - HRCO / CIRO</li>      
+                  </ul> <br>
+
+                <li><b>nlliwanag@ceu.edu.ph</b> - Mr. Nerwin Liwanag</li>
+                  <ul>
+                    <li>BS Int'l Tourism & Travel Mgt, Graduate School</li>      
+                  </ul> <br>
+              </ul>
+          </ul>
+  <p><b>This is an auto generated email please do not reply to this email message.</b></p>
+  <p>Thank you.</p>";
   try {
     //Server settings
     $view = new mailer();
@@ -296,15 +372,50 @@ function sendDeniedEmail($lastname, $fullname, $status, $email, $remarks) {
   $body ="<p>Dear $fullname,</p>
 <p>Greetings of peace!</p>
 <p>Your submitted application for Mr/Ms. $lastname has been DENIED due to the following reason/s:<br><b>$remarks</b></p>
-<p>For clarifications, please email:</p>
-<ul>
-  <li><b>rdmama@ceu.edu.ph</b> for CEU Manila</li>
-  <li><b>raparada@ceu.edu.ph</b> for CEU Makati</li>
-  <li><b>kdeleon@ceu.edu.ph</b> for CEU Malolos</li>
-</ul>
-<p>For more information, you may check your verification application through the Centro Escolar University - Office of the Registrar Candidate Verification Portal.</p>
-<p><b>This is an auto generated email please do not reply.</b></p>
-<p>Thank you and stay safe.</p>";
+<p>For additional assistance / inquiries, please email:</p>
+          <ul>
+            <li>For CEU Manila</li>
+              <ul>
+                <li><b>rdmama@ceu.edu.ph</b> - Ms. Rashida Mae Mama</li>
+                  <ul>
+                    <li>All Courses</li>
+                  </ul>
+              </ul> <br>
+          
+            <li>For CEU Malolos</li>
+              <ul>
+                <li><b>kdeleon@ceu.edu.ph</b> - Mr. Kenneth De Leon</li>
+                <ul>
+                  <li>All Courses</li>
+                </ul>
+            </ul> <br>
+
+            <li>For CEU Makati</li>
+              <ul>
+                <li><b>raparada@ceu.edu.ph</b> - Ms. Ruby Parada</li>
+                  <ul>
+                    <li>Doctor of Dental Medicine, BS Medical Technology, BS Pharmacy, Clinical Pharmacy, Doctor of Pharmacy, BS Psychology, Juris Doctor</li>      
+                  </ul> <br>
+
+                <li><b>rdmalate@ceu.edu.ph</b> - Mrs. Rizza Mae Malate-Arce</li>
+                  <ul>
+                    <li>BS Accountancy, BSBA Management / Marketing Management, BSBA International Marketing, BS Legal Management</li>      
+                  </ul> <br>
+
+                <li><b>mnantonio@ceu.edu.ph</b> - Mrs. Ma. Florencia Antonio</li>
+                  <ul>
+                    <li>BS Computer Science, BS Information Technology, BS Int'l Hosp. Mgt. - HRCO / CIRO</li>      
+                  </ul> <br>
+
+                <li><b>nlliwanag@ceu.edu.ph</b> - Mr. Nerwin Liwanag</li>
+                  <ul>
+                    <li>BS Int'l Tourism & Travel Mgt, Graduate School</li>      
+                  </ul> <br>
+              </ul>
+          </ul>
+
+<p><b>This is an auto generated email please do not reply to this email message.</b></p>
+<p>Thank you.</p>";
   try {
     //Server settings
     $view = new mailer();
@@ -386,3 +497,4 @@ function sendClientAcc($username, $password, $email) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 }
+?>

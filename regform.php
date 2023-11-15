@@ -55,19 +55,55 @@ $view = new view;
               <a class="back-btn" href="clientdash"><i class="bi bi-arrow-left-circle-fill"></i></a>
               <h3 class="text-center mb-4 title-header">New Application for Candidate Verification</h3>
               <?php
+              // if (!empty($_GET['status'])) {
+              //     CheckSuccess($_GET['status']);
+              //   }
+              // if (!empty($_POST)) {
+              //   if($_POST['captcha'] != $_SESSION['digit']){
+              //   session_destroy();
+              //   header("location:regform.php?status=captchaError");
+              //   die();
+              //   }
+              //   //$attended = $_POST['monthGrad']." ".$_POST['daysGrad'].'\, '.$_POST['yearsGrad'];
+              //   $insert = new insert($_POST['firstName'], $_POST['middleName'], $_POST['lastName'], $_POST['campus'], $_POST['degree'], $_POST['yg'], $_POST['country'], $_FILES['diploma'], $_FILES['consent'], $_FILES['validID'],$_POST['vemail'],$_POST['vcompany'],$_POST['vname'], $_POST['ya'], $_POST['bd']);
+              // }
+              
               if (!empty($_GET['status'])) {
                   CheckSuccess($_GET['status']);
                 }
-              if (!empty($_POST)) {
-                if($_POST['captcha'] != $_SESSION['digit']){
-                session_destroy();
-                header("location:regform.php?status=captchaError");
-                die();
+
+              if(!empty($_POST)){
+                $recaptcha_secret_key = '6LcZHmwoAAAAADZh4bK3HzmFGzLXvTvRs3XiQOsz';
+                $recaptcha_response = $_POST['g-recaptcha-response'];
+
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
+                $data = array(
+                    'secret' => $recaptcha_secret_key,
+                    'response' => $recaptcha_response);
+
+                $options = array(
+                    'http' => array (
+                        'method' => 'POST',
+                        'header' => 'Content-type: application/x-www-form-urlencoded',
+                        'content' => http_build_query($data)));
+
+                $context = stream_context_create($options);
+                $verify = file_get_contents($url, false, $context);
+                $captcha_success = json_decode($verify);
+
+                if($captcha_success->success){
+                  //do nothing, continue script
+                }else{
+                  session_destroy();
+                  header("location:regform.php?status=captchaError");
+                  exit;
                 }
-                //$attended = $_POST['monthGrad']." ".$_POST['daysGrad'].'\, '.$_POST['yearsGrad'];
+
+                  //$attended = $_POST['monthGrad']." ".$_POST['daysGrad'].'\, '.$_POST['yearsGrad'];
                 $insert = new insert($_POST['firstName'], $_POST['middleName'], $_POST['lastName'], $_POST['campus'], $_POST['degree'], $_POST['yg'], $_POST['country'], $_FILES['diploma'], $_FILES['consent'], $_FILES['validID'],$_POST['vemail'],$_POST['vcompany'],$_POST['vname'], $_POST['ya'], $_POST['bd']);
 
               }
+
               ?>
             </div>
           </div>
@@ -171,9 +207,11 @@ $view = new view;
               <label for="floatingInput">Verifier Email address Name</label>
               <small class="text-muted"></b> </small>
             </div>
+          </div>
 
+          <div class="row border-top my-2 d-flex justify-content-center">
             <div class="form-floating col-md-5">
-              <select name="country" id="country" class="selectpicker form-control" data-live-search="true" value="<?php echo Input::get('country'); ?>" title="Select Country" required>
+              <select name="country" id="country" class="selectpicker form-control countrypicker" data-live-search="true" value="<?php echo Input::get('country'); ?>" title="Select Country" required>
                 <?php $view->countries(); ?>
               </select>
               <label for="country"><b>Country (<b>Employer of the Candidate </b></b>)</label>
@@ -183,17 +221,23 @@ $view = new view;
 
 
           <div class="row border-top py-3">
-            <div class="form-group col-md-5 justify-content-center">
-              <h6><b>Please complete the captcha below before submitting.</b></h6>
-              <p><img src="captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
-              <p><input type="text" size="6" maxlength="5" name="captcha" value="">
-              <small>copy the digits from the image into this box</small></p>
-                <label  >&nbsp;</label>
+            <div class="form-group col-md-12">
+              <div class="col-md-12 text-center recaptcha">
+                <h6><b>Please complete the captcha below before submitting.</b></h6>
+                  <!-- <p><img src="captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
+                  <p><input type="text" size="6" maxlength="5" name="captcha" value="">
+                  <small>copy the digits from the image into this box</small></p>
+                    <label  >&nbsp;</label> -->              
+                  <div class="g-recaptcha" data-sitekey="6LcZHmwoAAAAAMud5aRHZVyMKm80GzSqMM6fFoXz"></div>
+              </div>
+            </div>
           </div>
-            <div class="form-group col-md-7 p-5">
+          <div class="row border-top py-3">
+            <div class="form-group col-md-12 p-5 text-center">
               <button type="submit" id="myButton1" class="btn btn-primary">
                 Submit Verification Request
               </button>
+            </div>
           </div>
       </div>
     </form>
@@ -225,7 +269,7 @@ $view = new view;
   <script src="vendor/js/bootstrap-select.min.js"></script>
   <script src="vendor/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- <script src="resource/js/ft.js"></script> -->
 
 
