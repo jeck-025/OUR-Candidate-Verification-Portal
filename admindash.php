@@ -19,7 +19,7 @@ $ovr = new ovReport();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="CEU Candidate Verification Portal" />
     <meta name="author" content="Mariano R.J., Gita J.N., Tuazon M., Valencia E.C." />
-    <meta http-equiv="refresh" content="500; url=login">
+    <meta http-equiv="refresh" content="600; url=login">
     <title>CEU CAVEPortal</title>
     <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-select.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
