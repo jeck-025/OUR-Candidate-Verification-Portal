@@ -55,19 +55,6 @@ $view = new view;
               <a class="back-btn" href="clientdash"><i class="bi bi-arrow-left-circle-fill"></i></a>
               <h3 class="text-center mb-4 title-header">New Application for Candidate Verification</h3>
               <?php
-              // if (!empty($_GET['status'])) {
-              //     CheckSuccess($_GET['status']);
-              //   }
-              // if (!empty($_POST)) {
-              //   if($_POST['captcha'] != $_SESSION['digit']){
-              //   session_destroy();
-              //   header("location:regform.php?status=captchaError");
-              //   die();
-              //   }
-              //   //$attended = $_POST['monthGrad']." ".$_POST['daysGrad'].'\, '.$_POST['yearsGrad'];
-              //   $insert = new insert($_POST['firstName'], $_POST['middleName'], $_POST['lastName'], $_POST['campus'], $_POST['degree'], $_POST['yg'], $_POST['country'], $_FILES['diploma'], $_FILES['consent'], $_FILES['validID'],$_POST['vemail'],$_POST['vcompany'],$_POST['vname'], $_POST['ya'], $_POST['bd']);
-              // }
-              
               if (!empty($_GET['status'])) {
                   CheckSuccess($_GET['status']);
                 }
@@ -98,12 +85,8 @@ $view = new view;
                   header("location:regform.php?status=captchaError");
                   exit;
                 }
-
-                  //$attended = $_POST['monthGrad']." ".$_POST['daysGrad'].'\, '.$_POST['yearsGrad'];
                 $insert = new insert($_POST['firstName'], $_POST['middleName'], $_POST['lastName'], $_POST['campus'], $_POST['degree'], $_POST['yg'], $_POST['country'], $_FILES['diploma'], $_FILES['consent'], $_FILES['validID'],$_POST['vemail'],$_POST['vcompany'],$_POST['vname'], $_POST['ya'], $_POST['bd']);
-
               }
-
               ?>
             </div>
           </div>
@@ -224,10 +207,6 @@ $view = new view;
             <div class="form-group col-md-12">
               <div class="col-md-12 text-center recaptcha">
                 <h6><b>Please complete the captcha below before submitting.</b></h6>
-                  <!-- <p><img src="captcha.php" width="120" height="30" border="1" alt="CAPTCHA"></p>
-                  <p><input type="text" size="6" maxlength="5" name="captcha" value="">
-                  <small>copy the digits from the image into this box</small></p>
-                    <label  >&nbsp;</label> -->              
                   <div class="g-recaptcha" data-sitekey="6LcZHmwoAAAAAMud5aRHZVyMKm80GzSqMM6fFoXz"></div>
               </div>
             </div>

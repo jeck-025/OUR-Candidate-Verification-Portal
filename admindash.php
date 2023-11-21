@@ -65,6 +65,7 @@ $ovr = new ovReport();
                 if($user->data()->username == 'jeck'){
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-person-circle'></i><span> Account Management</span> </a></li>";
+                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' href='override.php'> <i class='bi bi-person-circle'></i><span> Override</span> </a></li>";
                 }
             ?>
 

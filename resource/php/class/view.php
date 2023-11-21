@@ -741,4 +741,17 @@ class view extends config
     $rows = $query->fetchColumn();
     return $rows;
   }
+
+  public function transID()
+  {
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_client_user`";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_OBJ);
+    foreach ($rows as $row) {
+      echo '<option data-tokens=".' . $row->tn . '." value="' . $row->tn . '">' . $row->tn." - ". $row->lastName . ", ". $row->firstName . " " . $row->middleName . '</option>';
+    }
+  }
 }
