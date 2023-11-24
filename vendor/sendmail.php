@@ -112,7 +112,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
         $disp_la = "";
       }      
       if($status == "UG"){
-        $disp_la_ug = "<br> <i>(First Semester, SY$conv_la_sy)</i>";
+        $disp_la_ug = "<br>(First Semester, SY$conv_la_sy)";
       }else{
         $disp_la_ug = "";
       }
@@ -124,7 +124,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
         $disp_la = "";
       } 
       if($status == "UG"){
-        $disp_la_ug = "<br> <i>(Second Semester, SY$conv_la_sy)</i>";
+        $disp_la_ug = "<br>(Second Semester, SY$conv_la_sy)";
       }else{
         $disp_la_ug = "";
       }
@@ -136,7 +136,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
         $disp_la = "";
       } 
       if($status == "UG"){
-        $disp_la_ug = "<br> <i>(Summer Semester, SY$conv_la_sy)</i>";
+        $disp_la_ug = "<br>(Summer Semester, SY$conv_la_sy)";
       }else{
         $disp_la_ug = "";
       }
@@ -185,7 +185,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
               <tr style='background-color: #dddddd;'>
                 <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Last Attendance</th>
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$LastAttDate0</td>
-                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$vfLastAttDate $disp_la_ug</i></td>
+                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$disp_la_ug</i></td>
               </tr>
               <tr>
                 <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Entrance Date</th>
@@ -248,7 +248,6 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
           <p>Thank you.</p>";
 
 echo $body;
-
 die();
 
 try {
