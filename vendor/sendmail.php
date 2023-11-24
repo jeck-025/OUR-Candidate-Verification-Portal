@@ -247,9 +247,6 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
           <p><b>This is an auto generated email please do not reply to this email message.</b></p>
           <p>Thank you.</p>";
 
-echo $body;
-die();
-
 try {
   //Server settings
     $view = new mailer();
@@ -278,7 +275,7 @@ try {
    $mail->Body    = $body;             //content
 
    $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-  //  $mail->send();
+   $mail->send();
    echo "message has been sent";
    echo "here";
 
