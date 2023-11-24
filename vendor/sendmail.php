@@ -112,7 +112,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
         $disp_la = "";
       }      
       if($status == "UG"){
-        $disp_la_ug = "<br>(First Semester, SY$conv_la_sy)";
+        $disp_la_ug = "<br>First Semester, SY$conv_la_sy";
       }else{
         $disp_la_ug = "";
       }
@@ -124,7 +124,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
         $disp_la = "";
       } 
       if($status == "UG"){
-        $disp_la_ug = "<br>(Second Semester, SY$conv_la_sy)";
+        $disp_la_ug = "<br>Second Semester, SY$conv_la_sy";
       }else{
         $disp_la_ug = "";
       }
@@ -136,7 +136,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
         $disp_la = "";
       } 
       if($status == "UG"){
-        $disp_la_ug = "<br>(Summer Semester, SY$conv_la_sy)";
+        $disp_la_ug = "<br>Summer Semester, SY$conv_la_sy";
       }else{
         $disp_la_ug = "";
       }
@@ -183,9 +183,9 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$vfGradDate0 $disp_la</i></td>
               </tr>
               <tr style='background-color: #dddddd;'>
-                <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Last Attendance</th>
-                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$disp_la_ug</td>
-                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'></td>
+                <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Last Attended School Year <br>(for undergraduates)</th>
+                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$LastAttDate0</td>
+                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$vfLastAttDate $disp_la_ug</td>
               </tr>
               <tr>
                 <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Entrance Date</th>
