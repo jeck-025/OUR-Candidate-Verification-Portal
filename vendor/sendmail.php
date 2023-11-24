@@ -184,8 +184,8 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
               </tr>
               <tr style='background-color: #dddddd;'>
                 <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Last Attendance</th>
-                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$LastAttDate0</td>
-                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$disp_la_ug</i></td>
+                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$disp_la_ug</td>
+                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'></td>
               </tr>
               <tr>
                 <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Entrance Date</th>
