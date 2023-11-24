@@ -111,29 +111,31 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
       }else{
         $disp_la = "";
       }      
-      if(!empty($vfdateatt)){
+      if($status == "UG"){
         $disp_la_ug = "<br> <i>(First Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la_ug = "";
       }
+
     }elseif($conv_la_sem == "2"){
       if(!empty($vfdategrad)){
         $disp_la = "<br> <i>(Second Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la = "";
       } 
-      if(!empty($vfdateatt)){
+      if($status == "UG"){
         $disp_la_ug = "<br> <i>(Second Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la_ug = "";
       }
+
     }else{
       if(!empty($vfdategrad)){
         $disp_la = "<br> <i>(Summer Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la = "";
       } 
-      if(!empty($vfdateatt)){
+      if($status == "UG"){
         $disp_la_ug = "<br> <i>(Summer Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la_ug = "";
@@ -181,7 +183,7 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$vfGradDate0 $disp_la</i></td>
               </tr>
               <tr style='background-color: #dddddd;'>
-                <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Date Last Enrolled <i>(For Undergraduates)</i></th>
+                <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Last Attendance</th>
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$LastAttDate0</td>
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$vfLastAttDate $disp_la_ug</i></td>
               </tr>
@@ -245,6 +247,10 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
           <p><b>This is an auto generated email please do not reply to this email message.</b></p>
           <p>Thank you.</p>";
 
+echo $body;
+
+die();
+
 try {
   //Server settings
     $view = new mailer();
@@ -273,7 +279,7 @@ try {
    $mail->Body    = $body;             //content
 
    $mail->SMTPDebug  = SMTP::DEBUG_OFF;
-   $mail->send();
+  //  $mail->send();
    echo "message has been sent";
    echo "here";
 
