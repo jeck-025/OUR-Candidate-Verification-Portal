@@ -218,9 +218,9 @@ $ovr = new ovReport();
                                             $strArray = explode("-", $_GET['date']);
                                             $year = $strArray[0];
                                             $month = $strArray[1];
-                                            $viewtable->viewOnHoldDataNAV($year, $month);
+                                            $viewtable->viewOnHoldData($year, $month);
                                         } else {
-                                            $viewtable->viewAllOnHoldDataNAV();
+                                            $viewtable->viewAllOnHoldData();
                                         }
                                     ?>
 
