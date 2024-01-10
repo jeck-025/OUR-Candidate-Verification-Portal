@@ -754,4 +754,86 @@ class view extends config
       echo '<option data-tokens=".' . $row->tn . '." value="' . $row->tn . '">' . $row->tn." - ". $row->lastName . ", ". $row->firstName . " " . $row->middleName . '</option>';
     }
   }
+
+  // tab display
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  public function deniedCountNAV($year, $month){
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'DECLINED'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function allDeniedCountNAV(){
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+  
+    public function onHoldCountNAV($year, $month){
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'ON-HOLD'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function allOnHoldCountNAV(){
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'ON-HOLD'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function approvedCountNAV($year, $month){
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'VERIFIED'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function allApprovedCountNAV(){
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'VERIFIED'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function pendingCountNAV($year, $month){
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
+
+    public function allPendingCountNAV(){
+    $curMonth = date('Y-m');
+    $config = new config;
+    $con = $this->con();
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchColumn();
+    return $rows;
+  }
 }
