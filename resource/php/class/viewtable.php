@@ -5,161 +5,161 @@ require_once 'config2.php';
 class viewtable extends config{
 
 
-public function viewFirstTable(){
-  $con = $this->con();
-  $sql = "SELECT * FROM `tbl_std` WHERE `status`='PENDING'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='text-center'> Discounts for Review </h3>";
-  echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
-  echo "<thead class='thead-dark'>";
-  echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
-  echo "<th>Full Name</th>";
-  echo "<th class='d-none d-sm-table-cell'>Application Type</th>";
-  echo "<th class='d-none d-sm-table-cell'>Email Address</th>";
-  echo "<th class='d-none d-sm-table-cell'>Status</th>";
-  echo "<th style='font-size: 85%;'>Actions</th>";
-  echo "</thead>";
-  foreach ($result as $data) {
-  echo "<tr>";
-  echo "<td class='d-none d-sm-table-cell' >$data[stdnumber]</td>";
-  echo "<td style='font-size: 85%;'>$data[fullname]</td>";
-  echo "<td class='d-none d-sm-table-cell' style='font-size: 85%;'>".$data['application_type']."</td>";
-  echo "<td class='d-none d-sm-table-cell'>$data[email]</td>";
-  echo "<td class='d-none d-sm-table-cell'>$data[status]</td>";
+// public function viewFirstTable(){
+//   $con = $this->con();
+//   $sql = "SELECT * FROM `tbl_std` WHERE `status`='PENDING'";
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+//   echo "<h3 class='text-center'> Discounts for Review </h3>";
+//   echo "<div class='table-responsive'>";
+//   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
+//   echo "<thead class='thead-dark'>";
+//   echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
+//   echo "<th>Full Name</th>";
+//   echo "<th class='d-none d-sm-table-cell'>Application Type</th>";
+//   echo "<th class='d-none d-sm-table-cell'>Email Address</th>";
+//   echo "<th class='d-none d-sm-table-cell'>Status</th>";
+//   echo "<th style='font-size: 85%;'>Actions</th>";
+//   echo "</thead>";
+//   foreach ($result as $data) {
+//   echo "<tr>";
+//   echo "<td class='d-none d-sm-table-cell' >$data[stdnumber]</td>";
+//   echo "<td style='font-size: 85%;'>$data[fullname]</td>";
+//   echo "<td class='d-none d-sm-table-cell' style='font-size: 85%;'>".$data['application_type']."</td>";
+//   echo "<td class='d-none d-sm-table-cell'>$data[email]</td>";
+//   echo "<td class='d-none d-sm-table-cell'>$data[status]</td>";
 
-  echo "<td>
-            <a href='editES.php?tn=' class='btn btn-success btn-sm col-12 mt-1'><i class='fa fa-edit'></i>Approve Discounts</a>
-            <a href='admesreject.php?tn=' class='btn btn-danger btn-sm col-lg-12 mt-1'><i class='fa fa-trash'></i>Reject Discount</a>
-        </td>";
-  echo "</tr>";
-  }
-  echo "</table>";
+//   echo "<td>
+//             <a href='editES.php?tn=' class='btn btn-success btn-sm col-12 mt-1'><i class='fa fa-edit'></i>Approve Discounts</a>
+//             <a href='admesreject.php?tn=' class='btn btn-danger btn-sm col-lg-12 mt-1'><i class='fa fa-trash'></i>Reject Discount</a>
+//         </td>";
+//   echo "</tr>";
+//   }
+//   echo "</table>";
 
-}
+// }
 
-public function viewApproveTable(){
-  $con = $this->con();
-  $sql = "SELECT * FROM `tbl_std` WHERE `status`='APPROVE'";
-  $data= $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchAll(PDO::FETCH_ASSOC);
-  echo "<h3 class='text-center'> Discounts for Review </h3>";
-  echo "<div class='table-responsive'>";
-  echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
-  echo "<thead class='thead-dark'>";
-  echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
-  echo "<th>Full Name</th>";
-  echo "<th class='d-none d-sm-table-cell'>Application Type</th>";
-  echo "<th class='d-none d-sm-table-cell'>Email Address</th>";
-  echo "<th class='d-none d-sm-table-cell'>Status</th>";
-  echo "</thead>";
-  foreach ($result as $data) {
-  echo "<tr>";
-  echo "<td class='d-none d-sm-table-cell' >$data[stdnumber]</td>";
-  echo "<td style='font-size: 85%;'>$data[fullname]</td>";
-  echo "<td class='d-none d-sm-table-cell' style='font-size: 85%;'>".$data['application_type']."</td>";
-  echo "<td class='d-none d-sm-table-cell'>$data[email]</td>";
-  echo "<td class='d-none d-sm-table-cell'>$data[status]</td>";
+// public function viewApproveTable(){
+//   $con = $this->con();
+//   $sql = "SELECT * FROM `tbl_std` WHERE `status`='APPROVE'";
+//   $data= $con->prepare($sql);
+//   $data->execute();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
+//   echo "<h3 class='text-center'> Discounts for Review </h3>";
+//   echo "<div class='table-responsive'>";
+//   echo "<table id='scholartable' class='table table-bordered table-sm table-bordered table-hover shadow display' width='100%'>";
+//   echo "<thead class='thead-dark'>";
+//   echo "<th class='d-none d-sm-table-cell'>Student Number</th>";
+//   echo "<th>Full Name</th>";
+//   echo "<th class='d-none d-sm-table-cell'>Application Type</th>";
+//   echo "<th class='d-none d-sm-table-cell'>Email Address</th>";
+//   echo "<th class='d-none d-sm-table-cell'>Status</th>";
+//   echo "</thead>";
+//   foreach ($result as $data) {
+//   echo "<tr>";
+//   echo "<td class='d-none d-sm-table-cell' >$data[stdnumber]</td>";
+//   echo "<td style='font-size: 85%;'>$data[fullname]</td>";
+//   echo "<td class='d-none d-sm-table-cell' style='font-size: 85%;'>".$data['application_type']."</td>";
+//   echo "<td class='d-none d-sm-table-cell'>$data[email]</td>";
+//   echo "<td class='d-none d-sm-table-cell'>$data[status]</td>";
 
 
-  echo "</tr>";
-  }
-  echo "</table>";
+//   echo "</tr>";
+//   }
+//   echo "</table>";
 
-}
+// }
 
 //for clientdash
-public function viewData_clients(){
-  $user = new user();
-  $agentID = $user->data()->id;
-  $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user` WHERE `agentID` = $agentID";
-  $data = $con->prepare($sql);
-  $data->execute();
-  $result = $data->fetchAll(PDO::FETCH_ASSOC);
+// public function viewData_clients(){
+//   $user = new user();
+//   $agentID = $user->data()->id;
+//   $con = $this->con();
+//   $sql = "SELECT * FROM `tbl_client_user` WHERE `agentID` = $agentID";
+//   $data = $con->prepare($sql);
+//   $data->execute();
+//   $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
 
-  echo "<h3 class='mb-4 mt-5'></h3>";
-  echo "<div class='table-responsive'>";
-  echo "<table id='candtable' class='table table-borderless  table-hover shadow' width='100%'>";
-  echo "<thead>";
-  echo "<tr>";
-  echo "<th scope='col'>Verifier</th>";
-  echo "<th scope='col'>Student FullName</th>";
-  echo "<th scope='col'>Degree</th>";
-  echo "<th scope='col'>Campus</th>";
-  echo "<th scope='col'>Date Added</th>";
-  echo "<th scope='col'>Date Completed</th>";
-  echo "<th scope='col'>Status</th>";
-  echo "<th scope='col'>Remarks</th>";
-  echo "<th scope='col'>Actions</th>";
-  echo "</tr>";
-  echo "</thead>";
-  foreach ($result as $data) {
-    echo "<tr>";
-    echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
-    echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
-    echo "<td>$data[degree]</td>";
-    echo "<td>$data[campus]</td>";
-    echo "<td>$data[date_added]</td>";
-    echo "<td>";
-    if($data['date_completed'] == "") {
-      echo "<p class='action-title1'>No date available</p>";
-    } else {
-      echo "$data[date_completed]";
-    }
-     echo "</td>";
-    echo "<td>";
-    if($data['status'] == 'PENDING') {
-      echo  "<span class='badge badge-primary'>$data[status]</span>";
-    }else if($data['status'] == 'VERIFIED') {
-      echo  "<span class='badge badge-success'>$data[status]</span>";
-    }else if($data['status'] == 'ON-HOLD') {
-      echo  "<span class='badge badge-warning'>$data[status]</span> ";
-    }else if($data['status'] == 'DECLINED') {
-      echo  "<span class='badge badge-danger'>$data[status]</span> ";
-    }
-    echo "<td>";
-    if($data['status'] === 'PENDING') {
-      echo "<p class='action-title1'>No remarks available</p>";
-    } else if($data['status'] === 'VERIFIED') {
-      echo "<p class='action-title1'>Verified</p>";
-    } else {
-      echo "$data[remarks]";
-    }
-    echo "</td>";
+//   echo "<h3 class='mb-4 mt-5'></h3>";
+//   echo "<div class='table-responsive'>";
+//   echo "<table id='candtable' class='table table-borderless  table-hover shadow' width='100%'>";
+//   echo "<thead>";
+//   echo "<tr>";
+//   echo "<th scope='col'>Verifier</th>";
+//   echo "<th scope='col'>Student FullName</th>";
+//   echo "<th scope='col'>Degree</th>";
+//   echo "<th scope='col'>Campus</th>";
+//   echo "<th scope='col'>Date Added</th>";
+//   echo "<th scope='col'>Date Completed</th>";
+//   echo "<th scope='col'>Status</th>";
+//   echo "<th scope='col'>Remarks</th>";
+//   echo "<th scope='col'>Actions</th>";
+//   echo "</tr>";
+//   echo "</thead>";
+//   foreach ($result as $data) {
+//     echo "<tr>";
+//     echo "<td>$data[company_name]"."-"."$data[employee]"."-"."$data[vemail]</td>";
+//     echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
+//     echo "<td>$data[degree]</td>";
+//     echo "<td>$data[campus]</td>";
+//     echo "<td>$data[date_added]</td>";
+//     echo "<td>";
+//     if($data['date_completed'] == "") {
+//       echo "<p class='action-title1'>No date available</p>";
+//     } else {
+//       echo "$data[date_completed]";
+//     }
+//      echo "</td>";
+//     echo "<td>";
+//     if($data['status'] == 'PENDING') {
+//       echo  "<span class='badge badge-primary'>$data[status]</span>";
+//     }else if($data['status'] == 'VERIFIED') {
+//       echo  "<span class='badge badge-success'>$data[status]</span>";
+//     }else if($data['status'] == 'ON-HOLD') {
+//       echo  "<span class='badge badge-warning'>$data[status]</span> ";
+//     }else if($data['status'] == 'DECLINED') {
+//       echo  "<span class='badge badge-danger'>$data[status]</span> ";
+//     }
+//     echo "<td>";
+//     if($data['status'] === 'PENDING') {
+//       echo "<p class='action-title1'>No remarks available</p>";
+//     } else if($data['status'] === 'VERIFIED') {
+//       echo "<p class='action-title1'>Verified</p>";
+//     } else {
+//       echo "$data[remarks]";
+//     }
+//     echo "</td>";
 
-    echo "<td>";
-    if($data['status'] === 'VERIFIED'){
-      echo "<a class='btn btn-sm' href='www.ceumnlregistrar.com/caveportal/pdfcertificates.php?id=$data[id]' download>Download Certificate
-      <div class='icon'>
-      <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-download' viewBox='0 0 16 16'>
-      <path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z'/>
-      <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z'/>
-    </svg>
-          </div>
-      </a></td>";
-    }else if($data['status'] == "ON-HOLD"){
-      echo "<li class='actions'>
-      <a class='btn btn-sm' href='updateDocuments.php?updatedoc=$data[id]'>Resubmit Documents
-        <div class='icon'>
-        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-fill' viewBox='0 0 16 16'>
-<path d='M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z'/>
-</svg>
-        </div>
-      </a>
-    </li>";
-    }
-    else {
-      echo "<p class='action-title justify-content-center align-items-center text-align-center'>No action available</p>";
-    }
-    echo "</tr>";
-  }
-  echo "</table>";
-}
+//     echo "<td>";
+//     if($data['status'] === 'VERIFIED'){
+//       echo "<a class='btn btn-sm' href='www.ceumnlregistrar.com/caveportal/pdfcertificates.php?id=$data[id]' download>Download Certificate
+//       <div class='icon'>
+//       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-download' viewBox='0 0 16 16'>
+//       <path d='M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z'/>
+//       <path d='M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z'/>
+//     </svg>
+//           </div>
+//       </a></td>";
+//     }else if($data['status'] == "ON-HOLD"){
+//       echo "<li class='actions'>
+//       <a class='btn btn-sm' href='updateDocuments.php?updatedoc=$data[id]'>Resubmit Documents
+//         <div class='icon'>
+//         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-fill' viewBox='0 0 16 16'>
+// <path d='M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z'/>
+// </svg>
+//         </div>
+//       </a>
+//     </li>";
+//     }
+//     else {
+//       echo "<p class='action-title justify-content-center align-items-center text-align-center'>No action available</p>";
+//     }
+//     echo "</tr>";
+//   }
+//   echo "</table>";
+// }
 
 
 public function viewApprovedData($year, $month){
@@ -407,7 +407,7 @@ public function viewOnHoldData($year, $month){
         </div>
       </a>
     </li>
-      <li class='actions'><a class='btn btn-sm btn-sm-1 disabled'href='remarks1.php?hold=$data[id]'></a>Hold
+      <li class='actions'><a class='btn btn-sm btn-sm-1 disabled'href='remarks1.php?hold=$data[id]'>Hold
         <div class='icon'>
         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
         <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/>
