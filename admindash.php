@@ -378,9 +378,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->pendingCount($year, $month);
+                                                echo $view->pendingCountNAV($year, $month);
                                             }else{
-                                                echo $view->allPendingCount();
+                                                echo $view->allPendingCountNAV();
                                             }
                                             echo "</span></a>";
                                         ?>
@@ -398,9 +398,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->approvedCount($year, $month);
+                                                echo $view->approvedCountNAV($year, $month);
                                             }else{
-                                                echo $view->allApprovedCount();
+                                                echo $view->allApprovedCountNAV();
                                             }
                                             echo "</span></a>";
                                             ?> 
@@ -418,9 +418,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->onHoldCount($year, $month);
+                                                echo $view->onHoldCountNAV($year, $month);
                                             } else {
-                                                echo $view->allOnHoldCount();
+                                                echo $view->allOnHoldCountNAV();
                                             }
                                             echo "</span></a>";
                                             ?>
@@ -438,9 +438,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->DeniedCount($year, $month);
+                                                echo $view->DeniedCountNAV($year, $month);
                                             } else {
-                                                echo $view->allDeniedCount();
+                                                echo $view->allDeniedCountNAV();
                                             }
                                             echo "</span></a>";
                                         ?>
