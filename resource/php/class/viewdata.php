@@ -1,5 +1,4 @@
 <?php
-//   require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
 require_once 'config2.php';
 
 class viewdata extends config{
@@ -52,20 +51,35 @@ public function viewInfo(){
             $buttonlockV = "disabled";
             $buttonlockH = "disabled";
             $buttonlockD = "disabled";
+            $pbClass = "progress-bar bg-danger";
+            $pbValue = "100";
         }
         elseif($status == "ON-HOLD"){
             $statColor = "badge-warning";
             $buttonlock = "";
             $buttonvalueV = "Verify";
-            $buttonlockV = "";
             $buttonlockH = "disabled";
-            $buttonlockD = "";
+            $pbClass = "progress-bar bg-warning";
+            $pbValue = "100";
+            if(!empty($checker)){
+                  $buttonlockV = "";
+                  $buttonlockD = "";
+            }else{
+                  $buttonlockV = "disabled";
+                  $buttonlockD = "disabled";
+            }
         }
         elseif($status == "VERIFIED"){
             $statColor = "badge-success";
             $buttonlock = "disabled";
             $buttonvalueV = "Resend Email";
-            $buttonlockV = "";
+            $pbClass = "progress-bar bg-success";
+            $pbValue = "100";
+            if(!empty($checker)){
+                  $buttonlockV = "";
+            }else{
+                  $buttonlockV = "disabled";
+            }
             $buttonlockH = "disabled";
             $buttonlockD = "disabled";
         }
@@ -73,9 +87,30 @@ public function viewInfo(){
             $statColor = "badge-primary";
             $buttonlock = "";
             $buttonvalueV = "Verify";
-            $buttonlockV = "";
-            $buttonlockH = "";
-            $buttonlockD = "";
+            $pbClass = "progress-bar progress-bar-striped progress-bar-animated bg-info";
+            
+            if(!empty($checker)){
+                  $pbValue = "75";
+                  // $pbClass = "progress-bar progress-bar-striped progress-bar-animated bg-primary";
+            }
+            elseif(!empty($educ_status)){
+                  $pbValue = "50";
+                  // $pbClass = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
+            }
+            else{
+                  $pbValue = "25";
+                  // $pbClass = "progress-bar progress-bar-striped progress-bar-animated bg-info";
+            }
+            
+            if(!empty($checker)){
+                  $buttonlockV = "";
+                  $buttonlockH = "";
+                  $buttonlockD = "";
+            }else{
+                  $buttonlockV = "disabled";
+                  $buttonlockH = "disabled";
+                  $buttonlockD = "disabled";
+            }
         }
 
         if($educ_status == "UG"){
@@ -98,8 +133,6 @@ public function viewInfo(){
         }
 
 
-  // echo "<h3 class='mb-4 mt-5'>PENDING APPLICATIONS</h3>";
-
   echo "<div class='table-responsive'>";
   echo "<table id='main-info' class='infosub table'>";
       echo "<tr>";
@@ -117,20 +150,8 @@ public function viewInfo(){
                               echo "<td><b>Number:</b> $tn <br>
                                         <b>Date Added:</b> $added <br>
                                         <b>Date Completed:</b> $completed <br>
-                                        <b>Remarks:</b> $remarks <br><br>
-                                        <b>Status:</b> <span class='badge $statColor'> $status </span>";
-                                        
-                                          if(!empty($checker)){
-                                                echo "<span class='badge badge-success'> CHECKED </span>";
-                                          }
-                                          elseif(!empty($educ_status)){
-                                                echo "<span class='badge badge-warning'> FOR COUNTER-CHECK </span>";
-                                          }
-                                          else{
-                                                echo "<span class='badge badge-info'> FOR RECORDS CHECK </span>";
-                                          }
-                              
-                              echo  "<br></td>";
+                                        <b>Remarks:</b> $remarks <br><br>";
+                              echo  "</td>";
 
                               echo "<td><b>Name:</b> $VFfullname <br>
                                         <b>Company:</b> $company <br>
@@ -150,7 +171,8 @@ public function viewInfo(){
                                     }else{ 
                                           //ignore 
                                     }
-                                    echo" <li class='actions'>     
+                                    echo" <li class='actions'>
+                                          <span class='d-inline-block' tabindex='0' data-toggle='tooltip' title='Checker name required'>
                                           <a class='btn btn-sm $buttonlockV' href='adminfunctions.php?approved=$id'>$buttonvalueV
                                                 <div class='icon'>
                                                       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2' viewBox='0 0 16 16'>
@@ -158,9 +180,11 @@ public function viewInfo(){
                                                       </svg>
                                                 </div>
                                           </a>
+                                          </span>
 
                                     </li>
                                     <li class='actions'>
+                                          <span class='d-inline-block' tabindex='0' data-toggle='tooltip' title='Checker name required'>
                                           <a class='btn btn-sm btn-sm-1 $buttonlockH'href='remarks1.php?hold=$id'>Hold
                                                 <div class='icon'>
                                                       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
@@ -169,8 +193,10 @@ public function viewInfo(){
                                                       </svg>
                                                 </div>
                                           </a>
+                                          </span>
                                     </li>
                                     <li class='actions'>
+                                          <span class='d-inline-block' tabindex='0' data-toggle='tooltip' title='Checker name required'>
                                           <a class='btn btn-sm $buttonlockD'href='remarks.php?denied=$id'>Deny
                                                 <div class='icon'>
                                                       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
@@ -178,6 +204,7 @@ public function viewInfo(){
                                                       </svg>
                                                 </div>
                                           </a>
+                                          </span>
                                     </li>                             
                                     </td>";
                         echo "</tr>";
@@ -185,6 +212,32 @@ public function viewInfo(){
             echo "</table>";
             echo "</td>";
       echo "</tr>";
+
+      echo "<tr><td>";
+      echo "<b>Verification Status:</b>
+            <div class='progress m-3' style='height: 25px;'>
+                  <div class='$pbClass' role='progressbar' aria-valuenow='$pbValue%' aria-valuemin='0' aria-valuemax='100' style='width: $pbValue%'> $status - ";
+
+                        if(!empty($checker)){
+                              echo "CHECKED";
+                        }
+                        elseif(!empty($educ_status)){
+                              echo "FOR COUNTER-CHECK";
+                        }
+                        else{
+                              echo "FOR RECORDS CHECK";
+                        }
+                  // if(!empty($checker)){
+                  //       echo "<span class='badge badge-success'> CHECKED </span>";
+                  // }
+                  // elseif(!empty($educ_status)){
+                  //       echo "<span class='badge badge-warning'> FOR COUNTER-CHECK </span>";
+                  // }
+                  // else{
+                  //       echo "<span class='badge badge-info'> FOR RECORDS CHECK </span>";
+                  // }
+      echo "</div></div></td></tr>";
+
       echo "<tr><td><h2 class='text-start mb-1'>Student / Alumni Info</h2></td></tr>";
       echo "<tr>";
             echo "<td>";
@@ -437,6 +490,9 @@ public function viewInfo(){
             echo "</table>";
             echo "</td>";
       echo "</tr>";
+
+      if(date("Y",strtotime($added)) == date("Y")){
+
       echo "<tr><td><h2 class='text-start mb-1'>Submitted Documents</h2></td></tr>";
             echo "<tr>";
             echo "<td>";
@@ -467,123 +523,12 @@ public function viewInfo(){
             echo "</table>";
             echo "</td>";
             echo "</tr>";
+      }
 
 
 
   echo "</table>";
-
-  
-
-
-//   echo "<div class='table-responsive'>";
-//   echo "<table id='infotable' class='table table-borderless  table-hover shadow' width='100%'>";
-//   echo "<thead>
-//           <tr>
-//           <th scope='col'></th>
-//           <th scope='col'>Submitted Info by Verifier</th>
-//           <th scope='col'>Verified Info from Records</th>
-
-
-//           </tr>
-//   </thead><tbody>";
-//   // foreach ($result as $data) {
-//       echo "<tr>";
-//       echo "<td>Verifier: ";
-//       echo "$data[company_name]".":<br>"."$data[employee]"."-"."$data[vemail]</td>";
-//       echo "<td>$data[tn]</td>";
-//       echo "<td>$data[firstName]"." "."$data[middleName]"." "."$data[lastName]</td>";
-//       echo "<td>$data[degree] <br><br> Verified Degree: <li class='actions2'>
-//               <button class='btn btn-sm verifyD' id='btn' type='button' data-toggle='modal' data-id='$data[id]' data-target='#verify-degree'>$data[vfdegree]
-//                 <div class='icon'>
-//                 <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-fill' viewBox='0 0 16 16'>
-//         <path d='M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z'/>
-//       </svg>
-//                 </div>
-//               </button>
-//             </li> <br> </td>";
-
-
-//       echo "<td>$data[campus] <br><br> Verified Campus:
-//       <li class='actions'>
-//         <button class='btn btn-sm changeC' id='btn' type='button' data-toggle='modal' data-id='$data[id]' data-target='#edit-campus'>$data[vfcampus]
-//           <div class='icon'>
-//           <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil-fill' viewBox='0 0 16 16'>
-//   <path d='M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z'/>
-// </svg>
-//           </div>
-//         </button>
-//       </li>
-//    </td>";
-//       echo "<td>$data[date_added]</td>";
-//       echo "<td><a href='$data[consentForm]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[consentForm]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
-//       echo "<td><a href='$data[diploma]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[diploma]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
-//       echo "<td><a href='$data[validID]' target='_blank'><i class='bi bi-eye-fill icons'title='View PDF'></i></a><br><a href='$data[validID]' download><i class='bi bi-arrow-down-circle-fill icons'title='Download PDF'></i></a></td>";
-//       echo "<td><span class='badge badge-primary'>$data[status]</span></td>";
-//       echo "<td>
-
-//       <li class='actions'>     
-//       <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'>Verify
-//         <div class='icon'>
-//         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2' viewBox='0 0 16 16'>
-//         <path d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/>
-//       </svg>
-//         </div>
-//       </a>
-//     </li>
-//       <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>On Hold
-//         <div class='icon'>
-//         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
-//         <path d='M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z'/>
-//         <path d='M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z'/>
-//       </svg>
-//         </div>
-//       </a></li>
-
-//       <li class='actions'><a class='btn btn-sm'href='remarks.php?denied=$data[id]'>Denied
-//       <div class='icon'>
-//       <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
-//       <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/>
-//     </svg>
-//           </div>
-//       </a></li>
-
-//       </td>";
-//       echo "</tr>";
-//   // }
-//   echo "</tbody></table>";
-
-// echo "
-// <div class='modal fade' id='approve-$id' aria-labelledby='exampleModalLabel10' aria-hidden='true' data-keyboard='true'>
-//   <div class='modal-dialog modal-md'>
-//       <div class='modal-content'>
-//           <div class='modal-header'>
-//               <h5 class='modal-title' id='exampleModalLabel10'>Approve</h5>
-//               <button type='button' class='btn-close' data-dismiss='modal' aria-label='Close'></button>
-//           </div>
-
-//           <div class='modal-body'>
-                  
-//                         Confirm?
-//            </div>
-
-//            <div class='modal-footer mt-3'>
-//             <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancel</button>  
-//             <a class='btn btn-secondary' id='update-btn' href='adminfunctions.php?approved=$id'>Delete</a>
-//             </div>
-          
-            
-//       </div>
-//   </div>
-// </div>";
-
-  
-
 }
-
-
-
-
-
 }
 
 ?>

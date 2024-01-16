@@ -111,30 +111,32 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
       }else{
         $disp_la = "";
       }      
-      if(!empty($vfdateatt)){
-        $disp_la_ug = "<br> <i>(First Semester, SY$conv_la_sy)</i>";
+      if($status == "UG"){
+        $disp_la_ug = "<br>First Semester, SY$conv_la_sy";
       }else{
         $disp_la_ug = "";
       }
+
     }elseif($conv_la_sem == "2"){
       if(!empty($vfdategrad)){
         $disp_la = "<br> <i>(Second Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la = "";
       } 
-      if(!empty($vfdateatt)){
-        $disp_la_ug = "<br> <i>(Second Semester, SY$conv_la_sy)</i>";
+      if($status == "UG"){
+        $disp_la_ug = "<br>Second Semester, SY$conv_la_sy";
       }else{
         $disp_la_ug = "";
       }
+
     }else{
       if(!empty($vfdategrad)){
         $disp_la = "<br> <i>(Summer Semester, SY$conv_la_sy)</i>";
       }else{
         $disp_la = "";
       } 
-      if(!empty($vfdateatt)){
-        $disp_la_ug = "<br> <i>(Summer Semester, SY$conv_la_sy)</i>";
+      if($status == "UG"){
+        $disp_la_ug = "<br>Summer Semester, SY$conv_la_sy";
       }else{
         $disp_la_ug = "";
       }
@@ -181,9 +183,9 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$vfGradDate0 $disp_la</i></td>
               </tr>
               <tr style='background-color: #dddddd;'>
-                <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Date Last Enrolled <i>(For Undergraduates)</i></th>
+                <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Last Attended School Year <br>(for undergraduates)</th>
                 <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$LastAttDate0</td>
-                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'><i>$vfLastAttDate $disp_la_ug</i></td>
+                <td style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>$vfLastAttDate $disp_la_ug</td>
               </tr>
               <tr>
                 <th style='border: 1px solid #dddddd; text-align: left; padding: 8px;'>Entrance Date</th>

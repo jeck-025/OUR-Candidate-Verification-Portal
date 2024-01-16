@@ -51,6 +51,7 @@ $date = date('m/d/Y h:i:s a', time());
     <aside id="sidebar" class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+            <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
             <li class="nav-heading">Options</li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>

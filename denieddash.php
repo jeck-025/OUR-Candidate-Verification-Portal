@@ -17,7 +17,7 @@ $ovr = new ovReport();
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
    <meta name="description" content="CEU Candidate Verification Portal" />
    <meta name="author" content="Mariano R.J., Gita J.N., Tuazon M., Valencia E.C." />
-   <meta http-equiv="refresh" content="300; url=login">
+   <meta http-equiv="refresh" content="1200; url=login">
    <title>CEU CAVEPortal</title>
    <link rel="icon" type="image/x-icon" href="assets/logo_icon.ico" />
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -51,6 +51,7 @@ $ovr = new ovReport();
    <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
          <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My Dashboard</span> </a></li>
+         <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
          <li class="nav-heading">Options</li>
          <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i> <span>Reports</span> </a></li>
          <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
@@ -144,9 +145,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->pendingCount($year, $month);
+                                                echo $view->pendingCountNAV($year, $month);
                                             }else{
-                                                echo $view->allPendingCount();
+                                                echo $view->allPendingCountNAV();
                                             }
                                             echo "</span></a>";
                                         ?>
@@ -164,9 +165,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->approvedCount($year, $month);
+                                                echo $view->approvedCountNAV($year, $month);
                                             }else{
-                                                echo $view->allApprovedCount();
+                                                echo $view->allApprovedCountNAV();
                                             }
                                             echo "</span></a>";
                                             ?> 
@@ -184,9 +185,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->onHoldCount($year, $month);
+                                                echo $view->onHoldCountNAV($year, $month);
                                             } else {
-                                                echo $view->allOnHoldCount();
+                                                echo $view->allOnHoldCountNAV();
                                             }
                                             echo "</span></a>";
                                             ?>
@@ -204,9 +205,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->DeniedCount($year, $month);
+                                                echo $view->deniedCountNAV($year, $month);
                                             } else {
-                                                echo $view->allDeniedCount();
+                                                echo $view->allDeniedCountNAV();
                                             }
                                             echo "</span></a>";
                                         ?>
@@ -219,9 +220,15 @@ $ovr = new ovReport();
                                        $strArray = explode("-", $_GET['date']);
                                        $year = $strArray[0];
                                        $month = $strArray[1];
-                                       $viewtable->viewDeniedData($year, $month);
+                                        if($year == date("Y")){
+                                            $viewtype = "current";
+                                        }else{
+                                            $viewtype = "legacy";
+                                        }
+                                       $viewtable->viewDeniedData($year, $month, $viewtype);
                                     }else{
-                                       $viewtable->viewAllDeniedData();
+                                       $viewtype = "current";
+                                       $viewtable->viewAllDeniedData($viewtype);
                                     }
                                  ?>
 

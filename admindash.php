@@ -19,7 +19,7 @@ $ovr = new ovReport();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="CEU Candidate Verification Portal" />
     <meta name="author" content="Mariano R.J., Gita J.N., Tuazon M., Valencia E.C." />
-    <meta http-equiv="refresh" content="600; url=login">
+    <meta http-equiv="refresh" content="1200; url=login">
     <title>CEU CAVEPortal</title>
     <link rel="stylesheet" type="text/css" href="vendor/css/bootstrap-select.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -38,6 +38,18 @@ $ovr = new ovReport();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type='text/javascript'>
+    
+    function message(){
+        swal.fire({
+            icon: 'info',
+            text: 'Starting this January, all verifications for the previous year, will be found under "All Previous Verifications", located at the left sidebar. Thank you.',
+            showConfirmButton: true,
+            })
+    }
+    setTimeout(message,2500);
+    
+</script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -55,6 +67,7 @@ $ovr = new ovReport();
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My
                         Dashboard</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
             <li class="nav-heading">Options</li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
@@ -63,8 +76,9 @@ $ovr = new ovReport();
         <!-- ADVANCED OPTIONS ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <?php
                 if($user->data()->username == 'jeck'){
+                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' href='override.php'> <i class='bi bi-pencil-fill'></i><span> Override Data</span> </a></li>";
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
-                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-person-circle'></i><span> Account Management</span> </a></li>";
+                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-person-circle'></i><span> Add User Account</span> </a></li>";
                 }
             ?>
 
@@ -255,6 +269,11 @@ $ovr = new ovReport();
             </div>
         <!-- ADVANCED OPTIONS END ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
+            <li class='nav-item'> <a class='nav-link collapsed' href='changepassm.php'><i class='bi bi-key-fill'></i><span> Change Password </span> </a></li>
+                <?php 
+                    // changeP();
+                    // include 'changepassm.php'; 
+                ?>
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i>
                     <span>Log out</span> </a></li>
         </ul>
@@ -273,10 +292,22 @@ $ovr = new ovReport();
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div> -->
 
-                <script> 
+                <!-- <script> 
                     alert('Mailer Configuration Updated');
-                    location.replace('admindash.php'); 
+                    location.replace('admindash.php');
+                </script> -->
+
+                <script type='text/javascript'>
+                    function msg(){
+                    swal.fire({
+                        icon: 'success',
+                        text: 'Mailer Configuration Saved',
+                        showConfirmButton: true,
+                        })
+                    }
+                    setTimeout(msg,1500);
                 </script>
+
 
         <?php }
             if(!empty($_POST['email'])){
@@ -302,8 +333,6 @@ $ovr = new ovReport();
 
         <!-- COLLAPSE START---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div class="collapse <?php if(isset($_GET['date'])){echo "show";} ?>" id="collapseWidthExample">
-
-
         <section class="reports mb-3">
             <div class="container">
                 <div class="row">
@@ -327,30 +356,28 @@ $ovr = new ovReport();
                                     $ovr->totalHoldVF();
                                     $ovr->totalDeniedVF();
                                     $ovr->totalVerifiedVF();
+                                    echo "<span class='count'><small><i>*data for the current year (".date('Y').") shown</i></small></span>";
                                 ?>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-body report">
-                                    <form action="" method="GET">
-                                        <div class="text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body report">
+                                <form action="" method="GET">
+                                    <div class="text-center">
                                         <h5 class="report-title main-part">View Other Monthly Report</h5>
                                         <input type="month" class="search datepicker mb-3" name="date" id="search" value="<?php  if(!empty($_GET['date'])){echo $_GET['date']; } ?>">
                                         <input type="submit" class="date_btn btn" name="month_btn" id="month_btn" value="Filter">
                                         <a class="btn btn-info date_btn" href="admindash">Clear</a>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-
-
+                </div>
             </div>
         </section>
         </div>
@@ -377,9 +404,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->pendingCount($year, $month);
+                                                echo $view->pendingCountNAV($year, $month);
                                             }else{
-                                                echo $view->allPendingCount();
+                                                echo $view->allPendingCountNAV();
                                             }
                                             echo "</span></a>";
                                         ?>
@@ -397,9 +424,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->approvedCount($year, $month);
+                                                echo $view->approvedCountNAV($year, $month);
                                             }else{
-                                                echo $view->allApprovedCount();
+                                                echo $view->allApprovedCountNAV();
                                             }
                                             echo "</span></a>";
                                             ?> 
@@ -417,9 +444,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->onHoldCount($year, $month);
+                                                echo $view->onHoldCountNAV($year, $month);
                                             } else {
-                                                echo $view->allOnHoldCount();
+                                                echo $view->allOnHoldCountNAV();
                                             }
                                             echo "</span></a>";
                                             ?>
@@ -437,9 +464,9 @@ $ovr = new ovReport();
                                                 $strArray = explode("-", $_GET['date']);
                                                 $year = $strArray[0];
                                                 $month = $strArray[1];
-                                                echo $view->DeniedCount($year, $month);
+                                                echo $view->deniedCountNAV($year, $month);
                                             } else {
-                                                echo $view->allDeniedCount();
+                                                echo $view->allDeniedCountNAV();
                                             }
                                             echo "</span></a>";
                                         ?>
@@ -452,9 +479,15 @@ $ovr = new ovReport();
                                             $strArray = explode("-", $_GET['date']);
                                             $year = $strArray[0];
                                             $month = $strArray[1];
-                                            $viewtable->viewPendingData($year, $month);
+                                            if($year == date("Y")){
+                                                $viewtype = "current";
+                                            }else{
+                                                $viewtype = "legacy";
+                                            }
+                                            $viewtable->viewPendingData($year, $month, $viewtype);
                                         } else {
-                                            $viewtable->viewAllPendingData();
+                                            $viewtype = "current";
+                                            $viewtable->viewAllPendingData($viewtype);
                                         }
                                         ?>
                                     <div></div>

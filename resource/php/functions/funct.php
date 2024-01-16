@@ -320,11 +320,12 @@ function changeP()
                     echo "<script type='text/javascript'>
                         swal.fire({
                         icon: 'success',
-                        title: 'Current Password has been Updated, Please Login Again, Thank You!',
+                        title: 'Password has been Updated',
+                        text: 'You will be logged out. Please log-in again using your new password',
                         showConfirmButton: false,
                         timerProgressBar: true,
                         allowOutsideClick: false,
-                        timer: 2000
+                        timer: 3500
 
                         }).then(okay => {
                           if (okay) {
