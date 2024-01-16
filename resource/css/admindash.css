@@ -66,6 +66,9 @@ thead th {
     font-weight: bold;
 }
 
+.progress .bg-info{
+  background-color: #f04e98 !important;
+}
 /*  Gradient Button
 .actions .btn-sm {
     width: 10rem;

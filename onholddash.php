@@ -51,6 +51,7 @@ $ovr = new ovReport();
    <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
          <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My Dashboard</span> </a></li>
+         <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
          <li class="nav-heading">Options</li>
          <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i> <span>Reports</span> </a></li>
          <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
@@ -203,7 +204,7 @@ $ovr = new ovReport();
                                              $strArray = explode("-", $_GET['date']);
                                              $year = $strArray[0];
                                              $month = $strArray[1];
-                                             echo $view->DeniedCountNAV($year, $month);
+                                             echo $view->deniedCountNAV($year, $month);
                                           } else {
                                              echo $view->allDeniedCountNAV();
                                           }
@@ -218,9 +219,15 @@ $ovr = new ovReport();
                                             $strArray = explode("-", $_GET['date']);
                                             $year = $strArray[0];
                                             $month = $strArray[1];
-                                            $viewtable->viewOnHoldData($year, $month);
+                                            if($year == date("Y")){
+                                                $viewtype = "current";
+                                            }else{
+                                                $viewtype = "legacy";
+                                            }
+                                            $viewtable->viewOnHoldData($year, $month, $viewtype);
                                         } else {
-                                            $viewtable->viewAllOnHoldData();
+                                            $viewtype = "current";
+                                            $viewtable->viewAllOnHoldData($viewtype);
                                         }
                                     ?>
 
