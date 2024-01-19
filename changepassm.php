@@ -45,8 +45,14 @@ $view = new view();
     </header>
     <aside id="sidebar" class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-heading">Current Date and Time</li>
+            <h5 class='text-center'><?php include 'clock.php'; ?></h5>
+            <hr>
+            <li class="nav-heading">Verifications</li>
             <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+            <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
             <li class="nav-heading">Options</li>
+            <li class='nav-item'> <a class='nav-link collapsed' href='changepassm.php'><i class='bi bi-key-fill'></i><span> Change Password </span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i> <span>Log out</span> </a></li>
         </ul>
     </aside>

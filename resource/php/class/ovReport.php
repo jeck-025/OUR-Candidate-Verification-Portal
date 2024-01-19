@@ -134,6 +134,7 @@ class ovReport extends config
             echo"<small> Manila <b>( ".$view->allApprovedCountMNL()." )</b> &mdash;
                             Makati <b>( ".$view->allApprovedCountMKT()." )</b> &mdash;
                             Malolos <b>( ".$view->allApprovedCountMLS()." )</b></small></span></h6>";
+            echo "<span class='count'><small><i>*data for the current year (".date('Y').") shown</i></small></span>";
         }
     }
 }
