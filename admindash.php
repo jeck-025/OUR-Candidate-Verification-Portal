@@ -62,9 +62,16 @@ $ovr = new ovReport();
             <a href="admindash" class="logo d-flex align-items-center"> <img src="resource/img/CAVElogo.png" alt="">
                 <span class="d-none d-lg-block">Admin</span> </a>
         </div>
+
+
+
     </header>
     <aside id="sidebar" class="sidebar">
         <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-heading">Current Date and Time</li>
+            <h5 class='text-center'><?php include 'clock.php'; ?></h5>
+            <hr>
+            <li class="nav-heading">Verifications</li>
             <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My
                         Dashboard</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
@@ -356,7 +363,6 @@ $ovr = new ovReport();
                                     $ovr->totalHoldVF();
                                     $ovr->totalDeniedVF();
                                     $ovr->totalVerifiedVF();
-                                    echo "<span class='count'><small><i>*data for the current year (".date('Y').") shown</i></small></span>";
                                 ?>
                             </div>
                         </div>
