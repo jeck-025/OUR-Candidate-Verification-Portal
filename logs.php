@@ -65,7 +65,7 @@ $agentID = $user->data()->id;
    <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
          <li class="nav-heading">Current Date and Time</li>
-         <h5 class='text-center'><?php include 'clock.php'; ?></h5>
+         <!-- <h5 class='text-center'><?php include 'clock.php'; ?></h5> -->
          <hr>
          <li class="nav-heading">Verifications</li>
          <li class="nav-item"> <a class="nav-link collapsed" href="admindash"> <i class="bi bi-grid"></i> <span>My Dashboard</span> </a></li>
