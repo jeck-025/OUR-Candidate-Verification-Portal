@@ -49,6 +49,11 @@ thead th {
     font-size: 25px;
 }
 
+.timeDisp{
+  font-family: 'Oxanium', sans-serif;
+  padding: 0%;
+}
+
 .icons {
   
   top: 0;

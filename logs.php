@@ -36,15 +36,7 @@ $agentID = $user->data()->id;
    <link href="vendor/css/remixicon.css" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="vendor/css/dataTables.css">
    <link href="vendor/css/style.css" rel="stylesheet">
-   <script src="vendor/js/jquery.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
-   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
-   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script> -->
 
 
@@ -65,7 +57,7 @@ $agentID = $user->data()->id;
    <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
          <li class="nav-heading">Current Date and Time</li>
-         <!-- <h5 class='text-center'><?php include 'clock.php'; ?></h5> -->
+         <h5 class='text-center'><?php include 'clock.php'; ?></h5>
          <hr>
          <li class="nav-heading">Verifications</li>
          <li class="nav-item"> <a class="nav-link collapsed" href="admindash"> <i class="bi bi-grid"></i> <span>My Dashboard</span> </a></li>
@@ -163,6 +155,15 @@ $agentID = $user->data()->id;
    <script src="vendor/js/validate.js"></script>
    <script src="vendor/js/main.js"></script>
    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script src="vendor/js/jquery.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jquery.dataTables.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/dataTables.buttons.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/jszip.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/pdfmake.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/vfs_fonts.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.html5.min.js"></script>
+   <script type="text/javascript" charset="utf8" src="vendor/js/dataTables/buttons.print.min.js"></script>
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    <script>
       AOS.init();
    </script>
