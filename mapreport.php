@@ -33,6 +33,7 @@ $viewtable = new viewtable;
    <link href="vendor/css/bootstrap.min.css" rel="stylesheet">
    <link href="vendor/css/remixicon.css" rel="stylesheet">
    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
 
 
 </head>

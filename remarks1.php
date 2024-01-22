@@ -22,6 +22,7 @@ $hld = $_GET['hold'];
     <link rel="icon" type="image/x-icon" href="assets/logo_icon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="resource/css/remarks.css" rel="stylesheet" />
+    <link href="resource/css/admindash.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="vendor/img/favicon.png" rel="icon">
     <link href="resource/img/tab-icon.png" rel="icon">
@@ -36,6 +37,7 @@ $hld = $_GET['hold'];
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;500&display=swap" rel="stylesheet">
     <link href="vendor/css/style.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
 
 
 
@@ -51,57 +53,44 @@ $hld = $_GET['hold'];
     </header>
     <aside id="sidebar" class="sidebar" data-aos="fade-right" data-aos-duration="1000">
         <ul class="sidebar-nav" id="sidebar-nav">
-            <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i><span>Dashboard</span></a></li>
+            <li class="nav-heading">Current Date and Time</li>
+            <h5 class='text-center'><?php include 'clock.php'; ?></h5>
+            <hr>
+            <li class="nav-heading">Verifications</li>
+            <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My
+                        Dashboard</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
             <li class="nav-heading">Options</li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="register"> <i class="bi bi-person"></i>
-                    <span>Client Registration</span> </a></li>
+            <li class='nav-item'> <a class='nav-link collapsed' href='changepassm.php'><i class='bi bi-key-fill'></i><span> Change Password </span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="logout"> <i class="bi bi-box-arrow-in-right"></i> <span>Log out</span> </a></li>
         </ul>
     </aside>
     <main id="main" class="main">
-        <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
+        <div class="pagtitle pt-3 pb-3" data-aos="fade-right" data-aos-duration="1000">
             <h1>Dashboard</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="admindash">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-            </nav>
-
-            <section class="section dashboard" data-aos="fade-right" data-aos-duration="1000">
+            <section class="section dashboard mt-3 pt-3" data-aos="fade-right" data-aos-duration="1000">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card recent-sales overflow-auto">
-                                    <div class="filter">
-                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                            <li class="dropdown-header text-start">
-                                                <h6>Filter</h6>
-                                            </li>
-                                            <li><a class="dropdown-item" href="#">Today</a></li>
-                                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Remarks Form<span> | Today</span></h5>
+                                    <div class="card-body mt-4 pt-4">
 
                                         <form id="remarks-dialog" action="" method="POST">
                                             <h2 class="text-start mb-1">INSERT REMARKS</h2>
                                             <small class="text-muted">Please state the reason why the Application is has
                                                 placed ON-HOLD or DENIED</small>
-                                            <div class="form-floating col-md-10 mt-3">
+
+                                            <div class="form-floating col-md-12 mt-3">
                                                 <input id="remarks" name="remarks" id="floatingInput" class="form-control" type="text" placeholder="Enter Remarks"></textarea>
                                                 <label for="floatingInput">Enter Remarks</label>
 
                                                 <input type="hidden" id="hld" name="token" value="<?php echo $hld; ?>">
                                             </div>
-                                            <div class="form-group col-lg-12">
+                                            <div class="form-group col-lg-3">
                                                 <button type="submit" name="submit" class="btn my-5" onclick="confirmHold()">Submit
                                                     Remarks</button>
                                             </div>
