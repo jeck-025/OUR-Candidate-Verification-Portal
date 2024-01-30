@@ -252,6 +252,14 @@ $ovr = new ovReport();
                                             <label for="job_position" class="form-label mt-2 mb-0">Department</label>
                                             <input type="text" name="job_position" id="job_position" class="form-control" autocomplete="off" required>
                                         </div>
+                                        <div class="col-md-9">
+                                            <label for="campus" class="form-label mt-2 mb-0">Campus</label>
+                                            <select class='form-control selectpicker' name='campus'>                                         
+                                                <option data-tokens='MNL' value='MNL'> Manila </option>
+                                                <option data-tokens='MKT' value='MKT'> Makati </option>
+                                                <option data-tokens='MLS' value='MLS'> Malolos </option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                         </div>

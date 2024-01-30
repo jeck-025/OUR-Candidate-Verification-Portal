@@ -112,6 +112,9 @@ function vald()
                     'min' => 2,
                     'type2' => 'text'
                 ),
+                'campus' => array(
+                    'required' => 'true',
+                )
                 // 'checkbox' => array(
                 //     'required' => 'true'
                 // )
@@ -134,8 +137,8 @@ function vald()
                         'groups' => 1,
                         'email' => Input::get('email'),
                         'company' => Input::get('company'),
-                        'job_position' => Input::get('job_position')
-                        // 'agreement' => Input::get('checkbox')
+                        'job_position' => Input::get('job_position'),
+                        'mm' => Input::get('campus')
 
                     ));
 

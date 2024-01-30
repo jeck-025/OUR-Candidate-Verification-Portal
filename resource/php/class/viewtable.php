@@ -5,8 +5,10 @@ require_once 'config2.php';
 class viewtable extends config{
 
 public function viewApprovedData($year, $month, $viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'VERIFIED'";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'VERIFIED' AND `campus` = '$user_campus'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -99,16 +101,18 @@ public function viewApprovedData($year, $month, $viewtype){
 
 }
 public function viewAllApprovedData($viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
   //$sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED'";
   if($viewtype == "legacy"){
     $prev_year = date("Y")-1;
     $caption = "(".$prev_year." and below)";
-    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
   }elseif($viewtype == "current"){
     $year = date("Y");
     $caption = "";
-	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) = '$year'";
+	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
   }else{
     echo "Error Retrieving Data.";
     die();
@@ -202,8 +206,10 @@ public function viewAllApprovedData($viewtype){
 }
 
 public function viewOnHoldData($year, $month, $viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'ON-HOLD'";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'ON-HOLD' AND `campus` = '$user_campus'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -318,16 +324,18 @@ public function viewOnHoldData($year, $month, $viewtype){
 }
 
 public function viewAllOnHoldData($viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
   //$sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'ON-HOLD'";
   if($viewtype == "legacy"){
     $prev_year = date("Y")-1;
     $caption = "(".$prev_year." and below)";
-    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'ON-HOLD' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'ON-HOLD' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
   }elseif($viewtype == "current"){
     $year = date("Y");
     $caption = "";
-	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'ON-HOLD' AND YEAR(`date_added`) = '$year'";
+	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'ON-HOLD' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
   }else{
     echo "Error Retrieving Data.";
     die();
@@ -443,8 +451,10 @@ public function viewAllOnHoldData($viewtype){
 }
 
 public function viewPendingData($year, $month, $viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'PENDING'";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'PENDING' AND `campus` = '$user_campus";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -561,16 +571,18 @@ public function viewPendingData($year, $month, $viewtype){
 }
 
 public function viewAllPendingData($viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
   //$sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'PENDING'";
   if($viewtype == "legacy"){
     $prev_year = date("Y")-1;
     $caption = "(".$prev_year." and below)";
-    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'PENDING' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'PENDING' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
   }elseif($viewtype == "current"){
     $year = date("Y");
     $caption = "";
-	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'PENDING' AND YEAR(`date_added`) = '$year'";
+	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'PENDING' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
   }else{
     echo "Error Retrieving Data.";
     die();
@@ -656,17 +668,17 @@ public function viewAllPendingData($viewtype){
           </div>
       </a></li>";
       
-      // if(!empty($data['checker'])){
-      // echo"<li class='actions'>     
-      //       <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'>Verify
+      
+      // <li class='actions'>     
+      //   <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'>Verify
       //         <div class='icon'>
       //         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2' viewBox='0 0 16 16'>
       //         <path d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/>
       //       </svg>
       //         </div>
       //       </a>
-      //     </li>";
-      // }
+      //     </li>
+
     //   <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>Hold
     //     <div class='icon'>
     //     <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-clock' viewBox='0 0 16 16'>
@@ -690,16 +702,18 @@ public function viewAllPendingData($viewtype){
 }
 
 public function viewAllDeniedData($viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
   //$sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DECLINED'";
   if($viewtype == "legacy"){
     $prev_year = date("Y")-1;
     $caption = "(".$prev_year." and below)";
-    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DECLINED' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DECLINED' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
   }elseif($viewtype == "current"){
     $year = date("Y");
     $caption = "";
-	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DECLINED' AND YEAR(`date_added`) = '$year'";
+	  $sql = "SELECT * FROM `tbl_client_user` WHERE `status` = 'DECLINED' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
   }else{
     echo "Error Retrieving Data.";
     die();
@@ -776,8 +790,10 @@ public function viewAllDeniedData($viewtype){
 }
 
 public function viewDeniedData($year, $month, $viewtype){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'DECLINED'";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'DECLINED' AND `campus` = '$user_campus'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -853,8 +869,10 @@ public function viewDeniedData($year, $month, $viewtype){
 }
 
 public function viewLogData(){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user`";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE `campus` = '$user_campus'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
@@ -1000,8 +1018,10 @@ public function viewLogData(){
 }
 
 public function sortViewLogData($month, $year){
+  $user = new user();
+  $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user`WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year'";
+  $sql = "SELECT * FROM `tbl_client_user`WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
