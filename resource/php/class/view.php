@@ -106,7 +106,6 @@ class view extends config
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   public function allPendingCount(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING'";
     // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
@@ -118,7 +117,6 @@ class view extends config
 
   public function allPendingCountMNL(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND `campus` = 'MNL'";
     // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
@@ -130,7 +128,6 @@ class view extends config
 
   public function allPendingCountMKT(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND `campus` = 'MKT'";
     // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
@@ -142,7 +139,6 @@ class view extends config
 
   public function allPendingCountMLS(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND `campus` = 'MLS'";
     // $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` = 'PENDING'";
@@ -154,7 +150,6 @@ class view extends config
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   public function pendingCount($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING'";
     $data = $con->prepare($sql);
@@ -164,7 +159,6 @@ class view extends config
   }
 
   public function pendingCountMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -174,7 +168,6 @@ class view extends config
   }
 
   public function pendingCountMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -184,7 +177,6 @@ class view extends config
   }
 
   public function pendingCountMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -197,7 +189,6 @@ class view extends config
 
   public function totalMonth(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     // $sql = "SELECT IFNULL(SUM(LAST_DAY(date_added) = LAST_DAY(CURDATE())),0) this_month FROM `tbl_client_user`";
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%'";
@@ -209,7 +200,6 @@ class view extends config
 
   public function totalMonthMNL(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -220,7 +210,6 @@ class view extends config
 
   public function totalMonthMKT(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -231,7 +220,6 @@ class view extends config
 
   public function totalMonthMLS(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -243,7 +231,6 @@ class view extends config
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   public function totalMonthDone(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` != 'PENDING'";
     $data = $con->prepare($sql);
@@ -254,7 +241,6 @@ class view extends config
 
   public function totalMonthDoneMNL(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` != 'PENDING'  AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -265,7 +251,6 @@ class view extends config
 
   public function totalMonthDoneMKT(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` != 'PENDING'  AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -276,7 +261,6 @@ class view extends config
 
   public function totalMonthDoneMLS(){
     $curMonth = date('Y-m');
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `date_added` LIKE '$curMonth%' AND `status` != 'PENDING' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -287,7 +271,6 @@ class view extends config
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   public function totalMonthByM($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month'";
     $data = $con->prepare($sql);
@@ -297,7 +280,6 @@ class view extends config
   }
   
   public function totalMonthByMMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -307,7 +289,6 @@ class view extends config
   }
 
   public function totalMonthByMMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -317,7 +298,6 @@ class view extends config
   }
 
   public function totalMonthByMMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -328,7 +308,6 @@ class view extends config
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   public function totalMonthByMDone($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `status` != 'PENDING'";
     $data = $con->prepare($sql);
@@ -338,7 +317,6 @@ class view extends config
   }
 
   public function totalMonthByMDoneMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `status` != 'PENDING' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -348,7 +326,6 @@ class view extends config
   }
 
   public function totalMonthByMDoneMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `status` != 'PENDING' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -358,7 +335,6 @@ class view extends config
   }
 
   public function totalMonthByMDoneMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_added`) = '$year' AND MONTH(`date_added`) = '$month' AND `status` != 'PENDING' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -369,7 +345,6 @@ class view extends config
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function totalMonthCompleted(){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT IFNULL(SUM(LAST_DAY(date_completed) = LAST_DAY(CURDATE())), 0) this_month FROM `tbl_client_user`";
     $data = $con->prepare($sql);
@@ -379,7 +354,6 @@ class view extends config
   }
 
   public function totalMonthCompletedMNL(){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT IFNULL(SUM(LAST_DAY(date_completed) = LAST_DAY(CURDATE())), 0) this_month FROM `tbl_client_user` WHERE `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -389,7 +363,6 @@ class view extends config
   }
 
   public function totalMonthCompletedMKT(){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT IFNULL(SUM(LAST_DAY(date_completed) = LAST_DAY(CURDATE())), 0) this_month FROM `tbl_client_user` WHERE `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -399,7 +372,6 @@ class view extends config
   }
 
   public function totalMonthCompletedMLS(){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT IFNULL(SUM(LAST_DAY(date_completed) = LAST_DAY(CURDATE())), 0) this_month FROM `tbl_client_user` WHERE `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -410,7 +382,6 @@ class view extends config
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function totalMonthCompletedByM($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_completed`) = '$year' AND MONTH(`date_completed`) = '$month' AND `status` != 'PENDING'";
     $data = $con->prepare($sql);
@@ -420,7 +391,6 @@ class view extends config
   }
 
   public function totalMonthCompletedByMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_completed`) = '$year' AND MONTH(`date_completed`) = '$month' AND `status` != 'PENDING' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -430,7 +400,6 @@ class view extends config
   }
 
   public function totalMonthCompletedByMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_completed`) = '$year' AND MONTH(`date_completed`) = '$month' AND `status` != 'PENDING' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -440,7 +409,6 @@ class view extends config
   }
 
   public function totalMonthCompletedByMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE YEAR(`date_completed`) = '$year' AND MONTH(`date_completed`) = '$month' AND `status` != 'PENDING' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -492,7 +460,6 @@ class view extends config
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function onHoldCount($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status` = 'ON-HOLD'";
     $data = $con->prepare($sql);
@@ -502,7 +469,6 @@ class view extends config
   }
   
   public function onHoldCountMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status` = 'ON-HOLD' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -512,7 +478,6 @@ class view extends config
   }
 
   public function onHoldCountMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status` = 'ON-HOLD' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -522,7 +487,6 @@ class view extends config
   }
 
   public function onHoldCountMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status` = 'ON-HOLD' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -534,7 +498,6 @@ class view extends config
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function allDeniedCount(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -545,7 +508,6 @@ class view extends config
 
   public function allDeniedCountMNL(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED' AND `campus` = 'MNL' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -556,7 +518,6 @@ class view extends config
 
   public function allDeniedCountMKT(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED' AND `campus` = 'MKT' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -567,7 +528,6 @@ class view extends config
 
   public function allDeniedCountMLS(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED' AND `campus` = 'MLS' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -578,7 +538,6 @@ class view extends config
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function deniedCount($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'DECLINED'";
     $data = $con->prepare($sql);
@@ -588,7 +547,6 @@ class view extends config
   }
 
   public function deniedCountMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'DECLINED' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -598,7 +556,6 @@ class view extends config
   }
 
   public function deniedCountMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'DECLINED'  AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -608,7 +565,6 @@ class view extends config
   }
 
   public function deniedCountMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'DECLINED'  AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -620,7 +576,6 @@ class view extends config
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function allApprovedCount(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'VERIFIED' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -631,7 +586,6 @@ class view extends config
 
   public function allApprovedCountMNL(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'VERIFIED' AND `campus` = 'MNL' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -642,7 +596,6 @@ class view extends config
 
   public function allApprovedCountMKT(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'VERIFIED' AND `campus` = 'MKT' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -653,7 +606,6 @@ class view extends config
 
   public function allApprovedCountMLS(){
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'VERIFIED' AND `campus` = 'MLS' AND YEAR(`date_added`) = '$year'";
     $data = $con->prepare($sql);
@@ -664,7 +616,6 @@ class view extends config
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function approvedCount($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'VERIFIED'";
     $data = $con->prepare($sql);
@@ -674,7 +625,6 @@ class view extends config
   }
 
   public function approvedCountMNL($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'VERIFIED' AND `campus` = 'MNL'";
     $data = $con->prepare($sql);
@@ -684,7 +634,6 @@ class view extends config
   }
 
   public function approvedCountMKT($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'VERIFIED' AND `campus` = 'MKT'";
     $data = $con->prepare($sql);
@@ -694,7 +643,6 @@ class view extends config
   }
 
   public function approvedCountMLS($year, $month){
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_completed`) = '$month' AND YEAR(`date_completed`) = '$year' AND `status`= 'VERIFIED' AND `campus` = 'MLS'";
     $data = $con->prepare($sql);
@@ -707,7 +655,6 @@ class view extends config
 
   public function totalVerificationCount()
   {
-    $config = new config;
     $con = $this->con();
     $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'ON-HOLD' OR `status`= 'DECLINED' OR `status`= 'VERIFIED'";
     $data = $con->prepare($sql);
@@ -718,7 +665,6 @@ class view extends config
 
   public function getAverageCycle()
   {
-    $config = new config;
     $con = $config->con();
     $sql = "SELECT AVG(DATEDIFF(date_completed, date_added))   AS 'avg_days'
           FROM `tbl_client_user`
@@ -770,9 +716,10 @@ class view extends config
 // tab display
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function deniedCountNAV($year, $month){
-    $config = new config;
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'DECLINED'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'DECLINED' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -780,10 +727,11 @@ class view extends config
   }
 
   public function allDeniedCountNAV(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED' AND YEAR(`date_added`) = '$year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'DECLINED' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -791,9 +739,10 @@ class view extends config
   }
   
   public function onHoldCountNAV($year, $month){
-    $config = new config;
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $con = $this->con();
-    $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'ON-HOLD'";
+    $sql = "SELECT count(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'ON-HOLD' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -801,9 +750,11 @@ class view extends config
   }
 
   public function allOnHoldCountNAV(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $year = date("Y");
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'ON-HOLD' AND YEAR(`date_added`) = '$year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'ON-HOLD' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -811,9 +762,10 @@ class view extends config
   }
 
   public function approvedCountNAV($year, $month){
-    $config = new config;
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'VERIFIED'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'VERIFIED' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -821,10 +773,11 @@ class view extends config
   }
 
   public function allApprovedCountNAV(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) = '$year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -832,9 +785,10 @@ class view extends config
   }
 
   public function pendingCountNAV($year, $month){
-    $config = new config;
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status`= 'PENDING' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -842,11 +796,12 @@ class view extends config
   }
 
   public function allPendingCountNAV(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $curMonth = date('Y-m');
     $year = date("Y");
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND YEAR(`date_added`) = '$year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status`= 'PENDING' AND YEAR(`date_added`) = '$year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -856,10 +811,11 @@ class view extends config
 // tab display - for Legacy View only
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------- 
   public function allDeniedCountNAVL(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $prev_year = date("Y")-1;
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'DECLINED' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'DECLINED' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -867,10 +823,11 @@ class view extends config
   }
 
   public function allOnHoldCountNAVL(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $prev_year = date("Y")-1;
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'ON-HOLD' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'ON-HOLD' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -878,10 +835,11 @@ class view extends config
   }
 
   public function allApprovedCountNAVL(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $prev_year = date("Y")-1;
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'VERIFIED' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
@@ -889,10 +847,11 @@ class view extends config
   }
 
   public function allPendingCountNAVL(){
+    $user = new user();
+    $user_campus = $user->data()->mm;
     $prev_year = date("Y")-1;
-    $config = new config;
     $con = $this->con();
-    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'PENDING' AND YEAR(`date_added`) <= '$prev_year'";
+    $sql = "SELECT COUNT(*) FROM `tbl_client_user` WHERE `status` = 'PENDING' AND YEAR(`date_added`) <= '$prev_year' AND `campus` = '$user_campus'";
     $data = $con->prepare($sql);
     $data->execute();
     $rows = $data->fetchColumn();
