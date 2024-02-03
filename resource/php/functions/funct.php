@@ -225,31 +225,20 @@ function isLogin()
 function updateProfile()
 {
     if (Input::exists()) {
-        if (!empty($_POST['College'])) {
-            $_POST['College'] = implode(',', Input::get('College'));
-        } else {
-            $_POST['College'] = "";
-        }
+        // if (!empty($_POST['College'])) {
+        //     $_POST['College'] = implode(',', Input::get('College'));
+        // } else {
+        //     $_POST['College'] = "";
+        // }
 
         $validate = new Validate;
         $validation = $validate->check($_POST, array(
-            'username' => array(
-                'min' => 4,
-                'max' => 20,
-                'type1' => 'text',
-
-            ),
-            'fullName' => array(
-                'min' => 2,
-                'max' => 50,
-                'type2' => 'text'
-            ),
             'email' => array(
                 'min' => 5,
                 'max' => 50,
                 'type' => 'email'
             ),
-            'company' => array(
+            'campus' => array(
                 'min' => 2,
                 'type2' => 'text'
             )
@@ -260,22 +249,24 @@ function updateProfile()
 
             try {
                 $user->update(array(
-                    'username' => Input::get('username'),
-                    'name' => Input::get('fullName'),
+                    // 'username' => Input::get('username'),
+                    // 'name' => Input::get('fullName'),
                     'email' => Input::get('email'),
-                    'company' => Input::get('company')
+                    // 'company' => Input::get('company')
+                    'mm' => Input::get('campus')
                 ));
                 echo "<script type='text/javascript'>
                     swal.fire({
                         icon: 'success',
                         title: 'Profile has been updated',
+                        text: 'Please wait...',
                         showConfirmButton: false,
                         timerProgressBar: true,
                         allowOutsideClick: false,
                         timer: 2000
                     }).then(okay => {
                           if (okay) {
-                           window.location.href = '#profile-overview';
+                           window.location.href = 'profile';
                          }
                        });
                     </script>";
