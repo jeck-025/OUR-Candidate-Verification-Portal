@@ -77,6 +77,10 @@ $view = new view();
                                         <div class="col-lg-3 col-md-4"><?php echo $user->data()->fullName ?></div>
                                     </div>
                                     <div class="row d-flex justify-content-center py-3"">
+                                        <div class="col-lg-3 col-md-4 label">Position</div>
+                                        <div class="col-lg-3 col-md-4"><?php echo $user->data()->job_position ?></div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center py-3"">
                                         <div class="col-lg-3 col-md-4 label">Date Joined</div>
                                         <div class="col-lg-3 col-md-4"><?php echo $user->data()->joined ?></div>
                                     </div>
