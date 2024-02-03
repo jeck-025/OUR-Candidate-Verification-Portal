@@ -241,7 +241,27 @@ thead th {
     margin-bottom: 10px;
 }
 
-
+.actions-verify .btn-sm {
+    background: #f04e98;
+    color: white;
+    width: 8rem;
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.1em;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 0.9em;
+    border: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 0 1.6em -0.6em #714da6;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    margin-bottom: 10px;
+}
 
 .actions .btn-sm .icon {
     background: white;
@@ -259,7 +279,27 @@ thead th {
     transition: all 0.3s;
 }
 
+.actions-verify .btn-sm .icon {
+    background: white;
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.1em;
+    border-radius: 0.7em;
+    box-shadow: 0.1em 0.1em 0.6em 0.2em #f04e98;
+    right: 0.3em;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
 .actions .btn-sm:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.actions-verify .btn-sm:hover .icon {
     width: calc(100% - 0.6em);
 }
 
@@ -270,11 +310,26 @@ thead th {
     font-weight: bold !important;
 }
 
+.actions-verify .btn-sm .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #251f70;
+    font-weight: bold !important;
+}
+
 .actions .btn-sm:hover .icon svg {
     transform: translateX(0.1em);
 }
 
+.actions-verify .btn-sm:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
 .actions .btn-sm:active .icon {
+    transform: scale(0.95);
+}
+
+.actions-verify .btn-sm:active .icon {
     transform: scale(0.95);
 }
 
@@ -500,7 +555,8 @@ ul .nav-link {
 .actions,
 .actions2,
 .actions3,
-.actions4 {
+.actions4,
+.actions-verify {
     list-style: none;
 
 }

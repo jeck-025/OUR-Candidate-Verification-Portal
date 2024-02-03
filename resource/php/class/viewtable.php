@@ -17,7 +17,7 @@ public function viewApprovedData($year, $month, $viewtype){
 
   echo "<h3 class='my-4'>APPROVED VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='candtable' class='table table-borderless stripe shadow' width='100%'>";
+  echo "<table id='candtable' class='table table-borderless table-striped shadow' width='100%'>";
   echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
@@ -122,7 +122,7 @@ public function viewAllApprovedData($viewtype){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='my-3'>APPROVED VERIFICATIONS $caption</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='candtable' class='table table-borderless stripe shadow' width='100%'>";
+  echo "<table id='candtable' class='table table-borderless table-striped shadow' width='100%'>";
   echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
@@ -218,7 +218,7 @@ public function viewOnHoldData($year, $month, $viewtype){
 
   echo "<h3 class='my-4'>ON-HOLD VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='onHoldtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='onHoldtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
@@ -345,7 +345,7 @@ public function viewAllOnHoldData($viewtype){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='my-3'>ON-HOLD VERIFICATIONS $caption</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='onHoldtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='onHoldtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
@@ -463,7 +463,7 @@ public function viewPendingData($year, $month, $viewtype){
 
   echo "<h3 class='my-3'>PENDING VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='pendingtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='pendingtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
@@ -594,7 +594,7 @@ public function viewAllPendingData($viewtype){
 
   echo "<h3 class='my-3'>PENDING VERIFICATIONS $caption</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='pendingtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='pendingtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
   echo "<thead>
           <tr>
           <th scope='col'>Verifier</th>
@@ -659,25 +659,28 @@ public function viewAllPendingData($viewtype){
       echo "</td>";
       echo "<td>
 
-      <li class='actions'><a class='btn btn-sm'href='info.php?id=$data[id]'>Information
-      <div class='icon'>
-      <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
-        <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z'/>
-        <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/>
-      </svg>
+      <li class='actions'>
+        <a class='btn btn-sm'href='info.php?id=$data[id]'>Information
+          <div class='icon'>
+            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-eye' viewBox='0 0 16 16'>
+              <path d='M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z'/>
+              <path d='M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z'/>
+            </svg>
           </div>
-      </a></li>";
+        </a>
+      </li>";
       
-      
-      // <li class='actions'>     
-      //   <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'>Verify
-      //         <div class='icon'>
-      //         <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2' viewBox='0 0 16 16'>
-      //         <path d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/>
-      //       </svg>
-      //         </div>
-      //       </a>
-      //     </li>
+      if(!empty($data['checker'])){
+      echo "<li class='actions-verify'>
+              <a class='btn btn-sm' href='adminfunctions.php?approved=$data[id]'>Verify
+                <div class='icon'>
+                  <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check2' viewBox='0 0 16 16'>
+                    <path d='M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z'/>
+                  </svg>
+                </div>
+              </a>
+            </li>";
+          }
 
     //   <li class='actions'><a class='btn btn-sm btn-sm-1'href='remarks1.php?hold=$data[id]'>Hold
     //     <div class='icon'>
@@ -723,7 +726,7 @@ public function viewAllDeniedData($viewtype){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
   echo "<h3 class='my-3'>DENIED VERIFICATIONS $caption</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='deniedtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='deniedtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
 
   echo "<thead>
           <tr>
@@ -802,7 +805,7 @@ public function viewDeniedData($year, $month, $viewtype){
 
   echo "<h3 class='my-3'>DENIED VERIFICATIONS (".$display.")</h3>";
   echo "<div class='table-responsive'>";
-  echo "<table id='deniedtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='deniedtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
 
   echo "<thead>
           <tr>
@@ -878,7 +881,7 @@ public function viewLogData(){
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
 
   echo "<h3 class='my-4'>Verification Reports</h3>";
-  echo "<table id='viewlogtable' class='table table-borderless stripe table-hover shadow' width='100%'>";
+  echo "<table id='viewlogtable' class='table table-borderless table-striped table-hover shadow' width='100%'>";
   echo "<thead>";
   echo "<tr>";
 

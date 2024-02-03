@@ -84,7 +84,7 @@ $ovr = new ovReport();
             
         <!-- ADVANCED OPTIONS ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <?php
-                if($user->data()->username == 'jeck'){
+                if($user->data()->agreement == '2'){
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' href='override.php'> <i class='bi bi-pencil-fill'></i><span> Override Data</span> </a></li>";
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-people-fill'></i><span> Add User Account</span> </a></li>";
