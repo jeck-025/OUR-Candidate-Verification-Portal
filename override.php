@@ -75,12 +75,12 @@ if($user->data()->username == 'jeck'){
                                 <form action="" method="GET">
                                 <div class="row">
                                     <div class="col-md-10">
-                                        <select class="form-control selectpicker" data-live-search="true" name="tid" value="">
+                                        <select class="form-control selectpicker" data-live-search="true" name="tid" value="" required>
                                             <?php 
                                                 if(isset($_GET['tid'])){
                                                     echo "<option>".$_GET['tid']."</option>";
                                                 }else{
-                                                    echo "<option>Select Transaction ID</option>";
+                                                    echo "<option value='' selected> -- Select Transaction ID -- </option>";
                                                 }
                                                 $view->transID(); ?>
                                         </select>

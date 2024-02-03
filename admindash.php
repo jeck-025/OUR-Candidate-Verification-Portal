@@ -39,18 +39,18 @@ $ovr = new ovReport();
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap" rel="stylesheet">
-    <script type='text/javascript'>
     
-    function message(){
+    <!-- <script type='text/javascript'>
+        function message(){
         swal.fire({
             icon: 'info',
             text: 'Starting this January, all verifications for the previous year, will be found under "All Previous Verifications", located at the left sidebar. Thank you.',
             showConfirmButton: true,
             })
-    }
-    setTimeout(message,2500);
-    
-</script>
+        }
+        setTimeout(message,2500);
+    </script> -->
+
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -80,13 +80,14 @@ $ovr = new ovReport();
             <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
                     <span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="profile"> <i class="bi bi-person-circle"></i>My Profile</a></li>
             
         <!-- ADVANCED OPTIONS ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
             <?php
                 if($user->data()->username == 'jeck'){
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' href='override.php'> <i class='bi bi-pencil-fill'></i><span> Override Data</span> </a></li>";
                     echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#mailerconfig'> <i class='bi bi-envelope'></i><span> Mailer Configuration</span> </a></li>";
-                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-person-circle'></i><span> Add User Account</span> </a></li>";
+                    echo "<li class='nav-item'> <a class='nav-link collapsed btn' data-toggle='modal' data-target='#acctconfig'> <i class='bi bi-people-fill'></i><span> Add User Account</span> </a></li>";
                 }
             ?>
 

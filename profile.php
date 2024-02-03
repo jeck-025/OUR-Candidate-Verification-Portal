@@ -59,49 +59,48 @@ $view = new view();
     </aside>
     <main id="main" class="main">
         <div class="pagtitle" data-aos="fade-right" data-aos-duration="1000">
-            <h1 class="p-3 mt-3">Change Password</h1>
+            <h1 class="p-3 mt-3">User Profile</h1>
             <section class="section dashboard" data-aos="fade-right" data-aos-duration="1000">
                 <div class="row px-5 d-flex justify-content-center">
-                    <div class="col-md-12 pb-3 justify-content-center">
-                        <div class="card pt-5">
+                    <div class="col-md-12 pb-3 ">
+                        <div class="card pt-5 ">
                             <div class="card-body report">
-                                <?php changeP(); ?>
-                                <form action="" method="post">
-                                    <table class="table table-borderless">
-                                        <tr>
-                                            <td class="row justify-content-center">
-                                                <div class="form-group col-md-5">
-                                                    <label for = "password_current"> Enter Current Password:</label>
-                                                    <input type="password" class="form-control" name="password_current" id="password" value ="" autocomplete="off" required/>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="row justify-content-center">
-                                                <div class="form-group col-md-5">
-                                                    <label for = "password"> Enter New Password:</label>
-                                                    <input type="password" class="form-control" name="password" id="password" value ="" autocomplete="off" required/>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="row justify-content-center">
-                                                <div class="form-group col-md-5">
-                                                    <label for = "ConfirmPassword"> Confirm New Password:</label>
-                                                    <input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword" value ="" autocomplete="off" required/>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="row justify-content-center">
-                                                <div class="form-group col-md-5 actions">
-                                                    <input type="hidden" name ="Token" value="<?php echo Token::generate();?>" />
-                                                    <input type="submit" value="Save" class=" form-control btn-ovr" />
-                                                    <a class='form-control btn btn-ovr' href='admindash'>Cancel</a>
-                                                </div>    
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <form method="POST">
+                                <?php if ($_POST && isset($_POST['form1'])) {updateProfile();}?>
+                                <h2 class="text-center"><i class="bi bi-person-circle"></i> Profile Details</h2><hr>
+                                    <div class="row d-flex justify-content-center py-3">
+                                        <div class="col-lg-3 col-md-4 label">Username</div>
+                                        <div class="col-lg-3 col-md-4"><?php echo $user->data()->username ?></div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center py-3"">
+                                        <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                                        <div class="col-lg-3 col-md-4"><?php echo $user->data()->fullName ?></div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center py-3"">
+                                        <div class="col-lg-3 col-md-4 label">Date Joined</div>
+                                        <div class="col-lg-3 col-md-4"><?php echo $user->data()->joined ?></div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center py-3"">
+                                        <div class="col-lg-3 col-md-4 label">Email Address</div>
+                                        <div class="col-lg-3 col-md-4"> <input name="email" type="text" class="form-control" id="Email" value="<?php echo escape($user->data()->email); ?>" placeholder="Email Address" autocomplete="off"></div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center py-3"">
+                                        <div class="col-lg-3 col-md-4 label">Campus</div>
+                                        <div class="col-lg-3 col-md-4"> 
+                                            <select class="form-control form-select" name="campus" value = "">
+                                                <?php 
+                                                    $campus = $user->data()->mm;
+                                                    $view->curCampus($campus);
+                                                    $view->campuses(); ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center py-3"">
+                                        <div class="col-md-4 d-flex justify-content-center"> 
+                                            <button type="submit" name="form1" class="btn btn-open mx-1"><i class="bi bi-pencil-square"></i> Save Changes</button>
+                                            <!-- <button class="btn btn-open mx-1" href="changepassm"><i class="bi bi-key-fill"></i> Change Password </button> -->
+                                            <button class="btn btn-open mx-1" href="admindash"><i class="bi bi-box-arrow-left"></i> Cancel </button> </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>

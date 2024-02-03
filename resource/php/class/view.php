@@ -82,6 +82,19 @@ class view extends config
     }
   }
 
+  public function curCampus($campus)
+  {
+    $config = new config;
+    $con = $config->con();
+    $sql = "SELECT * FROM `tbl_campuses` WHERE `campus_code` = '$campus'";
+    $data = $con->prepare($sql);
+    $data->execute();
+    $rows = $data->fetchAll(PDO::FETCH_OBJ);
+    foreach ($rows as $row) {
+      echo '<option data-tokens=".' . $row->campus_name . '." value="' . $row->campus_code . '">' . $row->campus_name . ' (Current)</option>';
+    }
+  }
+
   public function years()
   {
     for ($i = 1950; $i <= date('Y'); $i++)
