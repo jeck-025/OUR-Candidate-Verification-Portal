@@ -51,6 +51,8 @@ $viewtable = new viewtable();
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-heading">Current Date and Time</li>
             <h5 class='text-center'><?php include 'clock.php'; ?></h5>
+            <li class="nav-heading">WELCOME</li>
+            <h6 class='text-center'><?php echo $user->data()->fullName." - ".$user->data()->mm ?></h6>
             <hr>
             <li class="nav-heading">Verifications</li>
             <li class="nav-item"> <a class="nav-link collapsed" href="admindash"> <i class="bi bi-grid"></i> <span>My
