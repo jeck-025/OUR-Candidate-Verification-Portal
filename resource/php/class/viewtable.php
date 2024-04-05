@@ -454,7 +454,7 @@ public function viewPendingData($year, $month, $viewtype){
   $user = new user();
   $user_campus = $user->data()->mm;
   $con = $this->con();
-  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'PENDING' AND `campus` = '$user_campus";
+  $sql = "SELECT * FROM `tbl_client_user` WHERE MONTH(`date_added`) = '$month' AND YEAR(`date_added`) = '$year' AND `status` = 'PENDING' AND `campus` = '$user_campus'";
   $data = $con->prepare($sql);
   $data->execute();
   $result = $data->fetchAll(PDO::FETCH_ASSOC);
