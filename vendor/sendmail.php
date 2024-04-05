@@ -245,7 +245,22 @@ function sendApprovedEmail($studLast, $studFirst, $studMiddle, $fullname, $email
           </ul>
 
           <p><b>This is an auto generated email please do not reply to this email message.</b></p>
-          <p>Thank you.</p>";
+          <p>Thank you.</p>
+          
+          <p><b>CONFIDENTIALITY AND PRIVACY NOTICE: </b></p>
+          <p><i>The contents of this email and any attachments
+              are strictly confidential. They are intended solely for the use of the
+              addressee to whom it is addressed and may contain information that is
+              privileged and exempt from disclosure under applicable law. If you are not
+              the intended recipient, do not read, copy, forward, disclose, or use the
+              contents of this message and attachments to it. Be aware that any disclosure,
+              distribution, copying, or any action taken or omitted to be taken in
+              reliance on it is strictly prohibited. If you have received this email in
+              error, please alert the sender immediately and delete it from your system
+              or computers.</i></p>";
+
+
+
 
 try {
   //Server settings
