@@ -24,6 +24,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/caveportal/resource/php/class/core/in
       <div class="signin-signup" id="signin-signup">
 
         <form method="POST" class="sign-in-form" id="">
+          <div>
+            <img src='resource/img/CAVElogo-sm.png'>
+          </div>
           <h2 class="title">Sign in</h2>
           <?php
             logd();

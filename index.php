@@ -1,6 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/caveportal/resource/php/class/core/init.php';
-
+$locker = new locker();
+$locker->setMaintenance();
 ?>
 <!DOCTYPE html>
 <html lang="en">
