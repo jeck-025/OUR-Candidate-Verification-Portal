@@ -1,0 +1,10 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'].'/caveportal/resource/php/class/core/init.php';
+
+$locker = new locker();
+$locker->lockMForm();
+$url = $_GET['landing'].".php";
+header('Location:'.$url);
+// header("location:javascript://history.go(-1)");
+
+?>

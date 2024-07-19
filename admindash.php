@@ -9,6 +9,7 @@ $viewtable = new viewtable();
 $mailer = new mailer();
 $adduser = new addAccount();
 $ovr = new ovReport();
+$locker = new locker();
 
 ?>
 <!DOCTYPE html>
@@ -74,13 +75,28 @@ $ovr = new ovReport();
             <li class="nav-heading">WELCOME</li>
             <h6 class='text-center'><?php echo $user->data()->fullName." - ".$user->data()->mm ?></h6>
             <hr>
+
+            <?php if($user->data()->username == "RMAMA" || $user->data()->username == "jeck"){?>
+            <?php //if($user->data()->username == "RMAMA" || $user->data()->username == "jeck" || $user->data()->username == "EMANALO"){?>
+            <li class="nav-heading">FORM STATUS</li>
+            <div class='text-center'>
+            <?php $locker->lockerStatusDisp(); ?>
+            <?php $locker->maintenanceStatusDisp(); ?>
+            <hr>
+            <li class="nav-heading text-left">FORM TOOLS</li>
+            <a href="locker.php?landing=admindash" class="btn btn-sm <?php $locker->lockerButtonClr(); ?>">
+            <?php $locker->lockerButton(); ?></a>
+            <a href="lockerM.php?landing=admindash" class="btn btn-sm <?php $locker->lockerMButtonClr(); ?>">
+            <?php $locker->lockerMButton(); ?></a>
+            </div>
+            <hr>
+            <?php } ?>
+
             <li class="nav-heading">Verifications</li>
-            <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My
-                        Dashboard</span> </a></li>
+            <li class="nav-item"> <a class="nav-link " href="admindash"> <i class="bi bi-grid"></i> <span>My Dashboard</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed " href="admindash-prev-app.php"> <i class="bi bi-grid"></i> <span>All Previous Verifications</span> </a></li>
             <li class="nav-heading">Options</li>
-            <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i>
-                    <span>Reports</span> </a></li>
+            <li class="nav-item"> <a class="nav-link collapsed" href="logs"> <i class="bi bi-bar-chart"></i><span>Reports</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="mapreport"> <i class="bi bi-pin-map"></i><span>CAVE Map</span> </a></li>
             <li class="nav-item"> <a class="nav-link collapsed" href="profile"> <i class="bi bi-person-circle"></i>My Profile</a></li>
             

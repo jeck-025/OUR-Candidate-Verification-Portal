@@ -2,6 +2,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/caveportal/resource/php/class/core/init.php';
 // isLogin();
 $view = new view;
+$locker = new locker();
+$locker->setMaintenance();
+$locker->formLockerCheck();
 // isClient($user->data()->groups);
 
 ?>
