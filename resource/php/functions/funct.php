@@ -221,6 +221,15 @@ function isLogin()
     }
 }
 
+function isLoginLocker()
+{
+    $user = new user();
+    if (!$user->isLoggedIn()) {
+        header("location:resource/php/class/includes/errors/denied");
+        exit();
+    }
+}
+
 
 function updateProfile()
 {
