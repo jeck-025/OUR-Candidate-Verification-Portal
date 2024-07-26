@@ -56,7 +56,7 @@ $locker = new locker();
             <h6 class='text-center'><?php echo $user->data()->fullName." - ".$user->data()->mm ?></h6>
             <hr>
 
-            <?php if($user->data()->username == "RMAMA" || $user->data()->username == "jeck"){?>
+            <?php if($user->data()->username == "RMAMA" || $user->data()->username == "jeck" || $user->data()->username == "EMANALO"){?>
             <?php //if($user->data()->username == "RMAMA" || $user->data()->username == "jeck" || $user->data()->username == "EMANALO"){?>
             <li class="nav-heading">FORM STATUS</li>
             <div class='text-center'>
